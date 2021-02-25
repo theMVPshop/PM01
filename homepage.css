@@ -1,5 +1,18 @@
-body {
+.container {
+	height: 100%;
+	width: 100%;
+}
+#landing-page-1 {
+	height: 100%;
+	width: 100%;
+	background-size: contain;
+	background-repeat: no-repeat;
 	background-color: #32A0ED
+}
+
+#section-1-image {
+	height: 500px;
+	background-image: url("./MVPwebsite/img/illo01.png");
 }
 
 a {
