@@ -1,0 +1,40 @@
+body {
+	width: 100%;
+}
+
+html {
+	width: 100%;
+}
+
+
+
+
+.container {
+	margin: 0;
+}
+
+#landing-page-1 {
+	height: 700px;
+	/* width: 100%; */
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: right;
+	background-color: #32A0ED;
+	background-image: url("./MVPwebsite/img/illo01.png");
+}
+
+.mvpshoplogo {
+	float: left;
+}
+
+.nav-container {
+	align-items: center;
+}
+
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+
