@@ -1,21 +1,40 @@
-.container {
-	height: 100%;
+body {
 	width: 100%;
-}
-#landing-page-1 {
-	height: 100%;
-	width: 100%;
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-color: #32A0ED
 }
 
-#section-1-image {
-	height: 500px;
+html {
+	width: 100%;
+}
+
+
+
+
+.container {
+	margin: 0;
+}
+
+#landing-page-1 {
+	height: 700px;
+	/* width: 100%; */
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: right;
+	background-color: #32A0ED;
 	background-image: url("./MVPwebsite/img/illo01.png");
 }
+
+.mvpshoplogo {
+	float: left;
+}
+
+.nav-container {
+	align-items: center;
+}
+
 
 a {
 	text-decoration: none;
 	color: white;
 }
+
+
