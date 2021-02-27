@@ -6,8 +6,6 @@ html {
 	width: 100%;
 }
 
-
-
 .container {
 	margin: 0;
 }
@@ -22,12 +20,47 @@ html {
 	background-image: url("./MVPwebsite/img/illo01.png");
 }
 
+#p1 {
+	padding-left: 60px;
+}
+
+.section-1-content {
+	display: flex;
+	flex-direction: column;
+	/* justify-content: space-between; */
+	margin: auto;
+  /* width: 50%; */
+  /* padding: 10px; */
+}
+
+/* .section-1-content div {
+	justify-content: space-between;
+} */
+
+
+
 .mvpshoplogo {
-	float: left;
+	padding-top: 25px;
+	padding-left: 60px;
+	color: white;
 }
 
 .nav-container {
 	align-items: center;
+	padding-top: 25px;
+}
+
+/* button */
+.arrow {
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
 }
 
 
