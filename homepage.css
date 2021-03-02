@@ -87,3 +87,15 @@ a {
 	text-align: center;
 	width: 100%;
 }
+
+#landing-page-3 {
+	height: 65vh;
+	width: 100%;
+	background-color: grey;
+}
+
+.section-3-container {
+	background-color: lightgreen;
+	height: 90%;
+	width: 100%;
+}
