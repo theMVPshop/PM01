@@ -9,6 +9,14 @@ const getAllUsers = (req, res) => {
     })
 }
 
+const getAllProjects = (req, res) => {
+    pool.query("SELECT * FROM projects", (err, rows) => {
+        if (err) return handleSQLError(res, err)
+        return res.json(rows);
+    })
+}
+
 module.exports = {
-    getAllUsers
+    getAllUsers,
+    getAllProjects
 }
