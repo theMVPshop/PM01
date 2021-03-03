@@ -104,7 +104,8 @@ a {
 }
 
 #landing-page-4 {
-	height: 50vh;
+	height: 60vh;
+	width: 100%;
 }
 
 .portfolio  {
@@ -123,5 +124,5 @@ a {
 
 #landing-page-5 {
 	height: 50vh;
-	background-color: grey;
+	/* background-color: grey; */
 }
