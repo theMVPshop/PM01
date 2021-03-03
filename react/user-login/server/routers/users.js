@@ -4,4 +4,6 @@ const router = express.Router()
 
 router.get('/users', usersController.getAllUsers)
 
+router.get('/projects', usersController.getAllProjects)
+
 module.exports = router;
