@@ -1,0 +1,72 @@
+body {
+	width: 100%;
+	
+}
+
+html {
+	width: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+.container {
+	margin: 0;
+}
+
+#landing-page-1 {
+	height: 100vh;
+	/* width: 100%; */
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: right;
+	background-color: #32A0ED;
+}
+
+#p1 {
+	padding-left: 60px;
+}
+
+.section-1-content {
+	display: flex;
+	flex-direction: column;
+	/* justify-content: space-between; */
+	margin: auto;
+  /* width: 50%; */
+  /* padding: 10px; */
+}
+
+/* .section-1-content div {
+	justify-content: space-between;
+} */
+
+.mvpshoplogo {
+	padding-top: 25px;
+	padding-left: 60px;
+	color: white;
+}
+
+.mvpshoplogo-footer {
+  padding-top: 25px;
+	padding-left: 60px;
+	color: black;
+}
+
+.nav-container {
+	align-items: center;
+	padding-top: 25px;
+}
+
+.nav-container a {
+	color:white;
+}
+
+
+#landing-page-8 {
+	background-color: white;
+}
+
+.footer-container {
+	padding-top: 25px;
+}
