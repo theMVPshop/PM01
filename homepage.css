@@ -145,15 +145,46 @@ a {
 
 .check-the-process {
 	text-align: center;
+	height: 25%;
 	color: white;
 }
 
 .check-the-process-btn button {
-	height: 45%;
-	width: 10%;
+	/* height: 45%;
+	width: 10%; */
+	height: 100px;
+	width: 100px;
 	border-radius: 50%;
 }
 
-#landing-page-8 {
-	background-color: grey;
+#landing-page-7 {
+	height: 100vh;
+	background-image: url('./MVPwebsite/img/illo06.png');
+	background-size: contain;
+	
 }
+
+#landing-page-8 {
+	background-color: white;
+  }
+  .footer-container {
+	padding-top: 25px;
+  }
+  .footer-container div {
+	align-content: space-between;
+  }
+  .mvpshoplogo-footer {
+	padding-top: 25px;
+	padding-left: 80px;
+	color: black;
+  }
+  .footer-titles {
+	font-weight: bold;
+	padding-bottom: 15px;
+  }
+  .copyright {
+	font-size: small;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	padding-left: 250px;
+  }
