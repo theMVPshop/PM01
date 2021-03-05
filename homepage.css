@@ -149,6 +149,10 @@ a {
 	color: white;
 }
 
+.check-the-process-btn {
+	height: 100px;
+}
+
 .check-the-process-btn button {
 	/* height: 45%;
 	width: 10%; */
@@ -161,6 +165,7 @@ a {
 	height: 100vh;
 	background-image: url('./MVPwebsite/img/illo06.png');
 	background-size: contain;
+	background-repeat: no-repeat;
 	
 }
 
