@@ -149,6 +149,10 @@ a {
 	color: white;
 }
 
+.check-the-process-btn {
+	height: 100px;
+}
+
 .check-the-process-btn button {
 	/* height: 45%;
 	width: 10%; */
