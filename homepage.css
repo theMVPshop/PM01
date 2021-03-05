@@ -1,5 +1,6 @@
 body {
 	width: 100%;
+	
 }
 
 html {
@@ -7,13 +8,16 @@ html {
 }
 
 
+a {
+	text-decoration: none;
+}
 
 .container {
 	margin: 0;
 }
 
 #landing-page-1 {
-	height: 700px;
+	height: 100vh;
 	/* width: 100%; */
 	background-size: contain;
 	background-repeat: no-repeat;
@@ -22,18 +26,170 @@ html {
 	background-image: url("./MVPwebsite/img/illo01.png");
 }
 
+#p1 {
+	padding-left: 60px;
+}
+
+.section-1-content {
+	display: flex;
+	flex-direction: column;
+	/* justify-content: space-between; */
+	margin: auto;
+  /* width: 50%; */
+  /* padding: 10px; */
+}
+
+/* .section-1-content div {
+	justify-content: space-between;
+} */
+
+
+
 .mvpshoplogo {
-	float: left;
+	padding-top: 25px;
+	padding-left: 60px;
+	color: white;
 }
 
 .nav-container {
 	align-items: center;
+	padding-top: 25px;
+}
+
+.nav-container a {
+	color:white;
+}
+
+/* button */
+.arrow {
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
 }
 
 
-a {
-	text-decoration: none;
+#landing-page-2 {
+	height: 80vh;
+	width: 100%;
+	
+}
+
+.top-container {
+	margin: auto;
+	height: 40%;
+	width: 80%;
+	
+}
+
+.container-items {
+	text-align: center;
+	width: 100%;
+}
+
+#landing-page-3 {
+	height: 100vh;
+	width: 80%;
+}
+
+.section-3-container {
+	background-color: lightgreen;
+	height: 90%;
+	width: 100%;
+}
+
+#landing-page-4 {
+	height: 70vh;
+	width: 100%;
+}
+
+.portfolio  {
+	text-align: center;
+}
+
+.portfolio-links, .portfolio-links-focus {
+	color: black;
+}
+
+.portfolio-load-btn {
+	text-align: center;
+	width: 10%;
+	border-radius: 20px;
 	color: white;
 }
 
+#landing-page-5 {
+	height: 50vh;
+}
 
+.get-quote-btn {
+	border-radius: 20px;
+	color: white;
+}
+
+#landing-page-6 {
+	height: 80vh;
+	background-color: lightgreen;
+}
+
+.landing-page-6-container {
+	height: 80%;
+	width: 70%;
+	background-color: grey;
+}
+
+.check-the-process {
+	text-align: center;
+	height: 25%;
+	color: white;
+}
+
+.check-the-process-btn {
+	height: 100px;
+}
+
+.check-the-process-btn button {
+	/* height: 45%;
+	width: 10%; */
+	height: 100px;
+	width: 100px;
+	border-radius: 50%;
+}
+
+#landing-page-7 {
+	height: 100vh;
+	background-image: url('./MVPwebsite/img/illo06.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	
+}
+
+#landing-page-8 {
+	background-color: white;
+  }
+  .footer-container {
+	padding-top: 25px;
+  }
+  .footer-container div {
+	align-content: space-between;
+  }
+  .mvpshoplogo-footer {
+	padding-top: 25px;
+	padding-left: 80px;
+	color: black;
+  }
+  .footer-titles {
+	font-weight: bold;
+	padding-bottom: 15px;
+  }
+  .copyright {
+	font-size: small;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	padding-left: 250px;
+  }
