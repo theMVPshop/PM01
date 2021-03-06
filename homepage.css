@@ -134,18 +134,21 @@ a {
 
 #landing-page-6 {
 	height: 80vh;
-	background-color: lightgreen;
 }
 
 .landing-page-6-container {
 	height: 80%;
 	width: 70%;
-	background-color: grey;
+	/* background-color: #32A0ED; */
+	background: rgb(50,160,237);
+	background: linear-gradient(90deg, rgba(50,160,237,1) 0%, rgba(50,230,237,1) 75%, rgba(50,237,207,1) 100%);
+	border-radius: 15px;
 }
 
 .check-the-process {
 	text-align: center;
-	height: 25%;
+	height: 20%;
+	width: 80%;
 	color: white;
 }
 
@@ -159,6 +162,34 @@ a {
 	height: 100px;
 	width: 100px;
 	border-radius: 50%;
+	background-color: transparent;
+	border: 1px solid #fff;
+	color: #fff;
+}
+
+.plus-btn {
+	display: inline-block;
+	width: 40px;
+	height:40px;
+	margin-right: 3rem;
+	background:
+	/* linear-gradient(#fff,#fff),
+    linear-gradient(#fff,#fff),
+    #000; */
+	linear-gradient(#32ECD1, #32ECD1),
+	linear-gradient(#32ECD1, #32ECD1),
+	#fff;
+
+	background-position:center;
+  	background-size: 50% 2px,2px 50%; /*thickness = 2px, length = 50% (25px)*/
+  	background-repeat:no-repeat;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.check-the-process-btn button:focus {
+	background-color: white;
+	color: #32A0ED;
 }
 
 #landing-page-7 {
@@ -167,6 +198,14 @@ a {
 	background-size: contain;
 	background-repeat: no-repeat;
 	
+}
+
+.design-refinement-row {
+	height: 50px;
+}
+
+.design-refinement-icon {
+	margin-right: 3rem;
 }
 
 #landing-page-8 {
