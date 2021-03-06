@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser');
 
 //routers
 const usersRouter = require('./routers/users');
-const authRouter = require('./routers/auth');
+// const authRouter = require('./routers/auth');
 
 //more initializing
 const app = express();
@@ -27,7 +27,7 @@ app.use(cookieParser())
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json())
 app.use('/', express.static('../client/build'), cors(corsOptions), usersRouter)
-app.use('/auth', cors(corsOptions), authRouter)
+// app.use('/auth', cors(corsOptions), authRouter)
 
 
 // app.get('/', (req, res) => {
