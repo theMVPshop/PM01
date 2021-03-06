@@ -56,10 +56,28 @@ a {
 }
 
 #about-page-info {
-  height: 80vh;
-  background-color: rgb(227, 235, 241);
+  height: 40vh;
+  width: 60%;
 }
 
+#meet-the-crew {
+  
+}
+
+.meet-the-crew {
+  background-color: rgb(209, 231, 245);
+  font-size: 30px;
+}
+
+#crew-cards {
+  padding-left: 80px;
+  padding-right: 80px;
+}
+.crew-image {
+  height: 30vh;
+}
+
+/* footer */
 #about-page-footer {
 	background-color: white;
 }
