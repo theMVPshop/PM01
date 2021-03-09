@@ -81,10 +81,7 @@ a {
 }
 
 .top-container {
-	margin: auto;
-	height: 40%;
-	width: 80%;
-	
+	text-align: center;
 }
 
 .container-items {
@@ -195,18 +192,12 @@ a {
 #landing-page-7 {
 	height: 100vh;
 	background-image: url('./MVPwebsite/img/illo06.png');
-	background-size: contain;
+	background-size: cover;
 	background-repeat: no-repeat;
 	
 }
 
-.design-refinement-row {
-	height: 50px;
-}
 
-.design-refinement-icon {
-	margin-right: 3rem;
-}
 
 #landing-page-8 {
 	background-color: white;
