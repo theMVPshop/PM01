@@ -21,10 +21,11 @@ a {
 	/* width: 100%; */
 	background-size: contain;
 	background-repeat: no-repeat;
-	background-position: right;
-	background-color: #32A0ED;
+	background-position: right; 
+	background-color: #32A0ED; 
 	background-image: url("./MVPwebsite/img/illo01.png");
 }
+
 
 #p1 {
 	padding-left: 60px;
