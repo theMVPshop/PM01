@@ -1,12 +1,7 @@
-import React from 'react';
+import React from "react";
 
 function Milestones() {
-
-    return(
-        <div className="App">
-            <h2>MILESTONES</h2>
-        </div>
-    )
+  return <div>Milestones</div>;
 }
 
-export default Milestones
+export default Milestones;
