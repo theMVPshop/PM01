@@ -55,18 +55,35 @@ a {
 	color:white;
 }
 
-#about-page-info {
-  height: 40vh;
+/* about page */
+/* section 1 */
+
+#about-the-mvpshop {
+  height: 80vh;
   width: 60%;
 }
 
+.about-the-mvpshop {
+  padding: 40px;
+}
+
+.about {
+  width: 60%;
+  /* background-color: burlywood; */
+}
+
+/* section 2 */
 #meet-the-crew {
-  
+  height: 80vh;
+  width: 60%;
 }
 
 .meet-the-crew {
-  background-color: rgb(209, 231, 245);
-  font-size: 30px;
+  padding: 40px;
+}
+
+.crew {
+  width: 60%;
 }
 
 #crew-cards {
