@@ -1,4 +1,5 @@
 import React from "react";
+import { Navbar, Nav, Button } from "react-bootstrap";
 
 function initNetlifyIdentity() {
   const script = document.createElement("script");
@@ -29,17 +30,36 @@ function NetlifyIdentity() {
 
 function Navigation() {
   return (
-    <div className="NavHeader">
+    <Navbar bg="dark" expand="lg">
+      <Navbar.Brand href="/home" style={{ color: "white" }}>
+        the<span style={{ fontWeight: "800", color: "orange" }}>MVP</span>shop
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="mr-auto">
+          <Nav.Link href="/" style={{ color: "white" }}>
+            Home
+          </Nav.Link>
+          <Nav.Link href="/projects" style={{ color: "white" }}>
+            Projects
+          </Nav.Link>
+          <Nav.Link href="/milestones" style={{ color: "white" }}>
+            Milestones
+          </Nav.Link>
+          <Nav.Link href="/devlog" style={{ color: "white" }}>
+            DevLogs
+          </Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
       <NetlifyIdentity />
-      <h1>NAVIGATION</h1>
-      <h3
+      <Button
         onClick={() => {
           openNetlifyModal();
         }}
       >
         Login
-      </h3>
-    </div>
+      </Button>
+    </Navbar>
   );
 }
 
