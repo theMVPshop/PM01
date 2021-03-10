@@ -1,9 +1,6 @@
-import React, { Component } from 'react';
-
-import './App.css';
-
-import Navigation from './components/Navigation'
-import ReactRouter from './ReactRouter'
+import React, { Component } from "react";
+import Navigation from "./components/Navigation";
+import ReactRouter from "./ReactRouter";
 
 // function App() {
 //   return (
@@ -21,9 +18,9 @@ class App extends Component {
   }
   callAPI() {
     fetch("http://localhost:4001/users")
-      .then(res => res.text())
-      .then(res => this.setState({ apiResponse: res }))
-      .catch(err => err);
+      .then((res) => res.text())
+      .then((res) => this.setState({ apiResponse: res }))
+      .catch((err) => err);
   }
 
   componentDidMount() {
@@ -35,14 +32,10 @@ class App extends Component {
       <div className="App">
         <Navigation />
         <ReactRouter />
-        <p>
-          Here is the API call {this.state.apiResponse}.
-        </p>
-
+        <p>Here is the API call {this.state.apiResponse}.</p>
       </div>
-    )
+    );
   }
-
 }
 
 export default App;
