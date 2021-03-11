@@ -1,6 +1,7 @@
 import React from "react";
 import Navigation from "./components/Navigation";
 import ReactRouter from "./ReactRouter";
+import { withRouter } from "react-router";
 
 function App() {
   const [apiResponse, setApiResponse] = React.useState("");
@@ -16,9 +17,11 @@ function App() {
     callAPI();
   }, []);
 
+  const NavWithRouter = withRouter(Navigation);
+
   return (
     <div className="App">
-      <Navigation />
+      <NavWithRouter />
       <ReactRouter />
       <p>Here is the API call {apiResponse}.</p>
     </div>
