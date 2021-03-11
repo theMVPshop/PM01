@@ -23,7 +23,14 @@ function App() {
     <div className="App">
       <NavWithRouter />
       <ReactRouter />
-      <p>Here is the API call {apiResponse}.</p>
+      <p>
+        API call:{" "}
+        {apiResponse ? (
+          apiResponse
+        ) : (
+          <span style={{ color: "red" }}>NO RESPONSE</span>
+        )}
+      </p>
     </div>
   );
 }
