@@ -28,7 +28,8 @@ function Milestones() {
     } else if (todo.status === "green") {
       todo.status = "red";
     }
-    setTodos(todos);
+
+    setTodos([...todos]);
   };
 
   return (
