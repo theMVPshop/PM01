@@ -5,6 +5,25 @@ import {
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 
+const addMilestone = (status, location, description, date, title, subtitle) => {
+  return (
+    <>
+      <VerticalTimelineElement
+        className="vertical-timeline-element--work"
+        contentStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
+        contentArrowStyle={{ borderRight: "7px solid  rgb(33, 150, 243)" }}
+        date="2011 - present"
+        iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
+        // icon={<WorkIcon />}
+      >
+        <h3 className="vertical-timeline-element-title">Creative Director</h3>
+        <h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>
+        <p>{description}</p>
+      </VerticalTimelineElement>
+    </>
+  );
+};
+
 export default function Timeline() {
   return (
     <VerticalTimeline>
