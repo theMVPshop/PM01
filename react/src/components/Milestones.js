@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 
 function Milestones() {
   const [todos, setTodos] = useState([]);
@@ -33,22 +34,24 @@ function Milestones() {
   };
 
   return (
-    <div className="App">
+    <div style={{ backgroundColor: "darkgray" }}>
       <form style={{ display: "flex" }} onSubmit={onSubmit}>
         <input
           type="text"
           name="title"
           style={{ flex: "10", padding: "5px" }}
-          placeholder="Add Todo ..."
+          placeholder="Add Milestone ..."
           value={input}
           onChange={onChange}
         />
-        <input
+        <Button
           type="submit"
           value="Submit"
           className="btn"
           style={{ flex: "1" }}
-        />
+        >
+          Add
+        </Button>
       </form>
 
       <ul>
@@ -64,7 +67,13 @@ function Milestones() {
                 {todo.title}
               </span>
               <span>
-                <button onClick={() => removeItem(idx)}>X</button>
+                <Button
+                  variant="danger"
+                  onClick={() => removeItem(idx)}
+                  size="sm"
+                >
+                  X
+                </Button>
               </span>
             </li>
           );
