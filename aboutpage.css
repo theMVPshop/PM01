@@ -14,97 +14,54 @@ a {
 	margin: 0;
 }
 
-#about-page-nav {
-	height: 10vh;
-	/* width: 100%; */
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: right;
-	background-color: #32A0ED;
-}
-
-#p1 {
-	padding-left: 60px;
-}
-
-.section-1-content {
-	display: flex;
-	flex-direction: column;
-	/* justify-content: space-between; */
-	margin: auto;
-  /* width: 50%; */
-  /* padding: 10px; */
-}
-
-/* .section-1-content div {
-	justify-content: space-between;
-} */
-
-.mvpshoplogo {
-	padding-top: 25px;
-	padding-left: 60px;
-	color: white;
-}
-
-.nav-container {
-	align-items: center;
-	padding-top: 25px;
-}
-
-.nav-container a {
-	color:white;
-}
-
 /* about page */
 /* section 1 */
-
-#about-the-mvpshop {
-  height: 80vh;
-  width: 60%;
-}
-
 .about-the-mvpshop {
+  width: 1400px;
+  margin: auto;
+  border: 1px solid red;
   padding: 40px;
 }
 
-.about {
-  width: 60%;
-  /* background-color: burlywood; */
+#about-the-mvpshop, #meet-the-crew {
+  width: 800px;
+}
+
+#about-the-mvpshop h2, #meet-the-crew h2  {
+  text-align: center;
 }
 
 /* section 2 */
-#meet-the-crew {
-  height: 80vh;
-  width: 60%;
-}
-
 .meet-the-crew {
+  width: 1400px;
+  margin: auto;
+  border: 1px solid red;
   padding: 40px;
 }
 
-.crew {
-  width: 60%;
+/* section 3 */
+.crew-cards {
+  width: 1400px;
+  margin: auto;
+  border: 1px solid red;
 }
 
-#crew-cards {
-  padding-left: 80px;
-  padding-right: 80px;
-}
 .crew-image {
-  height: 30vh;
+  height: 25vh;
 }
 
 .card {
 	width: 350px; 
-	min-width: 300px;
-  	height: 450px;
-  	margin: auto;
+  height: 450px;
+  margin: auto;
 	margin-bottom: 20px;
 }
 
 /* footer */
-#about-page-footer {
-	background-color: white;
+.about-page-footer {
+  border: red 1px solid;
+  width: 1400px;
+  margin: auto;
 }
 
 .footer-container {
@@ -132,3 +89,29 @@ a {
   padding-bottom: 40px;
   padding-left: 250px;
 }
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+  .crew-cards {
+    width: 700px;
+    border: blue 1px solid;
+  }
+  .card {
+    width: 250px;
+  }
+  .about-the-mvpshop, .meet-the-crew {
+    width: 700px;
+    border: blue 1px solid;
+  }
+  .about-page-footer {
+    border: blue 1px solid;
+    width: 700px;
+  }
+}
+
