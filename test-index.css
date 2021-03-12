@@ -73,3 +73,14 @@ a {
 	height: 100vh;
 	background-color: #fff;
 }
+
+@media only screen and (max-width: 775px) {
+	.portfolio-card-container > .row {
+		display: block;
+		overflow-x: auto;
+		white-space: nowrap;
+	}
+	.portfolio-card-container > .row > .col-4{
+		display: inline-block;
+	}
+}
