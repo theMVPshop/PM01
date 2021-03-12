@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Button } from "react-bootstrap";
+import Timeline from "./Timeline";
 
 function Milestones() {
   const [todos, setTodos] = useState([]);
@@ -33,44 +35,55 @@ function Milestones() {
   };
 
   return (
-    <div className="App">
-      <form style={{ display: "flex" }} onSubmit={onSubmit}>
-        <input
-          type="text"
-          name="title"
-          style={{ flex: "10", padding: "5px" }}
-          placeholder="Add Todo ..."
-          value={input}
-          onChange={onChange}
-        />
-        <input
-          type="submit"
-          value="Submit"
-          className="btn"
-          style={{ flex: "1" }}
-        />
-      </form>
+    <>
+      <div style={{ backgroundColor: "darkgray" }}>
+        <form style={{ display: "flex" }} onSubmit={onSubmit}>
+          <input
+            type="text"
+            name="title"
+            style={{ flex: "10", padding: "5px" }}
+            placeholder="Add Milestone ..."
+            value={input}
+            onChange={onChange}
+          />
+          <Button
+            type="submit"
+            value="Submit"
+            className="btn"
+            style={{ flex: "1" }}
+          >
+            Add
+          </Button>
+        </form>
 
-      <ul>
-        {todos.map((todo, idx) => {
-          return (
-            <li key={todo.id}>
-              <span
-                onClick={() => handleClick(todo)}
-                style={{ color: todo.status }}
-                value={todo.id}
-                id={idx}
-              >
-                {todo.title}
-              </span>
-              <span>
-                <button onClick={() => removeItem(idx)}>X</button>
-              </span>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+        <ul>
+          {todos.map((todo, idx) => {
+            return (
+              <li key={todo.id}>
+                <span
+                  onClick={() => handleClick(todo)}
+                  style={{ color: todo.status }}
+                  value={todo.id}
+                  id={idx}
+                >
+                  {todo.title}
+                </span>
+                <span>
+                  <Button
+                    variant="danger"
+                    onClick={() => removeItem(idx)}
+                    size="sm"
+                  >
+                    X
+                  </Button>
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+      <Timeline />
+    </>
   );
 }
 
