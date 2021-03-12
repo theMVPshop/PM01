@@ -9,7 +9,7 @@ exports.handler = function(event, context, callback) {
       },
       user_metadata: {
         ...user.user_metadata, // append current user metadata
-        custom_data_from_function: "hurray this is some extra metadata"
+        // custom_data_from_function: "hurray this is some extra metadata"
       }
     };
     callback(null, {
