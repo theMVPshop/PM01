@@ -51,6 +51,12 @@ a {
 .section-container-align-text {
 	text-align: center;
 }
+
+.case-studies-align {
+	text-align: center;
+}
+
+
 #landing-page-3 {
 	height: 100vh;
 	background-color: lightgreen;
@@ -75,12 +81,6 @@ a {
 }
 
 @media only screen and (max-width: 775px) {
-	.portfolio-card-container > .row {
-		display: block;
-		overflow-x: auto;
-		white-space: nowrap;
-	}
-	.portfolio-card-container > .row > .col-4{
-		display: inline-block;
-	}
+
+	
 }
