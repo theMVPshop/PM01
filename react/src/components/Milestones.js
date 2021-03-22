@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-import Timeline from "./Timeline";
+// import Timeline from "./Timeline";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -33,7 +33,7 @@ function Milestones() {
       {
         title: input.title,
         id: counter,
-        status: input.status,
+        status: "TODO",
         description: input.description,
         date: input.date,
         subtitle: input.subtitle,
@@ -45,7 +45,6 @@ function Milestones() {
       subtitle: "",
       description: "",
       date: "",
-      status: "",
     });
   };
 
@@ -197,7 +196,7 @@ function Milestones() {
           })}
         </VerticalTimeline>
       </div>
-      <Timeline />
+      {/* <Timeline /> */}
     </>
   );
 }
