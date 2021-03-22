@@ -58,7 +58,7 @@ a {
 
 
 #landing-page-3 {
-	height: 100vh;
+	/* height: 100vh; */
 	background-color: lightgreen;
 }
 
@@ -72,9 +72,25 @@ a {
 	background-color: #fff;
 }
 #landing-page-5 {
-	height: 100vh;
+	/* height: 100vh; */
 	background-color: grey;
 }
+
+.landing-page-5-main-container {
+	background: rgb(50,160,237);
+	width: 80%;
+	margin: auto;
+	background: linear-gradient(90deg, rgba(50,160,237,1) 0%, rgba(50,230,237,1) 75%, rgba(50,237,207,1) 100%);
+	border-radius: 15px;
+}
+
+.landing-page-5-container-items {
+	width: 80%;
+	color: #fff;
+	background: green;
+}
+
+
 #landing-page-6 {
 	height: 100vh;
 	background-color: #fff;
