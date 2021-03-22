@@ -1,21 +1,51 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-import Timeline from "./Timeline";
+// import Timeline from "./Timeline";
+import {
+  VerticalTimeline,
+  VerticalTimelineElement,
+} from "react-vertical-timeline-component";
+import "react-vertical-timeline-component/style.min.css";
 
 function Milestones() {
   const [todos, setTodos] = useState([]);
-  const [input, setInput] = useState("");
   const [counter, setCounter] = useState(1);
+  const [input, setInput] = useState({
+    title: "",
+    subtitle: "",
+    description: "",
+    date: "",
+    status: "TODO",
+    id: counter,
+  });
 
   const onChange = (event) => {
-    setInput(event.target.value);
+    setInput((prevState) => ({
+      ...prevState,
+      [event.target.name]: event.target.value,
+    }));
   };
 
   const onSubmit = (event) => {
     event.preventDefault();
-    setTodos([...todos, { title: input, id: counter, status: "red" }]);
+    setTodos([
+      ...todos,
+      {
+        title: input.title,
+        id: counter,
+        status: "TODO",
+        description: input.description,
+        date: input.date,
+        subtitle: input.subtitle,
+      },
+    ]);
     setCounter(counter + 1);
-    setInput("");
+    setInput({
+      title: "",
+      subtitle: "",
+      description: "",
+      date: "",
+    });
   };
 
   const removeItem = (id) => {
@@ -23,12 +53,12 @@ function Milestones() {
   };
 
   const handleClick = (todo) => {
-    if (todo.status === "red") {
-      todo.status = "yellow";
-    } else if (todo.status === "yellow") {
-      todo.status = "green";
-    } else if (todo.status === "green") {
-      todo.status = "red";
+    if (todo.status === "TODO") {
+      todo.status = "IN PROGRESS";
+    } else if (todo.status === "IN PROGRESS") {
+      todo.status = "COMPLETED";
+    } else if (todo.status === "COMPLETED") {
+      todo.status = "TODO";
     }
 
     setTodos([...todos]);
@@ -36,16 +66,61 @@ function Milestones() {
 
   return (
     <>
-      <div style={{ backgroundColor: "darkgray" }}>
+      <div style={{ backgroundColor: "lightslategray" }}>
         <form style={{ display: "flex" }} onSubmit={onSubmit}>
           <input
             type="text"
             name="title"
             style={{ flex: "10", padding: "5px" }}
-            placeholder="Add Milestone ..."
-            value={input}
+            placeholder="Title ..."
+            value={input.title}
             onChange={onChange}
           />
+          <input
+            type="text"
+            name="subtitle"
+            style={{ flex: "10", padding: "5px" }}
+            placeholder="Subtitle ..."
+            value={input.subtitle}
+            onChange={onChange}
+          />
+          <input
+            type="text"
+            name="description"
+            style={{ flex: "10", padding: "5px" }}
+            placeholder="Description ..."
+            value={input.description}
+            onChange={onChange}
+          />
+          <label
+            for="date"
+            style={{
+              backgroundColor: "darkorange",
+              color: "black",
+              flex: "2",
+              padding: "5px",
+              marginBottom: "5px",
+              // border: "1px solid black",
+            }}
+          >
+            Due Date:{" "}
+          </label>
+          <input
+            type="date"
+            name="date"
+            style={{ flex: "10", padding: "5px" }}
+            placeholder="Due date ..."
+            value={input.date}
+            onChange={onChange}
+          />
+          {/* <input
+            type="select"
+            name="status"
+            style={{ flex: "10", padding: "5px" }}
+            placeholder="Status ..."
+            value={input.status}
+            onChange={onChange}
+          /> */}
           <Button
             type="submit"
             value="Submit"
@@ -56,33 +131,72 @@ function Milestones() {
           </Button>
         </form>
 
-        <ul>
+        <VerticalTimeline>
           {todos.map((todo, idx) => {
             return (
-              <li key={todo.id}>
-                <span
+              <VerticalTimelineElement
+                className="vertical-timeline-element--work"
+                contentStyle={{
+                  background: "#20B2AA",
+                  color: "lightyellow",
+                }}
+                contentArrowStyle={{
+                  borderRight: "7px solid white",
+                }}
+                date={todo.date}
+                dateClassName="timeline-date"
+                iconStyle={{
+                  background: `${
+                    todo.status === "COMPLETED"
+                      ? "mediumseagreen"
+                      : todo.status === "IN PROGRESS"
+                      ? "darkorange"
+                      : todo.status === "TODO"
+                      ? "firebrick"
+                      : "gray"
+                  }`,
+                  color: "#eee",
+                }}
+                // icon={<WorkIcon />}
+              >
+                <h3 className="vertical-timeline-element-title">
+                  {todo.title}
+                </h3>
+                <h4 className="vertical-timeline-element-subtitle">
+                  {todo.subtitle}
+                </h4>
+                <p>{todo.description}</p>
+                <Button
+                  variant={
+                    todo.status === "COMPLETED"
+                      ? "success"
+                      : todo.status === "IN PROGRESS"
+                      ? "warning"
+                      : todo.status === "TODO"
+                      ? "danger"
+                      : "primary"
+                  }
                   onClick={() => handleClick(todo)}
-                  style={{ color: todo.status }}
                   value={todo.id}
                   id={idx}
+                  size="sm"
                 >
-                  {todo.title}
-                </span>
-                <span>
-                  <Button
-                    variant="danger"
-                    onClick={() => removeItem(idx)}
-                    size="sm"
-                  >
-                    X
-                  </Button>
-                </span>
-              </li>
+                  {todo.status}
+                </Button>
+                <Button
+                  variant="danger"
+                  onClick={() => removeItem(idx)}
+                  size="sm"
+                  className="d-flex ml-auto"
+                >
+                  Remove
+                </Button>
+              </VerticalTimelineElement>
             );
           })}
-        </ul>
+        </VerticalTimeline>
       </div>
-      <Timeline />
+      {/* <Timeline /> */}
     </>
   );
 }
