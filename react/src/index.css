@@ -15,3 +15,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.timeline-date {
+  color: white;
+}
+/* 
+.vertical-timeline-element-content {
+  border-bottom: 3px solid #2196f3;
+} */
