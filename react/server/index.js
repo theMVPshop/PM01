@@ -26,13 +26,8 @@ app.use(session({
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json())
-app.use('/', express.static('../client/build'), cors(corsOptions), usersRouter)
+app.use('/', express.static('../build'), cors(corsOptions), usersRouter)
 // app.use('/auth', cors(corsOptions), authRouter)
-
-
-// app.get('/', (req, res) => {
-//     res.send('Welcome to our server!');
-// })
 
 app.listen(port, () => {
     console.log(`Web server is listening on port ${port}!`);
