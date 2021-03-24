@@ -14,24 +14,41 @@ function Milestones() {
     title: "",
     subtitle: "",
     description: "",
-    date: "",
-    status: "TODO",
+    due_date: "",
+    ms_status: "TODO",
     id: counter,
   });
-  const [data, setData] = useState({ stones: [] });
+  const [milestone, setMilestone] = useState({});
   let projectID = 1;
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get(
-        `http://localhost:4001/milestones/${projectID}`,
-      );
-      // console.log('this is the result', result)
-      setTodos(result.data);
+      try {
+        const result = await axios.get(
+          `http://localhost:4001/milestones/${projectID}`,
+        );
+        setTodos(result.data);
+        console.log('this is the todos', todos);
+      } catch (error) {
+        console.log(error)
+      }
     };
     fetchData();
-    console.log('this is the todos', todos);
-  }, []);
+  }, [milestone]);
+
+  const postMilestone = () => {
+    axios.post(
+      `http://localhost:4001/milestones`,
+      milestone,
+    )
+    .then(function (response) {
+      console.log('post milestone response', response);
+    })
+    .catch(function (error) {
+      console.log('post milestone error', error)
+    });
+
+  }
 
   const onChange = (event) => {
     setInput((prevState) => ({
@@ -42,24 +59,29 @@ function Milestones() {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    setTodos([
-      ...todos,
+    setMilestone([
       {
         title: input.title,
-        id: counter,
-        status: "TODO",
+        // id: counter,
+        ms_status: "TODO",
         description: input.description,
-        date: input.date,
+        due_date: input.due_date,
         subtitle: input.subtitle,
+        project_id: projectID
       },
     ]);
+    // setTodos([
+    //   ...todos,
+    //   milestone
+    // ])
     setCounter(counter + 1);
     setInput({
       title: "",
       subtitle: "",
       description: "",
-      date: "",
+      due_date: "",
     });
+    postMilestone();
   };
 
   const removeItem = (id) => {
@@ -67,12 +89,12 @@ function Milestones() {
   };
 
   const handleClick = (todo) => {
-    if (todo.status === "TODO") {
-      todo.status = "IN PROGRESS";
-    } else if (todo.status === "IN PROGRESS") {
-      todo.status = "COMPLETED";
-    } else if (todo.status === "COMPLETED") {
-      todo.status = "TODO";
+    if (todo.ms_status === "TODO") {
+      todo.ms_status = "IN PROGRESS";
+    } else if (todo.ms_status === "IN PROGRESS") {
+      todo.ms_status = "COMPLETED";
+    } else if (todo.ms_status === "COMPLETED") {
+      todo.ms_status = "TODO";
     }
 
     setTodos([...todos]);
@@ -132,7 +154,7 @@ function Milestones() {
             name="status"
             style={{ flex: "10", padding: "5px" }}
             placeholder="Status ..."
-            value={input.status}
+            value={input.ms_status}
             onChange={onChange}
           /> */}
           <Button
@@ -157,15 +179,15 @@ function Milestones() {
                 contentArrowStyle={{
                   borderRight: "7px solid white",
                 }}
-                date={todo.date}
+                date={todo.due_date}
                 dateClassName="timeline-date"
                 iconStyle={{
                   background: `${
-                    todo.status === "COMPLETED"
+                    todo.ms_status === "COMPLETED"
                       ? "mediumseagreen"
-                      : todo.status === "IN PROGRESS"
+                      : todo.ms_status === "IN PROGRESS"
                       ? "darkorange"
-                      : todo.status === "TODO"
+                      : todo.ms_status === "TODO"
                       ? "firebrick"
                       : "gray"
                   }`,
@@ -182,11 +204,11 @@ function Milestones() {
                 <p>{todo.description}</p>
                 <Button
                   variant={
-                    todo.status === "COMPLETED"
+                    todo.ms_status === "COMPLETED"
                       ? "success"
-                      : todo.status === "IN PROGRESS"
+                      : todo.ms_status === "IN PROGRESS"
                       ? "warning"
-                      : todo.status === "TODO"
+                      : todo.ms_status === "TODO"
                       ? "danger"
                       : "primary"
                   }
@@ -195,7 +217,7 @@ function Milestones() {
                   id={idx}
                   size="sm"
                 >
-                  {todo.status}
+                  {todo.ms_status}
                 </Button>
                 <Button
                   variant="danger"

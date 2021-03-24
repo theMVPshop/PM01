@@ -19,7 +19,8 @@ title VARCHAR(50),
 subtitle VARCHAR(50),
 project_id INT NOT NULL,
 due_date VARCHAR(12),
-ms_status INT NOT NULL,
+ms_status VARCHAR(16),
+description VARCHAR(50),
 PRIMARY KEY (id),
 FOREIGN KEY (project_id) REFERENCES projects (id)
 );
@@ -44,11 +45,11 @@ VALUES
 	("First Project"), ("Another Project");
     
 INSERT INTO milestones
-	(title, subtitle, project_id, due_date, ms_status)
+	(title, subtitle, project_id, due_date, ms_status, description)
 VALUES
-	("Begin", "Talk about project", 1, "01/01/2021", 1),
-    ("Wireframe", "Show wireframes to client", 1, "01/01/2021", 0),
-    ("Begin", "Talk about project", 2, "01/01/2021", 1),
-    ("Wireframe", "Show to client", 2, "01/01/2021", 0),
-    ("Finish", "Project is completed", 2, "01/01/2021", 1),
-    ("Finish", "Project is completed", 1, "01/01/2021", 0);
+	("Begin", "Talk about project", 1, "01/01/2021", "TODO", "NA"),
+    ("Wireframe", "Show wireframes to client", 1, "01/01/2021", "TODO", "NA"),
+    ("Begin", "Talk about project", 2, "01/01/2021", "TODO", "NA"),
+    ("Wireframe", "Show to client", 2, "01/01/2021", "TODO", "NA"),
+    ("Finish", "Project is completed", 2, "01/01/2021", "TODO", "NA"),
+    ("Finish", "Project is completed", 1, "01/01/2021", "TODO", "NA");
