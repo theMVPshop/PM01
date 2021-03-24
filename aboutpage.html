@@ -65,29 +65,30 @@
     <section class="crew-cards">
       <div class="row d-flex flex-wrap p-2 m-5 align-items-center justify-content-evenly">
 
+
         <div class="card">
           <img class="card-img-top img-fluid crew-image" src="./MVPwebsite/img/boy04.svg" alt="Card image cap">
           <div class="card-body">
+
             <h5 class="card-title">Keith Kritselis</h5>
-            <h6>Project Manager</h6>
-            <div class="card-flip">
-              <p class="card-text">Lead the MVP shop</p>
-              <button type="button" class="btn btn-primary">Learn More</button>
+
+            <div class="content content--content-to-flip">
+              <div class="content-to-flip">
+                <div class="content__face content__face--front">
+                  <h6>Project Manager</h6>
+                  <p class="card-text">Lead the MVP shop</p>
+                </div>
+                <div class="content__face content__face--back">
+                  <div>Linked In</div>
+                  <div>GitHub</div>
+                </div>
+              </div>
             </div>
+
+            <button type="button" class="btn btn-primary">Learn More</button>
+
           </div>
         </div>
-
-        <!-- <div class="card">
-          <img class="card-img-top img-fluid crew-image" src="./MVPwebsite/img/boy04.svg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Keith Kritselis</h5>
-            <h6>Project Manager</h6>
-            <div class="card-back">
-              <p class="card-text">Lead the MVP shop</p>
-              <button type="button" class="btn btn-primary">Learn More</button>
-            </div>
-          </div>
-        </div> -->
 
 
         <div class="card">
@@ -132,7 +133,7 @@
             <h5 class="card-title">Unknown</h5>
             <h6>Web Developer</h6>
             <p class="card-text">Not here yet</p>
-            <button type="button" class="btn btn-primary">Learn More</button>
+            <button type="button" class="button btn btn-primary">Learn More</button>
           </div>
         </div>
       </div>
@@ -171,6 +172,12 @@
     
 </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-    <script src="./homepage.js" async defer></script>
+    <script src="./homepage.js" async defer></script> 
+    <script>
+      var contentToFlip = document.querySelector('.content-to-flip');
+      button.addEventListener('click', function() {
+        contentToFlip.classList.toggle('is-flipped');
+      });
+    </script>
   </body>
 </html>
