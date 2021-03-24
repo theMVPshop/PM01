@@ -1,6 +1,6 @@
+import { Container, Button } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import { Button } from "react-bootstrap";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -102,7 +102,7 @@ function Milestones() {
 
   return (
     <>
-      <div style={{ backgroundColor: "lightslategray" }}>
+      <Container style={{ backgroundColor: "lightslategray" }} className="p-12">
         <form style={{ display: "flex" }} onSubmit={onSubmit}>
           <input
             type="text"
@@ -231,7 +231,7 @@ function Milestones() {
             );
           })}
         </VerticalTimeline>
-      </div>
+      </Container>
     </>
   );
 }
