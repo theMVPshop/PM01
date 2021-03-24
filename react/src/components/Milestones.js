@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
+import { Container, Button } from "react-bootstrap";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -65,7 +65,7 @@ function Milestones() {
 
   return (
     <>
-      <div style={{ backgroundColor: "lightslategray" }}>
+      <Container style={{ backgroundColor: "lightslategray" }} className="p-12">
         <form style={{ display: "flex" }} onSubmit={onSubmit}>
           <input
             type="text"
@@ -194,7 +194,7 @@ function Milestones() {
             );
           })}
         </VerticalTimeline>
-      </div>
+      </Container>
     </>
   );
 }
