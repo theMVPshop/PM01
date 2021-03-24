@@ -16,6 +16,17 @@ const getAllProjects = (req, res) => {
     })
 }
 
+const createProject = (req,res) => {
+    let { project_name } = req.body
+    let sql = "INSERT INTO projects (project_name) VALUE  (?)"
+    sql = mysql.format(sql, [ project_name ]);
+
+    pool.query(sql, (err, rows) => {
+        if (err) return handleSQLError(res, err)
+        return res.json({ message: `Created project: ${rows.insertId}` });
+    })
+}
+
 const getMilestoneByProject = (req, res) => {
     let sql = "SELECT * FROM milestones WHERE project_id = ?"
     sql = mysql.format(sql, [ req.params.project_id ])
@@ -27,9 +38,9 @@ const getMilestoneByProject = (req, res) => {
 }
 
 const createMilestone = (req, res) => {
-    let { status, date, title, subtitle, project_id } = req.body
+    let { ms_status, due_date, title, subtitle, project_id } = req.body
     let sql = "INSERT INTO milestones (title, subtitle, project_id, due_date, ms_status) VALUE  (?, ?, ?, ?, ?)"
-    sql = mysql.format(sql, [ title, subtitle, project_id, date, status ]);
+    sql = mysql.format(sql, [ title, subtitle, project_id, due_date, ms_status ]);
 
     pool.query(sql, (err, rows) => {
         if (err) return handleSQLError(res, err)
@@ -47,10 +58,23 @@ const deleteMilestoneById = (req, res) => {
     })
 }
 
+const updateMilestoneById = (req, res) => {
+    let { title, subtitle, project_id, due_date, ms_status, id } = req.body;
+    let sql = "UPDATE milestones SET title = ?, subtitle = ?, project_id = ?, due_date = ?, ms_status = ? WHERE id = ?"
+    sql = mysql.format(sql, [ title, subtitle, project_id, due_date, ms_status, id ]);
+
+    pool.query(sql, (err, rows) => {
+        if (err) return handleSQLError(res, err)
+        return res.json({ message: `Updated Milestone: ${rows.insertId}` });
+    })
+}
+
 module.exports = {
     getAllUsers,
     getAllProjects,
+    createProject,
     getMilestoneByProject,
     createMilestone,
-    deleteMilestoneById
+    deleteMilestoneById,
+    updateMilestoneById
 }
