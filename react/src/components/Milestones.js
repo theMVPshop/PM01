@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import { Button } from "react-bootstrap";
 import {
   VerticalTimeline,
@@ -17,6 +18,20 @@ function Milestones() {
     status: "TODO",
     id: counter,
   });
+  const [data, setData] = useState({ stones: [] });
+  let projectID = 1;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios.get(
+        `http://localhost:4001/milestones/${projectID}`,
+      );
+      // console.log('this is the result', result)
+      setTodos(result.data);
+    };
+    fetchData();
+    console.log('this is the todos', todos);
+  }, []);
 
   const onChange = (event) => {
     setInput((prevState) => ({
