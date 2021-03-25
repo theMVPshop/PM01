@@ -24,7 +24,6 @@ function Milestones() {
 
   useEffect(() => {
     const fetchData = async () => {
-<<<<<<< HEAD
       try {
         const result = await axios.get(
           `http://localhost:4001/milestones/${projectID}`,
@@ -35,16 +34,6 @@ function Milestones() {
       }
     };
     fetchData().then(() => console.log('todos:', todos));
-=======
-      const result = await axios.get(
-        `http://localhost:4001/milestones/${projectID}`
-      );
-      // console.log('this is the result', result)
-      setTodos(result.data);
-    };
-    fetchData();
-    console.log("this is the todos", todos);
->>>>>>> 64ea48bd1b7677552b1418824e3d2ef375f4964c
   }, []);
 
   const postMilestone = () => {
@@ -197,70 +186,6 @@ function Milestones() {
       </Container>
       <Container style={{ backgroundColor: "lightslategray" }} className="p-12">
         <VerticalTimeline>
-<<<<<<< HEAD
-          {todos.map((todo, idx) => {
-            return (
-              <VerticalTimelineElement
-                className="vertical-timeline-element--work"
-                contentStyle={{
-                  background: "#20B2AA",
-                  color: "lightyellow",
-                }}
-                contentArrowStyle={{
-                  borderRight: "7px solid white",
-                }}
-                date={todo.due_date}
-                dateClassName="timeline-date"
-                iconStyle={{
-                  background: `${
-                    todo.ms_status === "COMPLETED"
-                      ? "mediumseagreen"
-                      : todo.ms_status === "IN PROGRESS"
-                      ? "darkorange"
-                      : todo.ms_status === "TODO"
-                      ? "firebrick"
-                      : "gray"
-                  }`,
-                  color: "#eee",
-                }}
-                // icon={<WorkIcon />}
-              >
-                <h3 className="vertical-timeline-element-title">
-                  {todo.title}
-                </h3>
-                <h4 className="vertical-timeline-element-subtitle">
-                  {todo.subtitle}
-                </h4>
-                <p>{todo.description}</p>
-                <Button
-                  variant={
-                    todo.ms_status === "COMPLETED"
-                      ? "success"
-                      : todo.ms_status === "IN PROGRESS"
-                      ? "warning"
-                      : todo.ms_status === "TODO"
-                      ? "danger"
-                      : "primary"
-                  }
-                  onClick={() => handleClick(todo)}
-                  value={todo.id}
-                  id={idx}
-                  size="sm"
-                >
-                  {todo.ms_status}
-                </Button>
-                <Button
-                  variant="danger"
-                  onClick={() => removeItem(idx)}
-                  size="sm"
-                  className="d-flex ml-auto"
-                >
-                  Remove
-                </Button>
-              </VerticalTimelineElement>
-            );
-          })}
-=======
           {todos.map((todo, idx) => (
             <VerticalTimelineElement
               className="vertical-timeline-element--work"
@@ -319,7 +244,6 @@ function Milestones() {
               </Button>
             </VerticalTimelineElement>
           ))}
->>>>>>> 64ea48bd1b7677552b1418824e3d2ef375f4964c
         </VerticalTimeline>
       </Container>
     </>
