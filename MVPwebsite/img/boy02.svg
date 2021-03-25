@@ -3,8 +3,8 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 339.73 358.9" style="enable-background:new 0 0 339.73 358.9;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:url(#SVGID_1_);}
-	.st1{fill:#36A9E1;}
+	.st0{fill:url(#SVGID_2_);}
+	.st1{fill:url(#SVGID_1_);}
 	.st2{fill:#DADADA;}
 	.st3{fill:#997163;}
 	.st4{fill:#855B4D;}
@@ -16,7 +16,11 @@
 	.st10{clip-path:url(#SVGID_5_);}
 	.st11{clip-path:url(#SVGID_6_);fill:url(#SVGID_7_);}
 </style>
-<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="26.59" y1="182.3062" x2="312.41" y2="182.3062" gradientTransform="matrix(1 0 0 -1 0 360)">
+  <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="26.61" y1="181.7801" x2="312.43" y2="181.7801" gradientTransform="matrix(1 0 0 -1 0 360)">
+	<stop  offset="0" style="stop-color:#0cc600"/>
+	<stop  offset="1" style="stop-color:#2591ff"/>
+</linearGradient>
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="26.59" y1="182.3062" x2="312.41" y2="182.3062" gradientTransform="matrix(1 0 0 -1 0 360)">
 	<stop  offset="0" style="stop-color:#2581C4"/>
 	<stop  offset="1" style="stop-color:#29235C"/>
 </linearGradient>
