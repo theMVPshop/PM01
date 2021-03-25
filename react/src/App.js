@@ -20,7 +20,7 @@ function App() {
   const NavWithRouter = withRouter(Navigation);
 
   return (
-    <div className="App">
+    <>
       <NavWithRouter />
       <ReactRouter />
       <p>
@@ -31,7 +31,7 @@ function App() {
           <span style={{ color: "red" }}>NO RESPONSE</span>
         )}
       </p>
-    </div>
+    </>
   );
 }
 

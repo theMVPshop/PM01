@@ -8,7 +8,7 @@ router.get('/projects', usersController.getAllProjects)
 
 router.post('/projects', usersController.createProject)
 
-router.get('/milestones', usersController.getMilestoneByProject)
+router.get('/milestones/:project_id', usersController.getMilestoneByProject)
 
 router.post('/milestones', usersController.createMilestone)
 

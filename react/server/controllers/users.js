@@ -29,7 +29,7 @@ const createProject = (req,res) => {
 
 const getMilestoneByProject = (req, res) => {
     let sql = "SELECT * FROM milestones WHERE project_id = ?"
-    sql = mysql.format(sql, [ req.body.project_id ])
+    sql = mysql.format(sql, [ req.params.project_id ])
 
     pool.query(sql, (err, rows) => {
         if (err) return handleSQLError(res, err)
