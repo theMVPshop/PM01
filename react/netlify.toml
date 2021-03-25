@@ -1,0 +1,6 @@
+[build]
+  command   = "npm build"
+  publish = "out"
+
+[[plugins]]
+  package = "@netlify/es5-ext"
