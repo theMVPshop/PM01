@@ -18,8 +18,9 @@ function Milestones() {
     ms_status: "TODO",
     id: counter,
   });
-  const [milestone, setMilestone] = useState({});
+  // const [milestone, setMilestone] = useState({});
   let projectID = 1;
+  let mstone = {};
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,18 +29,25 @@ function Milestones() {
           `http://localhost:4001/milestones/${projectID}`,
         );
         setTodos(result.data);
-        console.log('this is the todos', todos);
       } catch (error) {
         console.log(error)
       }
     };
-    fetchData();
-  }, [milestone]);
+    fetchData().then(() => console.log('todos:', todos));
+  }, []);
 
   const postMilestone = () => {
+    console.log('milestone', mstone)
+  //   const newMilestoneRequest = {
+  //     method: 'POST',
+  //     // headers: { 'authorization': `bearer ${cookieToken}`, 'Content-Type': 'application/json' },
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: {...mstone}
+  // };
     axios.post(
       `http://localhost:4001/milestones`,
-      milestone,
+      // newMilestoneRequest,
+      mstone,
     )
     .then(function (response) {
       console.log('post milestone response', response);
@@ -47,7 +55,6 @@ function Milestones() {
     .catch(function (error) {
       console.log('post milestone error', error)
     });
-
   }
 
   const onChange = (event) => {
@@ -59,8 +66,7 @@ function Milestones() {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    setMilestone([
-      {
+    mstone = {
         title: input.title,
         // id: counter,
         ms_status: "TODO",
@@ -68,8 +74,7 @@ function Milestones() {
         due_date: input.due_date,
         subtitle: input.subtitle,
         project_id: projectID
-      },
-    ]);
+      };
     // setTodos([
     //   ...todos,
     //   milestone
@@ -84,8 +89,20 @@ function Milestones() {
     postMilestone();
   };
 
-  const removeItem = (id) => {
-    setTodos([...todos.filter((x, i) => i !== id)]);
+  const removeItem = (idx) => {
+    let id = todos[idx].id
+    console.log('delete milestone: ', id)
+    // setTodos([...todos.filter((x, i) => i !== id)]);
+  //   const deleteGameRequest = {
+  //     method: 'DELETE',
+  //     headers: { 'authorization': `bearer ${cookieToken}`, 'Content-Type': 'application/json' },
+  //     body: JSON.stringify({ 
+  //         id: gameId
+  //     })
+  // };
+  axios.delete(`http://localhost:4001/milestones/${id}`)
+      // .then(response => response.json())
+      // .then(data => console.log('deleted milestone: ', data.id));
   };
 
   const handleClick = (todo) => {
@@ -129,7 +146,7 @@ function Milestones() {
             onChange={onChange}
           />
           <label
-            for="date"
+            for="due_date"
             style={{
               backgroundColor: "darkorange",
               color: "black",
@@ -143,10 +160,10 @@ function Milestones() {
           </label>
           <input
             type="date"
-            name="date"
+            name="due_date"
             style={{ flex: "10", padding: "5px" }}
             placeholder="Due date ..."
-            value={input.date}
+            value={input.due_date}
             onChange={onChange}
           />
           {/* <input

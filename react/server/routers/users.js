@@ -12,7 +12,7 @@ router.get('/milestones/:project_id', usersController.getMilestoneByProject)
 
 router.post('/milestones', usersController.createMilestone)
 
-router.delete('/milestones', usersController.deleteMilestoneById)
+router.delete('/milestones/:id', usersController.deleteMilestoneById)
 
 router.put('/milestones', usersController.updateMilestoneById)
 
