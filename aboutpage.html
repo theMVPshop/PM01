@@ -79,13 +79,13 @@
                   <p class="card-text">Lead the MVP shop</p>
                 </div>
                 <div class="content__face content__face--back">
-                  <div>Linked In</div>
-                  <div>GitHub</div>
+                  <p>Contact me on <a href="https://www.linkedin.com/in/keith-kritselis/"  target="_blank">LinkedIn</a></p>
+                  <p>View my <a href="https://github.com/RiinaMiichelle" target="_blank">GitHub</a></p>
                 </div>
               </div>
             </div>
 
-            <button type="button" class="btn btn-primary">Learn More</button>
+            <button onclick="flipContent()" type="button" class="btn btn-primary">Learn More</button>
 
           </div>
         </div>
@@ -175,9 +175,9 @@
     <script src="./homepage.js" async defer></script> 
     <script>
       var contentToFlip = document.querySelector('.content-to-flip');
-      button.addEventListener('click', function() {
-        contentToFlip.classList.toggle('is-flipped');
-      });
+      function flipContent() {
+      contentToFlip.classList.toggle('is-flipped');
+      }
     </script>
   </body>
 </html>

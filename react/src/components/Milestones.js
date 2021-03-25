@@ -1,6 +1,6 @@
 import { Container, Button } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
+import axios from "axios";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -24,6 +24,7 @@ function Milestones() {
 
   useEffect(() => {
     const fetchData = async () => {
+<<<<<<< HEAD
       try {
         const result = await axios.get(
           `http://localhost:4001/milestones/${projectID}`,
@@ -34,6 +35,16 @@ function Milestones() {
       }
     };
     fetchData().then(() => console.log('todos:', todos));
+=======
+      const result = await axios.get(
+        `http://localhost:4001/milestones/${projectID}`
+      );
+      // console.log('this is the result', result)
+      setTodos(result.data);
+    };
+    fetchData();
+    console.log("this is the todos", todos);
+>>>>>>> 64ea48bd1b7677552b1418824e3d2ef375f4964c
   }, []);
 
   const postMilestone = () => {
@@ -119,8 +130,8 @@ function Milestones() {
 
   return (
     <>
-      <Container style={{ backgroundColor: "lightslategray" }} className="p-12">
-        <form style={{ display: "flex" }} onSubmit={onSubmit}>
+      <Container className="d-flex p-6 justify-content-center">
+        <form onSubmit={onSubmit}>
           <input
             type="text"
             name="title"
@@ -183,8 +194,10 @@ function Milestones() {
             Add
           </Button>
         </form>
-
+      </Container>
+      <Container style={{ backgroundColor: "lightslategray" }} className="p-12">
         <VerticalTimeline>
+<<<<<<< HEAD
           {todos.map((todo, idx) => {
             return (
               <VerticalTimelineElement
@@ -247,6 +260,66 @@ function Milestones() {
               </VerticalTimelineElement>
             );
           })}
+=======
+          {todos.map((todo, idx) => (
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              contentStyle={{
+                background: "#20B2AA",
+                color: "lightyellow",
+              }}
+              contentArrowStyle={{
+                borderRight: "7px solid white",
+              }}
+              date={todo.date}
+              dateClassName="timeline-date"
+              iconStyle={{
+                background: `${
+                  todo.status === "COMPLETED"
+                    ? "mediumseagreen"
+                    : todo.status === "IN PROGRESS"
+                    ? "darkorange"
+                    : todo.status === "TODO"
+                    ? "firebrick"
+                    : "gray"
+                }`,
+                color: "#eee",
+              }}
+              // icon={<WorkIcon />}
+            >
+              <h3 className="vertical-timeline-element-title">{todo.title}</h3>
+              <h4 className="vertical-timeline-element-subtitle">
+                {todo.subtitle}
+              </h4>
+              <p>{todo.description}</p>
+              <Button
+                variant={
+                  todo.status === "COMPLETED"
+                    ? "success"
+                    : todo.status === "IN PROGRESS"
+                    ? "warning"
+                    : todo.status === "TODO"
+                    ? "danger"
+                    : "primary"
+                }
+                onClick={() => handleClick(todo)}
+                value={todo.id}
+                id={idx}
+                size="sm"
+              >
+                {todo.status}
+              </Button>
+              <Button
+                variant="danger"
+                onClick={() => removeItem(idx)}
+                size="sm"
+                className="d-flex ml-auto"
+              >
+                Remove
+              </Button>
+            </VerticalTimelineElement>
+          ))}
+>>>>>>> 64ea48bd1b7677552b1418824e3d2ef375f4964c
         </VerticalTimeline>
       </Container>
     </>
