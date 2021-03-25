@@ -194,7 +194,8 @@ a {
 	height: 100vh;
 	background-color: #fff;
 	background: url('./MVPwebsite/img/illo06.png');
-	background-size: contain;
+	background-size: cover;
+	/* background-size: contain; */
 	background-repeat: no-repeat;
 }
 
