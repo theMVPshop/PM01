@@ -38,9 +38,10 @@ const getMilestoneByProject = (req, res) => {
 }
 
 const createMilestone = (req, res) => {
-    let { ms_status, due_date, title, subtitle, project_id } = req.body
-    let sql = "INSERT INTO milestones (title, subtitle, project_id, due_date, ms_status) VALUE  (?, ?, ?, ?, ?)"
-    sql = mysql.format(sql, [ title, subtitle, project_id, due_date, ms_status ]);
+    console.log('the whole request', req.body)
+    let { ms_status, due_date, title, subtitle, project_id, description } = req.body
+    let sql = "INSERT INTO milestones (title, subtitle, project_id, due_date, ms_status, description) VALUE (?, ?, ?, ?, ?, ?)"
+    sql = mysql.format(sql, [ title, subtitle, project_id, due_date, ms_status, description ]);
 
     pool.query(sql, (err, rows) => {
         if (err) return handleSQLError(res, err)
@@ -50,7 +51,7 @@ const createMilestone = (req, res) => {
 
 const deleteMilestoneById = (req, res) => {
     let sql = "DELETE FROM milestones WHERE id = ?"
-    sql = mysql.format(sql, [ req.body.id ])
+    sql = mysql.format(sql, [ req.params.id ])
 
     pool.query(sql, (err, rows) => {
         if (err) return handleSQLError(res, err)

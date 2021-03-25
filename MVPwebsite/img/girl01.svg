@@ -4,7 +4,7 @@
 	 viewBox="0 0 339.73 358.9" style="enable-background:new 0 0 339.73 358.9;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:url(#SVGID_1_);}
-	.st1{fill:#36A9E1;}
+	.st1{fill:url(#SVGID_2_);}
 	.st2{fill:#DADADA;}
 	.st3{fill:#1D2247;}
 	.st4{fill:#855B4D;}
@@ -18,6 +18,10 @@
 <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="26.62" y1="182.7486" x2="312.44" y2="182.7486" gradientTransform="matrix(1 0 0 -1 0 360)">
 	<stop  offset="0" style="stop-color:#2581C4"/>
 	<stop  offset="1" style="stop-color:#29235C"/>
+</linearGradient>
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="26.62" y1="182.7486" x2="312.44" y2="182.7486" gradientTransform="matrix(1 0 0 -1 0 360)">
+	<stop  offset="0" style="stop-color:#ff81C4"/>
+	<stop  offset="1" style="stop-color:#2923ff"/>
 </linearGradient>
 <path class="st0" d="M224.5,53.82c-0.19-0.23-0.4-0.46-0.65-0.68c-3.27-2.88-6.01-1.5-8.3-5.9c-1.48-2.85-1.38-5.17-4.04-7.41
 	c-2.35-1.98-5.81-3.82-8.71-4.93c-2.84-1.09-5.49-0.93-8.44-1.41c-3.62-0.59-6.45-3.03-10.02-3.62c-3.39-0.56-6.16,0.52-9.5-0.85
