@@ -79,13 +79,13 @@
                   <p class="card-text">Lead the MVP shop</p>
                 </div>
                 <div class="content__face content__face--back">
-                  <div>Linked In</div>
-                  <div>GitHub</div>
+                  <p>Contact me on <a href="https://www.linkedin.com/in/keith-kritselis/"  target="_blank">LinkedIn</a></p>
+                  <p>View my <a href="https://github.com/RiinaMiichelle" target="_blank">GitHub</a></p>
                 </div>
               </div>
             </div>
 
-            <button type="button" class="btn btn-primary">Learn More</button>
+            <button onclick="flipContent()" type="button" class="btn btn-primary">Learn More</button>
 
           </div>
         </div>
@@ -174,10 +174,19 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
     <script src="./homepage.js" async defer></script> 
     <script>
+      // var contentToFlip = document.querySelector('.content-to-flip');
+      // button.addEventListener('click', function() {
+      //   contentToFlip.classList.toggle('is-flipped');
+      // });
+      // var contentToFlip = document.querySelector('.content-to-flip');
+      // document.getElementById("card-buttons").addEventListener('click', function() {
+      //   contentToFlip.classList.toggle('is-flipped');
+      // });
+      
       var contentToFlip = document.querySelector('.content-to-flip');
-      button.addEventListener('click', function() {
-        contentToFlip.classList.toggle('is-flipped');
-      });
+      function flipContent() {
+      contentToFlip.classList.toggle('is-flipped');
+      }
     </script>
   </body>
 </html>
