@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { Container, Accordion, Card, Button, Form, Col } from "react-bootstrap";
+import {
+  Container,
+  Accordion,
+  Card,
+  Button,
+  Form,
+  Col,
+  Modal,
+} from "react-bootstrap";
 
 function Devlog() {
   const [logs, setLogs] = useState([]);
@@ -39,56 +47,81 @@ function Devlog() {
       date: "",
     });
   };
+
+  function DevlogModal() {
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    return (
+      <>
+        <Button variant="primary" onClick={handleShow}>
+          Add Log Entry
+        </Button>
+
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Developer Log</Modal.Title>
+          </Modal.Header>
+          <Modal.Body style={{ backgroundColor: "#adb5bd" }}>
+            <Container className="d-flex p-6 justify-content-center">
+              <Form className="m-4" onSubmit={onSubmit}>
+                <Form.Row>
+                  <Form.Group controlId="title">
+                    <Form.Label>Title</Form.Label>
+                    <Form.Control
+                      placeholder="Post Title..."
+                      value={input.title}
+                      onChange={onChange}
+                      name="title"
+                    />
+                  </Form.Group>
+                  <Col xs="auto">
+                    <Form.Group controlId="subtitle">
+                      <Form.Label>Subtitle</Form.Label>
+                      <Form.Control
+                        placeholder="Subtitle..."
+                        value={input.subtitle}
+                        onChange={onChange}
+                        name="subtitle"
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Form.Group controlId="date">
+                    <Form.Label>Log Date</Form.Label>
+                    <Form.Control
+                      type="date"
+                      value={input.date}
+                      onChange={onChange}
+                      name="date"
+                    />
+                  </Form.Group>
+                </Form.Row>
+                <Form.Group controlId="post">
+                  <Form.Label>Log Post</Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    rows={3}
+                    value={input.post}
+                    onChange={onChange}
+                    name="post"
+                    placeholder="Post..."
+                  />
+                </Form.Group>
+                <Button variant="primary" type="submit" className="float-right">
+                  Add Entry
+                </Button>
+              </Form>
+            </Container>
+          </Modal.Body>
+        </Modal>
+      </>
+    );
+  }
   return (
     <>
-      <Container className="d-flex p-6 justify-content-center">
-        <Form className="m-4" onSubmit={onSubmit}>
-          <Form.Row>
-            <Form.Group controlId="title">
-              <Form.Label>Title</Form.Label>
-              <Form.Control
-                placeholder="Post Title..."
-                value={input.title}
-                onChange={onChange}
-                name="title"
-              />
-            </Form.Group>
-            <Col xs="auto">
-              <Form.Group controlId="subtitle">
-                <Form.Label>Subtitle</Form.Label>
-                <Form.Control
-                  placeholder="Subtitle..."
-                  value={input.subtitle}
-                  onChange={onChange}
-                  name="subtitle"
-                />
-              </Form.Group>
-            </Col>
-            <Form.Group controlId="date">
-              <Form.Label>Log Date ... </Form.Label>
-              <Form.Control
-                type="date"
-                value={input.date}
-                onChange={onChange}
-                name="date"
-              />
-            </Form.Group>
-          </Form.Row>
-          <Form.Group controlId="post">
-            <Form.Label>Log Post ... </Form.Label>
-            <Form.Control
-              as="textarea"
-              rows={3}
-              value={input.post}
-              onChange={onChange}
-              name="post"
-            />
-          </Form.Group>
-          <Button variant="primary" type="submit" className="float-right">
-            Submit
-          </Button>
-        </Form>
-      </Container>
+      <DevlogModal />
       {/* accordion starts below */}
       <Container className="p-12">
         <Accordion
