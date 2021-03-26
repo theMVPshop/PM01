@@ -26,36 +26,37 @@ function Milestones() {
     const fetchData = async () => {
       try {
         const result = await axios.get(
-          `http://localhost:4001/milestones/${projectID}`,
+          `http://localhost:4001/milestones/${projectID}`
         );
         setTodos(result.data);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     };
-    fetchData().then(() => console.log('todos:', todos));
+    fetchData().then(() => console.log("todos:", todos));
   }, []);
 
   const postMilestone = () => {
-    console.log('milestone', mstone)
-  //   const newMilestoneRequest = {
-  //     method: 'POST',
-  //     // headers: { 'authorization': `bearer ${cookieToken}`, 'Content-Type': 'application/json' },
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: {...mstone}
-  // };
-    axios.post(
-      `http://localhost:4001/milestones`,
-      // newMilestoneRequest,
-      mstone,
-    )
-    .then(function (response) {
-      console.log('post milestone response', response);
-    })
-    .catch(function (error) {
-      console.log('post milestone error', error)
-    });
-  }
+    console.log("milestone", mstone);
+    //   const newMilestoneRequest = {
+    //     method: 'POST',
+    //     // headers: { 'authorization': `bearer ${cookieToken}`, 'Content-Type': 'application/json' },
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: {...mstone}
+    // };
+    axios
+      .post(
+        `http://localhost:4001/milestones`,
+        // newMilestoneRequest,
+        mstone
+      )
+      .then(function (response) {
+        console.log("post milestone response", response);
+      })
+      .catch(function (error) {
+        console.log("post milestone error", error);
+      });
+  };
 
   const onChange = (event) => {
     setInput((prevState) => ({
@@ -67,14 +68,14 @@ function Milestones() {
   const onSubmit = (event) => {
     event.preventDefault();
     mstone = {
-        title: input.title,
-        // id: counter,
-        ms_status: "TODO",
-        description: input.description,
-        due_date: input.due_date,
-        subtitle: input.subtitle,
-        project_id: projectID
-      };
+      title: input.title,
+      // id: counter,
+      ms_status: "TODO",
+      description: input.description,
+      due_date: input.due_date,
+      subtitle: input.subtitle,
+      project_id: projectID,
+    };
     // setTodos([
     //   ...todos,
     //   milestone
@@ -90,19 +91,19 @@ function Milestones() {
   };
 
   const removeItem = (idx) => {
-    let id = todos[idx].id
-    console.log('delete milestone: ', id)
+    let id = todos[idx].id;
+    console.log("delete milestone: ", id);
     // setTodos([...todos.filter((x, i) => i !== id)]);
-  //   const deleteGameRequest = {
-  //     method: 'DELETE',
-  //     headers: { 'authorization': `bearer ${cookieToken}`, 'Content-Type': 'application/json' },
-  //     body: JSON.stringify({ 
-  //         id: gameId
-  //     })
-  // };
-  axios.delete(`http://localhost:4001/milestones/${id}`)
-      // .then(response => response.json())
-      // .then(data => console.log('deleted milestone: ', data.id));
+    //   const deleteGameRequest = {
+    //     method: 'DELETE',
+    //     headers: { 'authorization': `bearer ${cookieToken}`, 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({
+    //         id: gameId
+    //     })
+    // };
+    axios.delete(`http://localhost:4001/milestones/${id}`);
+    // .then(response => response.json())
+    // .then(data => console.log('deleted milestone: ', data.id));
   };
 
   const handleClick = (todo) => {
