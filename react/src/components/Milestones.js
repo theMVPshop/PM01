@@ -14,24 +14,48 @@ function Milestones() {
     title: "",
     subtitle: "",
     description: "",
-    date: "",
-    status: "TODO",
+    due_date: "",
+    ms_status: "TODO",
     id: counter,
   });
-  const [data, setData] = useState({ stones: [] });
+  // const [milestone, setMilestone] = useState({});
   let projectID = 1;
+  let mstone = {};
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get(
-        `http://localhost:4001/milestones/${projectID}`
-      );
-      // console.log('this is the result', result)
-      setTodos(result.data);
+      try {
+        const result = await axios.get(
+          `http://localhost:4001/milestones/${projectID}`,
+        );
+        setTodos(result.data);
+      } catch (error) {
+        console.log(error)
+      }
     };
-    fetchData();
-    console.log("this is the todos", todos);
+    fetchData().then(() => console.log('todos:', todos));
   }, []);
+
+  const postMilestone = () => {
+    console.log('milestone', mstone)
+  //   const newMilestoneRequest = {
+  //     method: 'POST',
+  //     // headers: { 'authorization': `bearer ${cookieToken}`, 'Content-Type': 'application/json' },
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: {...mstone}
+  // };
+    axios.post(
+      `http://localhost:4001/milestones`,
+      // newMilestoneRequest,
+      mstone,
+    )
+    .then(function (response) {
+      console.log('post milestone response', response);
+    })
+    .catch(function (error) {
+      console.log('post milestone error', error)
+    });
+  }
 
   const onChange = (event) => {
     setInput((prevState) => ({
@@ -42,37 +66,52 @@ function Milestones() {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    setTodos([
-      ...todos,
-      {
+    mstone = {
         title: input.title,
-        id: counter,
-        status: "TODO",
+        // id: counter,
+        ms_status: "TODO",
         description: input.description,
-        date: input.date,
+        due_date: input.due_date,
         subtitle: input.subtitle,
-      },
-    ]);
+        project_id: projectID
+      };
+    // setTodos([
+    //   ...todos,
+    //   milestone
+    // ])
     setCounter(counter + 1);
     setInput({
       title: "",
       subtitle: "",
       description: "",
-      date: "",
+      due_date: "",
     });
+    postMilestone();
   };
 
-  const removeItem = (id) => {
-    setTodos([...todos.filter((x, i) => i !== id)]);
+  const removeItem = (idx) => {
+    let id = todos[idx].id
+    console.log('delete milestone: ', id)
+    // setTodos([...todos.filter((x, i) => i !== id)]);
+  //   const deleteGameRequest = {
+  //     method: 'DELETE',
+  //     headers: { 'authorization': `bearer ${cookieToken}`, 'Content-Type': 'application/json' },
+  //     body: JSON.stringify({ 
+  //         id: gameId
+  //     })
+  // };
+  axios.delete(`http://localhost:4001/milestones/${id}`)
+      // .then(response => response.json())
+      // .then(data => console.log('deleted milestone: ', data.id));
   };
 
   const handleClick = (todo) => {
-    if (todo.status === "TODO") {
-      todo.status = "IN PROGRESS";
-    } else if (todo.status === "IN PROGRESS") {
-      todo.status = "COMPLETED";
-    } else if (todo.status === "COMPLETED") {
-      todo.status = "TODO";
+    if (todo.ms_status === "TODO") {
+      todo.ms_status = "IN PROGRESS";
+    } else if (todo.ms_status === "IN PROGRESS") {
+      todo.ms_status = "COMPLETED";
+    } else if (todo.ms_status === "COMPLETED") {
+      todo.ms_status = "TODO";
     }
 
     setTodos([...todos]);
@@ -107,7 +146,7 @@ function Milestones() {
             onChange={onChange}
           />
           <label
-            for="date"
+            for="due_date"
             style={{
               backgroundColor: "darkorange",
               color: "black",
@@ -121,10 +160,10 @@ function Milestones() {
           </label>
           <input
             type="date"
-            name="date"
+            name="due_date"
             style={{ flex: "10", padding: "5px" }}
             placeholder="Due date ..."
-            value={input.date}
+            value={input.due_date}
             onChange={onChange}
           />
           {/* <input
@@ -132,7 +171,7 @@ function Milestones() {
             name="status"
             style={{ flex: "10", padding: "5px" }}
             placeholder="Status ..."
-            value={input.status}
+            value={input.ms_status}
             onChange={onChange}
           /> */}
           <Button
