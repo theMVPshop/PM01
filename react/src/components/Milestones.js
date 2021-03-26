@@ -33,13 +33,10 @@ function Milestones() {
         console.log(error);
       }
     };
-<<<<<<< HEAD
     fetchData().then(() => console.log("todos:", todos));
   }, []);
-=======
     fetchData().then(() => console.log('todos:', todos));
   }, [counter]);
->>>>>>> 80325a8aff496430f6a5bece8f24c3b8c8065279
 
   const postMilestone = () => {
     console.log("milestone", mstone);
@@ -99,18 +96,6 @@ function Milestones() {
     let id = todos[idx].id;
     console.log("delete milestone: ", id);
     // setTodos([...todos.filter((x, i) => i !== id)]);
-<<<<<<< HEAD
-    //   const deleteGameRequest = {
-    //     method: 'DELETE',
-    //     headers: { 'authorization': `bearer ${cookieToken}`, 'Content-Type': 'application/json' },
-    //     body: JSON.stringify({
-    //         id: gameId
-    //     })
-    // };
-    axios.delete(`http://localhost:4001/milestones/${id}`);
-    // .then(response => response.json())
-    // .then(data => console.log('deleted milestone: ', data.id));
-=======
   //   const deleteGameRequest = {
   //     method: 'DELETE',
   //     headers: { 'authorization': `bearer ${cookieToken}`, 'Content-Type': 'application/json' },
@@ -122,7 +107,6 @@ function Milestones() {
     setCounter(counter - 1);
       // .then(response => response.json())
       // .then(data => console.log('deleted milestone: ', data.id));
->>>>>>> 80325a8aff496430f6a5bece8f24c3b8c8065279
   };
 
   const handleClick = (todo) => {
