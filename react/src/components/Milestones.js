@@ -16,7 +16,7 @@ function Milestones() {
     description: "",
     due_date: "",
     ms_status: "TODO",
-    id: counter,
+    // id: counter,
   });
   // const [milestone, setMilestone] = useState({});
   let projectID = 1;
@@ -34,7 +34,7 @@ function Milestones() {
       }
     };
     fetchData().then(() => console.log('todos:', todos));
-  }, []);
+  }, [counter]);
 
   const postMilestone = () => {
     console.log('milestone', mstone)
@@ -100,7 +100,8 @@ function Milestones() {
   //         id: gameId
   //     })
   // };
-  axios.delete(`http://localhost:4001/milestones/${id}`)
+    axios.delete(`http://localhost:4001/milestones/${id}`)
+    setCounter(counter - 1);
       // .then(response => response.json())
       // .then(data => console.log('deleted milestone: ', data.id));
   };
@@ -196,15 +197,15 @@ function Milestones() {
               contentArrowStyle={{
                 borderRight: "7px solid white",
               }}
-              date={todo.date}
+              date={todo.due_date}
               dateClassName="timeline-date"
               iconStyle={{
                 background: `${
-                  todo.status === "COMPLETED"
+                  todo.ms_status === "COMPLETED"
                     ? "mediumseagreen"
-                    : todo.status === "IN PROGRESS"
+                    : todo.ms_status === "IN PROGRESS"
                     ? "darkorange"
-                    : todo.status === "TODO"
+                    : todo.ms_status === "TODO"
                     ? "firebrick"
                     : "gray"
                 }`,
@@ -219,11 +220,11 @@ function Milestones() {
               <p>{todo.description}</p>
               <Button
                 variant={
-                  todo.status === "COMPLETED"
+                  todo.ms_status === "COMPLETED"
                     ? "success"
-                    : todo.status === "IN PROGRESS"
+                    : todo.ms_status === "IN PROGRESS"
                     ? "warning"
-                    : todo.status === "TODO"
+                    : todo.ms_status === "TODO"
                     ? "danger"
                     : "primary"
                 }
@@ -232,7 +233,7 @@ function Milestones() {
                 id={idx}
                 size="sm"
               >
-                {todo.status}
+                {todo.ms_status}
               </Button>
               <Button
                 variant="danger"
