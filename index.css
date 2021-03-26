@@ -230,7 +230,16 @@ a {
 	padding-left: 250px;
   }
 
-@media only screen and (max-width: 775px) {
+@media screen and (max-width: 576px) {
 
+	.flex-this {
+		display: inline-flex;
+		align-self: start;
+	}
+
+
+	.about-page-footer {
+		display: none;
+	}
 	
 }

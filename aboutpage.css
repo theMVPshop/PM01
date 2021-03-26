@@ -52,9 +52,7 @@ a {
   text-align: center;
 }
 
-button {
-  
-}
+
 /* footer */
 .about-page-footer {
   border: red 1px solid;
@@ -103,27 +101,17 @@ button {
 }
 
 
-/* content flipping */
-.content {
-  width: 200px;
-  height: 80px;
-  border: 1px solid #CCC;
-  margin: auto;
-  perspective: 600px;
-}
-
-.card {
-  transition: transform 1s;
-  transform-style: preserve-3d;
-  cursor: pointer;
-  position: relative;
-}
-
+/* Flipping cards */
 
 .content-to-flip {
   transition: transform 1s;
   transform-style: preserve-3d;
   position: relative;
+  width: 200px;
+  height: 100px;
+  border: 1px solid #CCC;
+  margin: auto;
+  perspective: 600px;
 }
 
 .content-to-flip.is-flipped {
@@ -134,7 +122,6 @@ button {
   position: absolute;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  margin: auto;
 }
 
 .content__face--front {
@@ -142,7 +129,9 @@ button {
 }
 
 .content__face--back {
-  background-color: green;
+  background-color: yellow;
   transform: rotateY(180deg);
 }
+
+
 
