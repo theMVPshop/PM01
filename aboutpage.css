@@ -3,6 +3,11 @@ a {
 	text-decoration: none;
 }
 
+p {
+margin: 0;
+padding: 0;
+}
+
 .container {
 	margin: 0;
 }
@@ -16,7 +21,7 @@ a {
 
 .about-the-mvpshop {
   margin: auto;
-  border: 1px solid red;
+  border: 1px solid black;
   padding: 40px;
 }
 
@@ -27,14 +32,14 @@ a {
 /* section 2 */
 .meet-the-crew {
   margin: auto;
-  border: 1px solid red;
+  border: 1px solid black;
   padding: 40px;
 }
 
 /* section 3 */
 .crew-cards {
   margin: auto;
-  border: 1px solid red;
+  border: 1px solid black;
 }
 
 .crew-image {
@@ -55,7 +60,7 @@ a {
 
 /* footer */
 .about-page-footer {
-  border: red 1px solid;
+  border: red 1px black;
   margin: auto;
 }
 
@@ -108,8 +113,9 @@ a {
   transform-style: preserve-3d;
   position: relative;
   width: 200px;
-  height: 100px;
-  border: 1px solid #CCC;
+  height: 70px;
+  border: 2px solid #CCC;
+  border-radius: 1px;
   margin: auto;
   perspective: 600px;
 }
@@ -122,14 +128,14 @@ a {
   position: absolute;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  width: 100%;
 }
 
 .content__face--front {
-  background-color: yellow;
+  
 }
 
 .content__face--back {
-  background-color: yellow;
   transform: rotateY(180deg);
 }
 
