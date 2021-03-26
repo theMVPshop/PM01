@@ -6,6 +6,8 @@ router.get('/users', usersController.getAllUsers)
 
 router.get('/projects', usersController.getAllProjects)
 
+router.get('/projects', usersController.getProjectByUser)
+
 router.post('/projects', usersController.createProject)
 
 router.get('/milestones/:project_id', usersController.getMilestoneByProject)
