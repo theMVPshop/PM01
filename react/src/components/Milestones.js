@@ -34,8 +34,6 @@ function Milestones() {
       }
     };
     fetchData().then(() => console.log("todos:", todos));
-  }, []);
-    fetchData().then(() => console.log('todos:', todos));
   }, [counter]);
 
   const postMilestone = () => {
@@ -96,17 +94,17 @@ function Milestones() {
     let id = todos[idx].id;
     console.log("delete milestone: ", id);
     // setTodos([...todos.filter((x, i) => i !== id)]);
-  //   const deleteGameRequest = {
-  //     method: 'DELETE',
-  //     headers: { 'authorization': `bearer ${cookieToken}`, 'Content-Type': 'application/json' },
-  //     body: JSON.stringify({ 
-  //         id: gameId
-  //     })
-  // };
-    axios.delete(`http://localhost:4001/milestones/${id}`)
+    //   const deleteGameRequest = {
+    //     method: 'DELETE',
+    //     headers: { 'authorization': `bearer ${cookieToken}`, 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({
+    //         id: gameId
+    //     })
+    // };
+    axios.delete(`http://localhost:4001/milestones/${id}`);
     setCounter(counter - 1);
-      // .then(response => response.json())
-      // .then(data => console.log('deleted milestone: ', data.id));
+    // .then(response => response.json())
+    // .then(data => console.log('deleted milestone: ', data.id));
   };
 
   const handleClick = (todo) => {
