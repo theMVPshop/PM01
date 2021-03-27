@@ -46,7 +46,7 @@
   <div class="container container-sm container-md container-lg">
     <section class="about-the-mvpshop d-flex justify-content-center">
       <div class="row d-flex justify-content-center" id="about-the-mvpshop">
-        <h2>About the MVP Shop</h2>
+        <h2 class="aboutTheMVPShopHeader">About the MVP Shop</h2>
         <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit.
             At saepe repellat architecto sunt asperiores esse incidunt debitis? Illo, architecto quibusdam.
             Consequatur voluptatum ipsum libero explicabo rem ipsa. Adipisci, soluta voluptatibus!</div>
@@ -77,10 +77,10 @@
                 </div>
                 <div class="content__face content__face--back">
                   <p>Contact me on <a href="https://www.linkedin.com/in/keith-kritselis/"  target="_blank">LinkedIn</a></p>
-                  <p>View my <a href="https://github.com/RiinaMiichelle" target="_blank">GitHub</a></p>
+                  <p>View my <a href="https://github.com/kkritselis" target="_blank">GitHub</a></p>
                 </div>
             </div>
-            <button onclick="flipContent()" type="button" class="btn btn-primary">Learn More</button>
+            <button onclick="flipContent(this)" data-num="0" type="button" class="btn btn-primary">Learn More</button>
           </div>
         </div>
         <div class="card">
@@ -97,7 +97,7 @@
                   <p>View my <a href="https://github.com/RiinaMiichelle" target="_blank">GitHub</a></p>
                 </div>
             </div>
-            <button onclick="flipContent()" type="button" class="btn btn-primary">Learn More</button>
+            <button onclick="flipContent(this)" data-num="1" type="button" class="btn btn-primary">Learn More</button>
           </div>
         </div>
         <div class="card">
@@ -114,7 +114,7 @@
                   <p>View my <a href="https://github.com/ghost-develop" target="_blank">GitHub</a></p>
                 </div>
             </div>
-            <button onclick="flipContent()" type="button" class="btn btn-primary">Learn More</button>
+            <button onclick="flipContent(this)" data-num="2" type="button" class="btn btn-primary">Learn More</button>
           </div>
         </div>
         <div class="card">
@@ -131,7 +131,7 @@
                   <p>View my <a href="https://github.com/carl-larson" target="_blank">GitHub</a></p>
                 </div>
             </div>
-            <button onclick="flipContent()" type="button" class="btn btn-primary">Learn More</button>
+            <button onclick="flipContent(this)" data-num="3" type="button" class="btn btn-primary">Learn More</button>
           </div>
         </div>
         <div class="card">
@@ -148,7 +148,7 @@
                   <p>View my <a href="https://github.com/MichaelScoggins" target="_blank">GitHub</a></p>
                 </div>
             </div>
-            <button onclick="flipContent()" type="button" class="btn btn-primary">Learn More</button>
+            <button onclick="flipContent(this)" data-num="4" type="button" class="btn btn-primary">Learn More</button>
           </div>
         </div>
         <div class="card">
@@ -165,7 +165,7 @@
                   <p>View my <a href="https://github.com/RiinaMiichelle" target="_blank">GitHub</a></p>
                 </div>
             </div>
-            <button onclick="flipContent()" type="button" class="btn btn-primary">Learn More</button>
+            <button onclick="flipContent(this)" data-num="5" type="button" class="btn btn-primary">Learn More</button>
           </div>
         </div>
       </div>
@@ -173,7 +173,7 @@
   </div>
 
   
-  <div class="container container-sm container-md container-lg">
+  <div class="container d-none d-lg-block">
     <section class="about-page-footer">
       <div class="row justify-content-start">
         <div class="col-lg-3">
@@ -207,9 +207,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
     <script src="./homepage.js" async defer></script> 
     <script>
-      var contentToFlip = document.querySelector('.content-to-flip');
-      function flipContent() {
-      contentToFlip.classList.toggle('is-flipped');
+      let contentToFlip = document.getElementsByClassName('content-to-flip');
+      function flipContent(e) {
+        contentToFlip[e.dataset.num].classList.toggle('is-flipped');
       }
     </script>
   </body>
