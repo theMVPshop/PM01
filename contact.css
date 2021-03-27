@@ -1,0 +1,46 @@
+.container {
+	margin: 0;
+}
+
+
+
+/* footer */
+.about-page-footer {
+  border: 1px solid red;
+  margin: auto;
+}
+
+.footer-container {
+	padding-top: 25px;
+}
+
+.footer-container div {
+  align-content: space-between;
+}
+
+.mvpshoplogo-footer {
+  padding-top: 25px;
+	padding-left: 80px;
+	color: black;
+}
+
+.footer-titles {
+  font-weight: bold;
+  padding-bottom: 15px;
+}
+
+.copyright {
+  font-size: small;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 250px;
+}
+
+/* form */
+
+form {
+  border: 1px solid red;
+  width: 1000px;
+  margin: auto;
+  text-align: center;
+}
