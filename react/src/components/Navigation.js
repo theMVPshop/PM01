@@ -1,6 +1,8 @@
 import React from "react";
 import { Navbar, Nav, Button } from "react-bootstrap";
 
+const user = netlifyIdentity.currentUser();
+
 function initNetlifyIdentity() {
   const script = document.createElement("script");
 
@@ -13,8 +15,10 @@ function initNetlifyIdentity() {
 function openNetlifyModal() {
   const netlifyIdentity = window.netlifyIdentity;
 
+
   if (netlifyIdentity) {
     netlifyIdentity.open();
+    console.log(user)
   } else {
     console.log("netlifyIdentity not defined");
   }

@@ -10,6 +10,7 @@
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "bootstrap-dark": "^1.0.3",
+    "netlify-identity-widget": "^1.9.1",
     "node-sass": "^5.0.0",
     "react": "^17.0.1",
     "react-bootstrap": "^1.5.1",
