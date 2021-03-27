@@ -1,21 +1,21 @@
-const express = require('express')
-const usersController = require('../controllers/users')
-const router = express.Router()
+const express = require("express");
+const controllers = require("../controllers/controllers");
+const router = express.Router();
 
-router.get('/users', usersController.getAllUsers)
+router.get("/users", controllers.getAllUsers);
 
-router.get('/projects', usersController.getAllProjects)
+router.get("/projects", controllers.getAllProjects);
 
-router.get('/projects', usersController.getProjectByUser)
+router.get('/projects', controllers.getProjectByUser)
 
-router.post('/projects', usersController.createProject)
+router.post("/projects", controllers.createProject);
 
-router.get('/milestones/:project_id', usersController.getMilestoneByProject)
+router.get("/milestones/:project_id", controllers.getMilestoneByProject);
 
-router.post('/milestones', usersController.createMilestone)
+router.post("/milestones", controllers.createMilestone);
 
-router.delete('/milestones/:id', usersController.deleteMilestoneById)
+router.delete("/milestones/:id", controllers.deleteMilestoneById);
 
-router.put('/milestones', usersController.updateMilestoneById)
+router.put("/milestones", controllers.updateMilestoneById);
 
 module.exports = router;

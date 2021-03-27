@@ -15,12 +15,14 @@ PRIMARY KEY (id)
 
 CREATE TABLE milestones (
 id INT NOT NULL AUTO_INCREMENT,
+username VARCHAR(50),
 ms_name VARCHAR(50),
 project_id INT NOT NULL,
 priority INT NOT NULL,
 ms_status INT NOT NULL,
 PRIMARY KEY (id),
-FOREIGN KEY (project_id) REFERENCES projects (id)
+FOREIGN KEY (project_id) REFERENCES projects (id),
+FOREIGN KEY (username) REFERENCES users (user_name)
 );
 
 CREATE TABLE permissions (
