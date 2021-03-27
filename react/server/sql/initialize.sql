@@ -9,10 +9,8 @@ CREATE TABLE users (
 
 CREATE TABLE projects (
 id INT NOT NULL AUTO_INCREMENT,
-username VARCHAR(50),
 project_name VARCHAR(50),
-PRIMARY KEY (id),
-FOREIGN KEY (username) REFERENCES users (user_name)
+PRIMARY KEY (id)
 );
 
 CREATE TABLE milestones (

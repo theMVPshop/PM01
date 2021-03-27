@@ -6,6 +6,8 @@ router.get("/users", controllers.getAllUsers);
 
 router.get("/projects", controllers.getAllProjects);
 
+router.get('/projects', controllers.getProjectByUser)
+
 router.post("/projects", controllers.createProject);
 
 router.get("/milestones/:project_id", controllers.getMilestoneByProject);
