@@ -7,7 +7,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
 //routers
-const usersRouter = require("./routers/routers");
+const routers = require("./routers/routers");
 // const authRouter = require('./routers/auth');
 
 //more initializing
@@ -28,7 +28,7 @@ app.use(
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use("/", express.static("../build"), cors(corsOptions), usersRouter);
+app.use("/", express.static("../build"), cors(corsOptions), routers);
 // app.use('/auth', cors(corsOptions), authRouter)
 app.get("/", (req, res) => {
   res.send("theMVPshop");
