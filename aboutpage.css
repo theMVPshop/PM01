@@ -8,6 +8,10 @@ margin: 0;
 padding: 0;
 }
 
+button {
+  margin: 10px;
+}
+
 .container {
 	margin: 0;
 }
@@ -15,31 +19,52 @@ padding: 0;
 /* about page */
 /* section 1 */
 
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.4);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 .container {
   margin: auto;
 }
 
+.aboutTheMVPShopHeader {
+  animation-duration: 2s;
+  animation-name: bounceIn;
+}
+
+
 .about-the-mvpshop {
   margin: auto;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   padding: 40px;
 }
 
 #about-the-mvpshop h2, #meet-the-crew h2  {
   text-align: center;
+  color:rgb(14, 129, 223)
 }
 
 /* section 2 */
 .meet-the-crew {
   margin: auto;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   padding: 40px;
 }
 
 /* section 3 */
 .crew-cards {
   margin: auto;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 .crew-image {
@@ -60,7 +85,7 @@ padding: 0;
 
 /* footer */
 .about-page-footer {
-  border: red 1px black;
+  /* border: 1px black; */
   margin: auto;
 }
 
@@ -89,6 +114,8 @@ padding: 0;
   padding-bottom: 40px;
   padding-left: 250px;
 }
+
+
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (max-width: 600px) {
