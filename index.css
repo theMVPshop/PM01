@@ -32,7 +32,7 @@ a {
 #landing-page-1 {
 	height: 100vh;
 	background-color: grey;
-	background-image: url('./MVPwebsite/img/illo01.png');
+	background-image: url('./MVPwebsite/img/illo01.jpeg');
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: right; 
@@ -56,6 +56,13 @@ a {
 
 #landing-page-3 {
 	/* height: 100vh; */
+}
+
+
+.float-this {
+	float: right;
+	background-color: transparent;
+	border: none;
 }
 
 .portfolio-links {
