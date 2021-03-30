@@ -1,7 +1,12 @@
 import React from "react";
 import { Navbar, Nav, Button } from "react-bootstrap";
+const netlifyIdentity = require("netlify-identity-widget");
+
+netlifyIdentity.init();
 
 const user = netlifyIdentity.currentUser();
+
+// netlifyIdentity.on("init", (user) => console.log("init", user));
 
 function initNetlifyIdentity() {
   const script = document.createElement("script");
@@ -15,10 +20,10 @@ function initNetlifyIdentity() {
 function openNetlifyModal() {
   const netlifyIdentity = window.netlifyIdentity;
 
-
   if (netlifyIdentity) {
     netlifyIdentity.open();
-    console.log(user)
+    // user.role = ["client"];
+    console.log(user);
   } else {
     console.log("netlifyIdentity not defined");
   }
@@ -29,7 +34,7 @@ function NetlifyIdentity() {
     initNetlifyIdentity();
   }, []);
 
-  return <div></div>;
+  return <></>;
 }
 
 function Navigation({ location }) {
