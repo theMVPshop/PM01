@@ -69,6 +69,11 @@ a {
 	/* height: 100vh; */
 }
 
+.portfolio-cards {
+	width: 18rem;
+}
+
+
 
 .float-this {
 	float: right;
