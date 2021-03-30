@@ -28,12 +28,12 @@ FOREIGN KEY (username) REFERENCES users (user_name)
 CREATE TABLE permissions (
 id INT NOT NULL AUTO_INCREMENT,
 user_name VARCHAR(50),
-role VARCHAR(50),
 project_id INT NOT NULL,
 PRIMARY KEY (id),
 FOREIGN KEY (user_name) REFERENCES users (user_name),
 FOREIGN KEY (project_id) REFERENCES projects (id)
 );
+
 
 INSERT INTO users
 	(user_name)
