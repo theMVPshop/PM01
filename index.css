@@ -49,6 +49,13 @@ a {
 	background-attachment: fixed;
 }
 
+.get-started-btn {
+	border-radius: 55px;
+	background-color: white;
+	height: 35px;
+	/* color: rgba(0,0,0,0.5) */
+	
+}
 
 
 #landing-page-2 {
