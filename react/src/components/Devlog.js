@@ -48,6 +48,7 @@ function Devlog() {
     });
   };
 
+  // modal component code begins below
   function DevlogModal() {
     const [show, setShow] = useState(false);
 
@@ -119,6 +120,8 @@ function Devlog() {
       </>
     );
   }
+  // modal component code ends here
+
   return (
     <>
       <DevlogModal />

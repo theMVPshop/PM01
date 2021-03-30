@@ -93,14 +93,6 @@ function Milestones() {
   const removeItem = (idx) => {
     let id = todos[idx].id;
     console.log("delete milestone: ", id);
-    // setTodos([...todos.filter((x, i) => i !== id)]);
-    //   const deleteGameRequest = {
-    //     method: 'DELETE',
-    //     headers: { 'authorization': `bearer ${cookieToken}`, 'Content-Type': 'application/json' },
-    //     body: JSON.stringify({
-    //         id: gameId
-    //     })
-    // };
     axios.delete(`http://localhost:4001/milestones/${id}`);
     setCounter(counter - 1);
     // .then(response => response.json())
