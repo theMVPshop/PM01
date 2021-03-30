@@ -3,6 +3,47 @@
 }
 
 
+/* form */
+
+form {
+  border: 1px solid black;
+  height: 400px;
+  text-align: center;
+}
+
+.form-contents {
+
+}
+
+
+.form-input {
+  border-radius: 15px;
+}
+
+.form-title {
+  text-align: center;
+  color:rgb(14, 129, 223);
+}
+
+.submit-button {
+  border-radius: 15px;
+  width: 200px;
+}
+
+.contact-image {
+  width: 600px;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 /* footer */
 .about-page-footer {
@@ -34,13 +75,4 @@
   padding-top: 40px;
   padding-bottom: 40px;
   padding-left: 250px;
-}
-
-/* form */
-
-form {
-  border: 1px solid red;
-  width: 1000px;
-  margin: auto;
-  text-align: center;
 }
