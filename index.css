@@ -76,6 +76,20 @@ a {
 	/* height: 100vh; */
 }
 
+/* .btn-style {
+	background-color: #ddd;
+	width: 10%;
+	border: none;
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 16px;
+
+} */
+
 .portfolio-cards {
 	width: 18rem;
 }
