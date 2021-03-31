@@ -43,3 +43,9 @@ netlifyIdentity.refresh().then((jwt)=>console.log(jwt))
 
 // Change language
 netlifyIdentity.setLocale('en');
+
+// fix styling on netlify login link
+window.onload = function() {
+  let identity = document.getElementsByClassName('netlify-identity-button');
+  identity[0].classList.add('nav-link');
+};
