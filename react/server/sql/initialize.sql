@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS users, projects, milestones, permissions, devlog;
 CREATE TABLE users (
   username VARCHAR(50),
   password VARCHAR(50),
+  isModerator BOOLEAN,
   PRIMARY KEY (username)
 );
 
@@ -22,6 +23,16 @@ PRIMARY KEY (id),
 FOREIGN KEY (project_id) REFERENCES projects (id)
 );
 
+CREATE TABLE devlog (
+id INT NOT NULL AUTO_INCREMENT,
+title VARCHAR(50),
+description VARCHAR(50),
+project_id INT NOT NULL,
+time_stamp INT NOT NULL,
+PRIMARY KEY (id),
+FOREIGN KEY (project_id) REFERENCES projects (id)
+);
+
 CREATE TABLE permissions (
 id INT NOT NULL AUTO_INCREMENT,
 username VARCHAR(50),
@@ -33,21 +44,26 @@ FOREIGN KEY (project_id) REFERENCES projects (id)
 
 
 INSERT INTO users
-	(username, password)
+	(username, password, isModerator)
 VALUES 
-  ("johnnyuserboy", "jamespassword123"), ("TEST", "testpw123");
+  ("johnnyuserboy", "jamespassword123", true), ("TEST", "testpw123", false);
 
-INSERT INTO projects
-	(title, description)
-VALUES
-	("First Project", "first descript"), ("Another Project", "another descript");
+-- INSERT INTO projects
+-- 	(title, description)
+-- VALUES
+-- 	("First Project", "first descript"), ("Another Project", "another descript");
     
-INSERT INTO milestones
-	(title, project_id, priority)
-VALUES
-	("Begin", 1, 1), ("Wireframe", 2, 2);
+-- INSERT INTO milestones
+-- 	(title, project_id, priority)
+-- VALUES
+-- 	("Begin", 1, 1), ("Wireframe", 2, 2);
+
+-- INSERT INTO devlog
+-- 	(title, description, project_id, time_stamp)
+-- VALUES
+-- 	("Start the project", "We will start work now.", 1, 123456789);
     
-INSERT INTO permissions
-	(username, project_id)
-VALUES
-	("johnnyuserboy", 1);
+-- INSERT INTO permissions
+-- 	(username, project_id)
+-- VALUES
+-- 	("johnnyuserboy", 1);
