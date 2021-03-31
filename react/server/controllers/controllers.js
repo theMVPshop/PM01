@@ -16,6 +16,21 @@ const getAllProjects = (req, res) => {
   });
 };
 
+const updateRoleByUsername = (req, res) => {
+  let { username, isModerator } = req.body;
+  let sql = "UPDATE users SET isModerator = ? WHERE username = ?";
+  sql = mysql.format(sql, [isModerator, username]);
+
+  pool.query(sql, (err, rows) => {
+    if (err) return handleSQLError(res, err);
+    return res.json({
+      message: `Updated role: ${username} to ${
+        isModerator ? "Moderator" : "Client"
+      }`,
+    });
+  });
+};
+
 const createProject = (req, res) => {
   let { title, description } = req.body;
   let sql = "INSERT INTO projects (title, description) VALUE  (?, ?)";
@@ -104,4 +119,5 @@ module.exports = {
   createMilestone,
   deleteMilestoneById,
   updateMilestoneById,
+  updateRoleByUsername,
 };
