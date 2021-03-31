@@ -7,6 +7,9 @@ window.onload = function() {
   let hLines = document.getElementsByClassName('hLines');
   let bText = document.getElementsByClassName('bText');
 
+};
+
+
   function numbaClick(e){
     // remove selected
     for (let a=0; a<numba.length; a++){
@@ -48,5 +51,3 @@ window.onload = function() {
 
   // Change language
   netlifyIdentity.setLocale('en');
-
-};
