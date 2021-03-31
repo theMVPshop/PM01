@@ -21,7 +21,7 @@ time, mark, audio, video {
  
 body {
 	line-height: 1;
-
+	font-family: 'Mukta', sans-serif;
 }
 
 a {
@@ -53,10 +53,11 @@ button {
 #landing-page-1 {
 	height: 100vh;
 	background: rgba(67,177,247,1);
-	background-image: url("./MVPwebsite/img/illo01.png"), linear-gradient(153deg, rgba(67,177,247,1) 0%, rgba(53,240,216,1) 100%);
-	background-size: contain;
+	background-image: url("./MVPwebsite/img/illo01.png");
+	background-size: 60%;
 	background-repeat: no-repeat;
-	background-position: right;
+	background-position-x: right;
+    background-position-y: top;
 	background-attachment: fixed;
 }
 
@@ -80,10 +81,6 @@ button {
 
 .case-studies-align {
 	text-align: center;
-}
-
-.nav-link {
-	text-transform:uppercase;
 }
 
 
@@ -289,6 +286,9 @@ button {
 	padding-left: 250px;
   }
 
+  .nav-link {
+	text-transform:uppercase;
+  }
 
 @media screen and (max-width: 576px) {
 	#landing-page-1 {
