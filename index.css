@@ -32,40 +32,24 @@ button {
 	border: none;
 }
 
-/* .btn-style {
-	color: white;
-	width: 10%;
-	border-radius: 16px;
-} */
-
-
-
-/* #landing-page-1 {
-	height: 100vh;
-	background-image: url('./MVPwebsite/img/illo01.png');
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: right; 
-	background-attachment: fixed;
-	background-color: #32A0ED; 
-} */
 
 #landing-page-1 {
 	height: 100vh;
-	background: rgba(67,177,247,1);
-	background-image: url("./MVPwebsite/img/illo01.png");
+	background: rgb(62 210 255);
 	background-size: 60%;
 	background-repeat: no-repeat;
 	background-position-x: right;
     background-position-y: top;
 	background-attachment: fixed;
+
+	background-image: url('./MVPwebsite/img/illo01.png'), linear-gradient(90deg, rgb(58 210 255) 0%, rgba(50,230,237,1) 75%, rgba(50,237,207,1) 100%);
 }
 
 .get-started-btn {
 	border-radius: 55px;
 	background-color: white;
 	height: 35px;
-	/* color: rgba(0,0,0,0.5) */
+	
 	
 }
 
