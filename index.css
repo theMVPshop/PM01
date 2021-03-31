@@ -82,6 +82,10 @@ button {
 	text-align: center;
 }
 
+.nav-link {
+	text-transform:uppercase;
+}
+
 
 #landing-page-3 {
 	/* height: 100vh; */
