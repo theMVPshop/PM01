@@ -28,6 +28,17 @@ a {
 	text-decoration: none;
 }
 
+button {
+	border: none;
+}
+
+/* .btn-style {
+	color: white;
+	width: 10%;
+	border-radius: 16px;
+} */
+
+
 
 /* #landing-page-1 {
 	height: 100vh;
