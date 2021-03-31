@@ -28,6 +28,17 @@ a {
 	text-decoration: none;
 }
 
+button {
+	border: none;
+}
+
+/* .btn-style {
+	color: white;
+	width: 10%;
+	border-radius: 16px;
+} */
+
+
 
 /* #landing-page-1 {
 	height: 100vh;
@@ -75,6 +86,20 @@ a {
 #landing-page-3 {
 	/* height: 100vh; */
 }
+
+/* .btn-style {
+	background-color: #ddd;
+	width: 10%;
+	border: none;
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 16px;
+
+} */
 
 .portfolio-cards {
 	width: 18rem;
