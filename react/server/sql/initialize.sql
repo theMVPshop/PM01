@@ -1,51 +1,53 @@
-DROP TABLE IF EXISTS users, projects, milestones;
+DROP TABLE IF EXISTS users, projects, milestones, permissions, devlog;
 
 CREATE TABLE users (
-  id INT NOT NULL AUTO_INCREMENT,
-  user_name VARCHAR(50),
-  pword VARCHAR(50),
-  PRIMARY KEY (id)
+  username VARCHAR(50),
+  password VARCHAR(50),
+  PRIMARY KEY (username)
 );
 
 CREATE TABLE projects (
 id INT NOT NULL AUTO_INCREMENT,
-project_name VARCHAR(50),
+title VARCHAR(50),
+description VARCHAR(150),
 PRIMARY KEY (id)
 );
 
 CREATE TABLE milestones (
 id INT NOT NULL AUTO_INCREMENT,
-username VARCHAR(50),
-ms_name VARCHAR(50),
+title VARCHAR(50),
 project_id INT NOT NULL,
 priority INT NOT NULL,
-ms_status INT NOT NULL,
 PRIMARY KEY (id),
-FOREIGN KEY (project_id) REFERENCES projects (id),
-FOREIGN KEY (username) REFERENCES users (user_name)
+FOREIGN KEY (project_id) REFERENCES projects (id)
 );
 
 CREATE TABLE permissions (
 id INT NOT NULL AUTO_INCREMENT,
-user_name VARCHAR(50),
+username VARCHAR(50),
 project_id INT NOT NULL,
 PRIMARY KEY (id),
-FOREIGN KEY (user_name) REFERENCES users (user_name),
+FOREIGN KEY (username) REFERENCES users (username),
 FOREIGN KEY (project_id) REFERENCES projects (id)
 );
 
 
 INSERT INTO users
-	(user_name)
+	(username, password)
 VALUES 
-  ("James"), ("TEST");
+  ("johnnyuserboy", "jamespassword123"), ("TEST", "testpw123");
 
 INSERT INTO projects
-	(project_name)
+	(title, description)
 VALUES
-	("First Project"), ("Another Project");
+	("First Project", "first descript"), ("Another Project", "another descript");
     
 INSERT INTO milestones
-	(ms_name, project_id, priority, ms_status)
+	(title, project_id, priority)
 VALUES
-	("Begin", 1, 1, 1), ("Wireframe", 1, 2, 0), ("Begin", 2, 1, 1), ("Wireframe", 2, 2, 0), ("Finish", 2, 3, 1), ("Finish", 1, 3, 0);
+	("Begin", 1, 1), ("Wireframe", 2, 2);
+    
+INSERT INTO permissions
+	(username, project_id)
+VALUES
+	("johnnyuserboy", 1);
