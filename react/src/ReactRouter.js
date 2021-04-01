@@ -8,7 +8,7 @@ import Milestones from "./components/Milestones";
 import Projects from "./components/Projects";
 import Devlog from "./components/Devlog";
 
-const Router = () => {
+const Router = ({ currentUser, localStorageCurrentUser }) => {
   return (
     <Switch>
       <Route exact path="/" component={Home} />
@@ -16,9 +16,23 @@ const Router = () => {
       <Route path="/signup" component={Signup} />
       <Route path="/milestones" component={Milestones} />
       <Route path="/devlog" component={Devlog} />
-      <Route path="/projects" component={Projects} />
+      <Route
+        path="/projects"
+        render={(props) => (
+          <Projects
+            {...props}
+            currentUser={currentUser}
+            localStorageCurrentUser={localStorageCurrentUser}
+          />
+        )}
+        // component={Projects}
+      />
     </Switch>
   );
 };
 
 export default Router;
+
+// render={(props) => (
+//   <Dashboard {...props} isAuthed={true} />
+// )}
