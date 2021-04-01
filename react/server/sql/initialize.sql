@@ -1,8 +1,7 @@
-DROP TABLE IF EXISTS users, projects, milestones, permissions, devlog;
+DROP TABLE IF EXISTS milestones, permissions, devlog, users, projects;
 
 CREATE TABLE users (
   username VARCHAR(50),
-  password VARCHAR(50),
   isModerator BOOLEAN,
   PRIMARY KEY (username)
 );
