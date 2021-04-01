@@ -9,8 +9,31 @@ padding: 0;
 }
 
 button {
-  margin: 10px;
+  /* margin-top: 10px; */
+
 }
+
+
+.btn-grad {background-image: linear-gradient(to right, #24C6DC 0%, #514A9D  51%, #24C6DC  100%)}
+.btn-grad {
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 0 0 20px #eee;
+  border-radius: 5px;
+  display: block;
+  margin: auto;
+}
+
+.btn-grad:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+
 
 .container {
 	margin: 0;
@@ -142,7 +165,8 @@ button {
   width: 200px;
   height: 70px;
   border: 2px solid #CCC;
-  border-radius: 1px;
+  border-style: ridge;
+  border-radius: 5px;
   margin: auto;
   perspective: 600px;
 }
