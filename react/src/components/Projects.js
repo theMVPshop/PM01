@@ -5,6 +5,7 @@ import SetRolesModal from "../components/SetRolesModal";
 
 function Projects({ currentUser, localStorageCurrentUser }) {
   const [projects, setProjects] = useState([]);
+  const [permissions, setPermissions] = useState([]);
   const [counter, setCounter] = useState(1);
   const [input, setInput] = useState({
     id: counter,
@@ -24,6 +25,9 @@ function Projects({ currentUser, localStorageCurrentUser }) {
         );
         console.log("isMod", isMod);
       });
+    axios.get("http://localhost:4001/permissions").then((response) => {
+      setPermissions(response.data);
+    });
     axios.get("http://localhost:4001/projects/").then((response) => {
       setProjects(response.data);
     });
@@ -98,7 +102,7 @@ function Projects({ currentUser, localStorageCurrentUser }) {
               Add Project
             </Button>
             <Container className="d-flex p-6 justify-content-center">
-              <SetRolesModal projects={projects} />
+              {isMod && <SetRolesModal projects={projects} />}
             </Container>
           </form>
         </Container>
@@ -114,13 +118,21 @@ function Projects({ currentUser, localStorageCurrentUser }) {
             </tr>
           </thead>
           <tbody>
-            {projects.map((project, idx) => (
-              <tr>
-                <td>{project.id}</td>
-                <td>{project.title}</td>
-                <td>{project.description}</td>
-              </tr>
-            ))}
+            {permissions.map((permission, idx) =>
+              projects
+                .filter(
+                  (x) =>
+                    x.id === permission.project_id &&
+                    permission.username === localStorageCurrentUser
+                )
+                .map((project, idx) => (
+                  <tr>
+                    <td>{project.id}</td>
+                    <td>{project.title}</td>
+                    <td>{project.description}</td>
+                  </tr>
+                ))
+            )}
           </tbody>
         </Table>
       </Container>
