@@ -21,42 +21,40 @@ time, mark, audio, video {
  
 body {
 	line-height: 1;
-
+	font-family: 'Mukta', sans-serif;
 }
 
 a {
 	text-decoration: none;
+	font-size: medium;
+	color: white;
 }
 
 
-/* #landing-page-1 {
-	height: 100vh;
-	background-image: url('./MVPwebsite/img/illo01.png');
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: right; 
-	background-attachment: fixed;
-	background-color: #32A0ED; 
-} */
+
+button {
+	border: none;
+}
+
 
 #landing-page-1 {
 	height: 100vh;
-	background: rgba(67,177,247,1);
-	background-image: url("./MVPwebsite/img/illo01.png"), linear-gradient(153deg, rgba(67,177,247,1) 0%, rgba(53,240,216,1) 100%);
-	background-size: contain;
+	background: rgb(62 210 255);
+	background-size: 60%;
 	background-repeat: no-repeat;
-	background-position: right;
+	background-position-x: right;
+    background-position-y: top;
 	background-attachment: fixed;
+	background-image: url('./MVPwebsite/img/illo01.png'), linear-gradient(90deg, rgb(58 210 255) 0%, rgba(50,230,237,1) 75%, rgba(50,237,207,1) 100%);
 }
 
 .get-started-btn {
 	border-radius: 55px;
 	background-color: white;
 	height: 35px;
-	/* color: rgba(0,0,0,0.5) */
+	
 	
 }
-
 
 #landing-page-2 {
 	/* height: 100vh; */
@@ -104,7 +102,6 @@ a {
 
 .landing-page-5-main-container {
 	background: rgb(50,160,237);
-	
 	width: 80%;
 	margin: auto;
 	background: linear-gradient(90deg, rgba(50,160,237,1) 0%, rgba(50,230,237,1) 75%, rgba(50,237,207,1) 100%);
@@ -260,6 +257,9 @@ a {
 	padding-left: 250px;
   }
 
+  .nav-link {
+	text-transform:uppercase;
+  }
 
 @media screen and (max-width: 576px) {
 	#landing-page-1 {
