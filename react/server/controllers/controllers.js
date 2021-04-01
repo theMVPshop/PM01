@@ -42,6 +42,26 @@ const createProject = (req, res) => {
   });
 };
 
+const getAllPermissions = (req, res) => {
+  pool.query("SELECT * FROM permissions", (err, rows) => {
+    if (err) return handleSQLError(res, err);
+    return res.json(rows);
+  });
+};
+
+const addPermission = (req, res) => {
+  let { username, project_id } = req.body;
+  let sql = "INSERT INTO permissions (username, project_id) VALUE  (?, ?)";
+  sql = mysql.format(sql, [username, project_id]);
+
+  pool.query(sql, (err, rows) => {
+    if (err) return handleSQLError(res, err);
+    return res.json({
+      message: `Added ${project_id} permission for ${username}`,
+    });
+  });
+};
+
 const getMilestoneByProject = (req, res) => {
   let sql = "SELECT * FROM milestones WHERE project_id = ?";
   sql = mysql.format(sql, [req.params.project_id]);
@@ -120,4 +140,6 @@ module.exports = {
   deleteMilestoneById,
   updateMilestoneById,
   updateRoleByUsername,
+  addPermission,
+  getAllPermissions,
 };

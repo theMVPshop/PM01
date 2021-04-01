@@ -13,6 +13,10 @@ router.post("/users", controllers.updateRoleByUsername);
 
 router.post("/projects", controllers.createProject);
 
+router.get("/permissions", controllers.getAllPermissions);
+
+router.post("/permissions", controllers.addPermission);
+
 router.get("/milestones/:project_id", controllers.getMilestoneByProject);
 
 router.post("/milestones", controllers.createMilestone);

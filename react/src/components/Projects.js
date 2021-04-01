@@ -59,7 +59,7 @@ function Projects() {
   return (
     <>
       {/* form begins below */}
-      <SetRoles />
+      <SetRoles projects={projects} />
       <Container className="d-flex p-6 justify-content-center">
         <form onSubmit={onSubmit}>
           <input

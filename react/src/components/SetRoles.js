@@ -3,12 +3,13 @@ import axios from "axios";
 import {
   Table,
   Container,
+  Form,
   // ButtonGroup,
   // ToggleButton,
   Button,
 } from "react-bootstrap";
 
-function SetRoles() {
+function SetRoles({ projects }) {
   const [users, setUsers] = useState([]);
   // const [checked, setChecked] = useState(false);
   // const [radioValue, setRadioValue] = useState("1");
@@ -42,6 +43,13 @@ function SetRoles() {
       });
   };
 
+  const handleChangePermission = (project_id, username) => {
+    axios.post("http://localhost:4001/permissions/", {
+      username,
+      project_id,
+    });
+  };
+
   return (
     <Container>
       <Table striped bordered hover variant="dark">
@@ -49,6 +57,7 @@ function SetRoles() {
           <tr>
             <th>Username</th>
             <th>Role</th>
+            <th>Permissions</th>
           </tr>
         </thead>
         <tbody>
@@ -82,6 +91,25 @@ function SetRoles() {
                   </Button>
                 }
               </td>
+              <td>
+                <Form>
+                  {["checkbox"].map((type) => (
+                    <div key={`inline-${type}`} className="mb-3">
+                      {projects.map((project, idx) => (
+                        <Form.Check
+                          inline
+                          label={project.title}
+                          type={type}
+                          id={`inline-${type}-1`}
+                          onChange={() =>
+                            handleChangePermission(project.id, user.username)
+                          }
+                        />
+                      ))}
+                    </div>
+                  ))}
+                </Form>
+              </td>
             </tr>
           ))}
         </tbody>
@@ -91,3 +119,5 @@ function SetRoles() {
 }
 
 export default SetRoles;
+
+// style={{ backgroundColor: "#adb5bd", color: "#111" }}
