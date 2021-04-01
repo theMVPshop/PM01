@@ -62,6 +62,19 @@ const addPermission = (req, res) => {
   });
 };
 
+const removePermission = (req, res) => {
+  let sql = "DELETE FROM permissions WHERE id = ?";
+  sql = mysql.format(sql, [req.params.id]);
+
+  pool.query(sql, (err, rows) => {
+    if (err) return handleSQLError(res, err);
+    return res.json({
+      message: `Deleted permission: ${rows.affectedRows}`,
+      id: req.body.id,
+    });
+  });
+};
+
 const getMilestoneByProject = (req, res) => {
   let sql = "SELECT * FROM milestones WHERE project_id = ?";
   sql = mysql.format(sql, [req.params.project_id]);
@@ -142,4 +155,5 @@ module.exports = {
   updateRoleByUsername,
   addPermission,
   getAllPermissions,
+  removePermission,
 };

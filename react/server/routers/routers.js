@@ -15,6 +15,8 @@ router.post("/projects", controllers.createProject);
 
 router.get("/permissions", controllers.getAllPermissions);
 
+router.delete("/permissions/:id", controllers.removePermission);
+
 router.post("/permissions", controllers.addPermission);
 
 router.get("/milestones/:project_id", controllers.getMilestoneByProject);
