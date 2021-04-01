@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Container, Button, Table } from "react-bootstrap";
 import axios from "axios";
+import { Container, Button, Table } from "react-bootstrap";
+import SetRoles from "../components/SetRoles";
 
 function Projects() {
   const [projects, setProjects] = React.useState([]);
@@ -51,7 +52,6 @@ function Projects() {
     let id = projects[idx].id;
     console.log("delete project: ", id);
     axios.delete(`http://localhost:4001/projects/${id}`);
-    setCounter(counter - 1);
     // .then(response => response.json())
     // .then(data => console.log('deleted project: ', data.id));
   };
@@ -59,6 +59,7 @@ function Projects() {
   return (
     <>
       {/* form begins below */}
+      <SetRoles />
       <Container className="d-flex p-6 justify-content-center">
         <form onSubmit={onSubmit}>
           <input
@@ -77,35 +78,6 @@ function Projects() {
             value={input.description}
             onChange={onChange}
           />
-          {/* <label
-            for="due_date"
-            style={{
-              backgroundColor: "darkorange",
-              color: "black",
-              flex: "2",
-              padding: "5px",
-              marginBottom: "5px",
-              // border: "1px solid black",
-            }}
-          >
-            Due Date:{" "}
-          </label>
-          <input
-            type="date"
-            name="due_date"
-            style={{ flex: "10", padding: "5px" }}
-            placeholder="Due date ..."
-            value={input.due_date}
-            onChange={onChange}
-          /> */}
-          {/* <input
-            type="select"
-            name="status"
-            style={{ flex: "10", padding: "5px" }}
-            placeholder="Status ..."
-            value={input.ms_status}
-            onChange={onChange}
-          /> */}
           <Button
             type="submit"
             value="Submit"

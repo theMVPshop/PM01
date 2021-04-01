@@ -7,6 +7,8 @@ router.get("/users", controllers.getAllUsers);
 
 router.get("/projects", controllers.getAllProjects);
 
+router.post("/users", controllers.updateRoleByUsername);
+
 // router.get('/projects', controllers.getProjectByUser)
 
 router.post("/projects", controllers.createProject);
