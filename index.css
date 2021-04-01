@@ -26,7 +26,11 @@ body {
 
 a {
 	text-decoration: none;
+	font-size: medium;
+	color: white;
 }
+
+
 
 button {
 	border: none;
@@ -41,7 +45,6 @@ button {
 	background-position-x: right;
     background-position-y: top;
 	background-attachment: fixed;
-
 	background-image: url('./MVPwebsite/img/illo01.png'), linear-gradient(90deg, rgb(58 210 255) 0%, rgba(50,230,237,1) 75%, rgba(50,237,207,1) 100%);
 }
 
@@ -52,7 +55,6 @@ button {
 	
 	
 }
-
 
 #landing-page-2 {
 	/* height: 100vh; */
@@ -71,20 +73,6 @@ button {
 #landing-page-3 {
 	/* height: 100vh; */
 }
-
-/* .btn-style {
-	background-color: #ddd;
-	width: 10%;
-	border: none;
-	padding: 10px 20px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	margin: 4px 2px;
-	cursor: pointer;
-	border-radius: 16px;
-
-} */
 
 .portfolio-cards {
 	width: 18rem;
@@ -114,7 +102,6 @@ button {
 
 .landing-page-5-main-container {
 	background: rgb(50,160,237);
-	
 	width: 80%;
 	margin: auto;
 	background: linear-gradient(90deg, rgba(50,160,237,1) 0%, rgba(50,230,237,1) 75%, rgba(50,237,207,1) 100%);
