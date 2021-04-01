@@ -40,15 +40,7 @@ function App() {
               isModerator: 0,
             });
           existingUser && setCurrentUser(user.email);
-          console.log("existingUser", existingUser);
         });
-        // .then((response) => {
-        //   let userObject = response.data.find(
-        //     (x) => x.username === user.email
-        //   );
-        //   userObject && setCurrentUser(userObject.username);
-        //   console.log("current user", currentUser);
-        // })
       });
     } else {
       console.log("netlifyIdentity not defined");
