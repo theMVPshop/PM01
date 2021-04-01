@@ -1,40 +1,39 @@
 const express = require("express");
-const controllers = require("../controllers/controllers");
+const usersControllers = require("../controllers/usersControllers");
+const projectsControllers = require("../controllers/projectsControllers");
+const milestonesControllers = require("../controllers/milestonesControllers");
+const permissionsControllers = require("../controllers/permissionsControllers");
 const devlogController = require("../controllers/devlogController");
 const router = express.Router();
 
-router.get("/users", controllers.getAllUsers);
+// users controllers
+router.get("/users", usersControllers.getAllUsers);
+router.post("/users", usersControllers.createUser);
+router.put("/users", usersControllers.updateRoleByUsername);
 
-router.get("/projects", controllers.getAllProjects);
-
-router.post("/users", controllers.createUser);
-
-router.put("/users", controllers.updateRoleByUsername);
-
+// projects controllers
+router.get("/projects", projectsControllers.getAllProjects);
+router.post("/projects", projectsControllers.createProject);
 // router.get('/projects', controllers.getProjectByUser)
 
-router.post("/projects", controllers.createProject);
+// permissions controllers
+router.get("/permissions", permissionsControllers.getAllPermissions);
+router.delete("/permissions/:id", permissionsControllers.removePermission);
+router.post("/permissions", permissionsControllers.addPermission);
 
-router.get("/permissions", controllers.getAllPermissions);
+// milestones controllers
+router.get(
+  "/milestones/:project_id",
+  milestonesControllers.getMilestoneByProject
+);
+router.post("/milestones", milestonesControllers.createMilestone);
+router.delete("/milestones/:id", milestonesControllers.deleteMilestoneById);
+router.put("/milestones", milestonesControllers.updateMilestoneById);
 
-router.delete("/permissions/:id", controllers.removePermission);
-
-router.post("/permissions", controllers.addPermission);
-
-router.get("/milestones/:project_id", controllers.getMilestoneByProject);
-
-router.post("/milestones", controllers.createMilestone);
-
-router.delete("/milestones/:id", controllers.deleteMilestoneById);
-
-router.put("/milestones", controllers.updateMilestoneById);
-
+// devlog controllers
 router.get("/devlog/:project_id", devlogController.getDevlogByProject);
-
 router.post("/devlog", devlogController.createDevlog);
-
 router.delete("/devlog/:id", devlogController.deleteDevlogById);
-
 router.put("/devlog", devlogController.updateDevlogById);
 
 module.exports = router;
