@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Container, Button, Table } from "react-bootstrap";
-import SetRoles from "../components/SetRoles";
+import SetRolesModal from "../components/SetRolesModal";
 
 function Projects() {
   const [projects, setProjects] = React.useState([]);
@@ -59,7 +59,6 @@ function Projects() {
   return (
     <>
       {/* form begins below */}
-      <SetRoles projects={projects} />
       <Container className="d-flex p-6 justify-content-center">
         <form onSubmit={onSubmit}>
           <input
@@ -86,6 +85,9 @@ function Projects() {
           >
             Add Project
           </Button>
+          <Container className="d-flex p-6 justify-content-center">
+            <SetRolesModal projects={projects} />
+          </Container>
         </form>
       </Container>
       {/* form ends above and table begins below */}

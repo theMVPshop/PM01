@@ -12,6 +12,7 @@ function SetRoles({ projects }) {
       setUsers(response.data);
     });
     axios.get("http://localhost:4001/permissions/").then((response) => {
+      console.log(response.data);
       setPermissions(response.data);
     });
   }, []);
@@ -29,21 +30,26 @@ function SetRoles({ projects }) {
       });
   };
 
-  const handleChangePermission = (e, project_id, username) => {
-    console.log("checked?", e.target.checked, e.target.value);
+  const handleChangePermission = (
+    e,
+    project_id,
+    username,
+    permissionObject
+  ) => {
+    let permissionId = permissionObject && permissionObject.id;
     e.target.checked
       ? axios
-          .delete(`http://localhost:4001/permissions/${e.target.value}`)
+          .post("http://localhost:4001/permissions/", {
+            username,
+            project_id,
+          })
           .then(() => {
             axios.get("http://localhost:4001/permissions/").then((response) => {
               setPermissions(response.data);
             });
           })
       : axios
-          .post("http://localhost:4001/permissions/", {
-            username,
-            project_id,
-          })
+          .delete(`http://localhost:4001/permissions/${permissionId}`)
           .then(() => {
             axios.get("http://localhost:4001/permissions/").then((response) => {
               setPermissions(response.data);
@@ -78,24 +84,26 @@ function SetRoles({ projects }) {
                   {["checkbox"].map((type) => (
                     <div key={`inline-${type}`} className="mb-3">
                       {projects.map((project, idx) => {
-                        let hasPermission = permissions.find(
+                        let permissionObject = permissions.find(
                           (x) =>
                             x.username === user.username &&
                             x.project_id === project.id
                         );
+
                         return (
                           <Form.Check
                             inline
                             label={project.title}
                             type={type}
                             id={`inline-${type}-1`}
-                            checked={hasPermission}
-                            value={hasPermission && hasPermission.id}
+                            checked={permissionObject}
+                            // value={}
                             onChange={(e) =>
                               handleChangePermission(
                                 e,
                                 project.id,
-                                user.username
+                                user.username,
+                                permissionObject
                               )
                             }
                           />

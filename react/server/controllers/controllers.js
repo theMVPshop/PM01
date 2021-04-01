@@ -57,7 +57,7 @@ const addPermission = (req, res) => {
   pool.query(sql, (err, rows) => {
     if (err) return handleSQLError(res, err);
     return res.json({
-      message: `Added ${project_id} permission for ${username}`,
+      message: `Added access to project ${project_id} for ${username}`,
     });
   });
 };
@@ -69,7 +69,7 @@ const removePermission = (req, res) => {
   pool.query(sql, (err, rows) => {
     if (err) return handleSQLError(res, err);
     return res.json({
-      message: `Deleted permission: ${rows.affectedRows}`,
+      message: `Deleted permission with an Id of ${req.params.id}`,
       id: req.body.id,
     });
   });
