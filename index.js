@@ -1,10 +1,8 @@
 // fix styling on netlify login link
 window.onload = function() {
-  let identity = document.getElementsByClassName('netlify-identity-button');
-  identity[0].classList.add('nav-link');
-
+   let identity = document.getElementsByClassName('netlify-identity-button');
+   identity[0].classList.add('nav-link');
 };
-
 
   function numbaClick(e){
       
@@ -52,3 +50,4 @@ window.onload = function() {
 
   // Change language
   netlifyIdentity.setLocale('en');
+
