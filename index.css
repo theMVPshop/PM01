@@ -70,10 +70,6 @@ button {
 }
 
 
-#landing-page-3 {
-	/* height: 100vh; */
-}
-
 .portfolio-cards {
 	width: 18rem;
 }
@@ -92,7 +88,7 @@ button {
 
 
 #landing-page-4 {
-	height: 80vh;
+	/* height: 80vh; */
 	background-color: #fff;
 }
 
