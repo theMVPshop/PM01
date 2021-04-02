@@ -30,14 +30,16 @@ function App() {
       netlifyIdentity.open();
       netlifyIdentity.on("login", (user) => {
         console.log("login", user);
-        axios.post("http://localhost:4001/users/", {
-          username: user.email,
-          isModerator: 0,
-        });
         axios.get("http://localhost:4001/users").then((response) => {
-          let userObject = response.data.find((x) => x.username === user.email);
-          setCurrentUser(userObject.username);
-          console.log("current user", currentUser);
+          let existingUser = response.data.find(
+            (x) => x.username === user.email
+          );
+          !existingUser &&
+            axios.post("http://localhost:4001/users/", {
+              username: user.email,
+              isModerator: 0,
+            });
+          existingUser && setCurrentUser(user.email);
         });
       });
     } else {
@@ -54,9 +56,8 @@ function App() {
   }
 
   const NavWithRouter = withRouter(Navigation);
-  const localStorageCurrentUser = JSON.parse(
-    localStorage.getItem("gotrue.user")
-  ).email;
+  const localStorageCurrentUser =
+    currentUser && JSON.parse(localStorage.getItem("gotrue.user")).email;
 
   return (
     <>
