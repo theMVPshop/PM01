@@ -18,12 +18,12 @@ function Devlog() {
     subtitle: "",
     post: "",
     date: "",
-    id: counter,
+    // id: counter,
   });
   let projectID = 1;
+  let newLog = {};
 
-  useEffect(() => {
-    const fetchData = async () => {
+  const fetchData = async () => {
       try {
         const result = await axios.get(
           `http://localhost:4001/devlog/${projectID}`
@@ -33,8 +33,28 @@ function Devlog() {
         console.log(error);
       }
     };
+
+  useEffect(() => {
     fetchData().then(() => console.log("logs:", logs));
   }, []);
+
+  const postLog = () => {
+    console.log("log", newLog);
+    axios
+      .post(
+        `http://localhost:4001/devlog`,
+        // newMilestoneRequest,
+        newLog
+      )
+      .then(function (response) {
+        console.log("post devlog response", response);
+      })
+      .then(() => fetchData())
+      .catch(function (error) {
+        console.log("post devlog error", error);
+      });
+
+  };
 
   const onChange = (event) => {
     setInput((prevState) => ({
@@ -45,16 +65,13 @@ function Devlog() {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    setLogs([
-      ...logs,
-      {
+    newLog = {
         title: input.title,
-        id: counter,
+        // id: counter,
         post: input.post,
         date: input.date,
         subtitle: input.subtitle,
-      },
-    ]);
+      };
     setCounter(counter + 1);
     setInput({
       title: "",
@@ -62,6 +79,7 @@ function Devlog() {
       post: "",
       date: "",
     });
+    postLog();
   };
 
   // modal component code begins below

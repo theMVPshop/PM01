@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS users, projects, milestones, permissions, devlog;
+DROP TABLE IF EXISTS milestones, permissions, devlog, users, projects;
 
 CREATE TABLE users (
   username VARCHAR(50),
@@ -45,32 +45,33 @@ FOREIGN KEY (project_id) REFERENCES projects (id)
 );
 
 
--- INSERT INTO users
--- 	(username, isModerator)
--- VALUES 
---   ("johnnyuserboy", true), ("TEST", false);
+INSERT INTO users
+	(username, isModerator)
+VALUES 
+  ("johnnyuserboy", true), ("TEST", false), ("clarson08@gmail.com", false);
 
--- INSERT INTO projects
--- 	(title, description)
--- VALUES
--- 	("First Project", "first descript"), ("Another Project", "another descript");
+INSERT INTO projects
+	(title, description)
+VALUES
+	("First Project", "first descript"), ("Another Project", "another descript");
     
--- INSERT INTO milestones
--- 	(title, subtitle, project_id, due_date, ms_status, description)
--- VALUES
--- 	("Begin", "Talk about project", 1, "01/01/2021", "TODO", "NA"),
---     ("Wireframe", "Show wireframes to client", 1, "01/01/2021", "TODO", "NA"),
---     ("Begin", "Talk about project", 2, "01/01/2021", "TODO", "NA"),
---     ("Wireframe", "Show to client", 2, "01/01/2021", "TODO", "NA"),
---     ("Finish", "Project is completed", 2, "01/01/2021", "TODO", "NA"),
---     ("Finish", "Project is completed", 1, "01/01/2021", "TODO", "NA");
+INSERT INTO milestones
+	(title, subtitle, project_id, due_date, ms_status, description)
+VALUES
+	("Begin", "Talk about project", 1, "01/01/2021", "TODO", "NA"),
+    ("Wireframe", "Show wireframes to client", 1, "01/01/2021", "TODO", "NA"),
+    ("Begin", "Talk about project", 2, "01/01/2021", "TODO", "NA"),
+    ("Wireframe", "Show to client", 2, "01/01/2021", "TODO", "NA"),
+    ("Finish", "Project is completed", 2, "01/01/2021", "TODO", "NA"),
+    ("Finish", "Project is completed", 1, "01/01/2021", "TODO", "NA");
 
--- INSERT INTO devlog
--- 	(title, description, project_id, time_stamp)
--- VALUES
--- 	("Start the project", "We will start work now.", 1, 123456789);
+INSERT INTO devlog
+	(title, description, project_id, time_stamp)
+VALUES
+	("Start the project", "We will start work now.", 1, 123456789);
     
--- INSERT INTO permissions
--- 	(username, project_id)
--- VALUES
--- 	("johnnyuserboy", 1);
+INSERT INTO permissions
+	(username, project_id)
+VALUES
+	("johnnyuserboy", 1),
+    ("clarson08@gmail.com", 1);
