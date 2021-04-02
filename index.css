@@ -105,7 +105,14 @@ button {
 .float-this {
 	float: right;
 	background-color: transparent;
-	border: none;
+	color: #0dcaf0;
+	transition: all 0.4s;
+	/* border: none; */
+}
+
+.float-this:hover {
+	transition: all 0.4s;
+	transform: scale(1.5);
 }
 
 .portfolio-links {
@@ -185,6 +192,7 @@ button {
 	border:2px solid white;
 	border-radius: 50px;
 	padding-top:12px;
+	transition-duration: 0.5s;
   }
   
   .numba:hover {
