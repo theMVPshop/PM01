@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import {
   Container,
   Accordion,
@@ -19,6 +20,21 @@ function Devlog() {
     date: "",
     id: counter,
   });
+  let projectID = 1;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await axios.get(
+          `http://localhost:4001/devlog/${projectID}`
+        );
+        setLogs(result.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData().then(() => console.log("logs:", logs));
+  }, []);
 
   const onChange = (event) => {
     setInput((prevState) => ({

@@ -21,12 +21,23 @@ time, mark, audio, video {
  
 body {
 	line-height: 1;
-
+	font-family: 'Mukta', sans-serif;
 }
 
 a {
 	text-decoration: none;
 }
+
+button {
+	border: none;
+}
+
+/* .btn-style {
+	color: white;
+	width: 10%;
+	border-radius: 16px;
+} */
+
 
 
 /* #landing-page-1 {
@@ -41,11 +52,12 @@ a {
 
 #landing-page-1 {
 	height: 100vh;
-	background: rgba(67,177,247,1);
-	background-image: url("./MVPwebsite/img/illo01.png"), linear-gradient(153deg, rgba(67,177,247,1) 0%, rgba(53,240,216,1) 100%);
-	background-size: contain;
+	background: rgb(53,139,244);
+	background-image: url("./MVPwebsite/img/illo01.png");
+	background-size: 60%;
 	background-repeat: no-repeat;
-	background-position: right;
+	background-position-x: right;
+    background-position-y: top;
 	background-attachment: fixed;
 }
 
@@ -75,6 +87,20 @@ a {
 #landing-page-3 {
 	/* height: 100vh; */
 }
+
+/* .btn-style {
+	background-color: #ddd;
+	width: 10%;
+	border: none;
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 16px;
+
+} */
 
 .portfolio-cards {
 	width: 18rem;
