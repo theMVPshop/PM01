@@ -3,7 +3,7 @@ const usersControllers = require("../controllers/usersControllers");
 const projectsControllers = require("../controllers/projectsControllers");
 const milestonesControllers = require("../controllers/milestonesControllers");
 const permissionsControllers = require("../controllers/permissionsControllers");
-const devlogController = require("../controllers/devlogController");
+const devlogControllers = require("../controllers/devlogControllers");
 const router = express.Router();
 
 // users controllers
@@ -31,9 +31,9 @@ router.delete("/milestones/:id", milestonesControllers.deleteMilestoneById);
 router.put("/milestones", milestonesControllers.updateMilestoneById);
 
 // devlog controllers
-router.get("/devlog/:project_id", devlogController.getDevlogByProject);
-router.post("/devlog", devlogController.createDevlog);
-router.delete("/devlog/:id", devlogController.deleteDevlogById);
-router.put("/devlog", devlogController.updateDevlogById);
+router.get("/devlog/:project_id", devlogControllers.getDevlogByProject);
+router.post("/devlog", devlogControllers.createDevlog);
+router.delete("/devlog/:id", devlogControllers.deleteDevlogById);
+router.put("/devlog", devlogControllers.updateDevlogById);
 
 module.exports = router;

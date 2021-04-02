@@ -39,7 +39,7 @@ function App() {
               username: user.email,
               isModerator: 0,
             });
-          existingUser && setCurrentUser(user.email);
+          setCurrentUser(user.email);
         });
       });
     } else {
