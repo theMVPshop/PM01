@@ -71,9 +71,23 @@ const updateMilestoneById = (req, res) => {
   });
 };
 
+const updateMilestoneStatusById = (req, res) => {
+  let { ms_status, id } = req.body;
+  let sql = "UPDATE milestones SET ms_status = ? WHERE id = ?";
+  sql = mysql.format(sql, [ms_status, id]);
+
+  pool.query(sql, (err, rows) => {
+    if (err) return handleSQLError(res, err);
+    return res.json({
+      message: `Updated Milestone Status of milestone ${id} to ${ms_status}`,
+    });
+  });
+};
+
 module.exports = {
   getMilestoneByProject,
   createMilestone,
   deleteMilestoneById,
   updateMilestoneById,
+  updateMilestoneStatusById,
 };
