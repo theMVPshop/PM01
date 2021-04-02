@@ -7,11 +7,19 @@ router.get("/users", controllers.getAllUsers);
 
 router.get("/projects", controllers.getAllProjects);
 
-router.post("/users", controllers.updateRoleByUsername);
+router.post("/users", controllers.createUser);
+
+router.put("/users", controllers.updateRoleByUsername);
 
 // router.get('/projects', controllers.getProjectByUser)
 
 router.post("/projects", controllers.createProject);
+
+router.get("/permissions", controllers.getAllPermissions);
+
+router.delete("/permissions/:id", controllers.removePermission);
+
+router.post("/permissions", controllers.addPermission);
 
 router.get("/milestones/:project_id", controllers.getMilestoneByProject);
 

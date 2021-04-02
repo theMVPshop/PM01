@@ -1,19 +1,34 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Container, Button, Table } from "react-bootstrap";
-import SetRoles from "../components/SetRoles";
+import SetRolesModal from "../components/SetRolesModal";
 
-function Projects() {
-  const [projects, setProjects] = React.useState([]);
+function Projects({ currentUser, localStorageCurrentUser }) {
+  const [projects, setProjects] = useState([]);
+  const [permissions, setPermissions] = useState([]);
   const [counter, setCounter] = useState(1);
   const [input, setInput] = useState({
     id: counter,
     title: "",
     description: "",
   });
+  const [isMod, setIsMod] = useState(false);
 
   React.useEffect(() => {
-    axios.get(`http://localhost:4001/projects/`).then((response) => {
+    localStorageCurrentUser &&
+      axios.get("http://localhost:4001/users").then((response) => {
+        setIsMod(
+          response.data.find((x) => x.username === localStorageCurrentUser)
+            .isModerator === 0
+            ? false
+            : true
+        );
+        console.log("isMod", isMod);
+      });
+    axios.get("http://localhost:4001/permissions").then((response) => {
+      setPermissions(response.data);
+    });
+    axios.get("http://localhost:4001/projects/").then((response) => {
       setProjects(response.data);
     });
   }, []);
@@ -59,35 +74,39 @@ function Projects() {
   return (
     <>
       {/* form begins below */}
-      <SetRoles />
-      <Container className="d-flex p-6 justify-content-center">
-        <form onSubmit={onSubmit}>
-          <input
-            type="text"
-            name="title"
-            style={{ flex: "10", padding: "5px" }}
-            placeholder="Title ..."
-            value={input.title}
-            onChange={onChange}
-          />
-          <input
-            type="text"
-            name="description"
-            style={{ flex: "10", padding: "5px" }}
-            placeholder="Description ..."
-            value={input.description}
-            onChange={onChange}
-          />
-          <Button
-            type="submit"
-            value="Submit"
-            className="btn"
-            style={{ flex: "1" }}
-          >
-            Add Project
-          </Button>
-        </form>
-      </Container>
+      {isMod && (
+        <Container className="d-flex p-6 justify-content-center">
+          <form onSubmit={onSubmit}>
+            <input
+              type="text"
+              name="title"
+              style={{ flex: "10", padding: "5px" }}
+              placeholder="Title ..."
+              value={input.title}
+              onChange={onChange}
+            />
+            <input
+              type="text"
+              name="description"
+              style={{ flex: "10", padding: "5px" }}
+              placeholder="Description ..."
+              value={input.description}
+              onChange={onChange}
+            />
+            <Button
+              type="submit"
+              value="Submit"
+              className="btn"
+              style={{ flex: "1" }}
+            >
+              Add Project
+            </Button>
+            <Container className="d-flex p-6 justify-content-center">
+              {isMod && <SetRolesModal projects={projects} />}
+            </Container>
+          </form>
+        </Container>
+      )}
       {/* form ends above and table begins below */}
       <Container>
         <Table striped bordered hover variant="dark">
@@ -99,13 +118,21 @@ function Projects() {
             </tr>
           </thead>
           <tbody>
-            {projects.map((project, idx) => (
-              <tr>
-                <td>{project.id}</td>
-                <td>{project.title}</td>
-                <td>{project.description}</td>
-              </tr>
-            ))}
+            {permissions.map((permission, idx) =>
+              projects
+                .filter(
+                  (x) =>
+                    x.id === permission.project_id &&
+                    permission.username === localStorageCurrentUser
+                )
+                .map((project, idx) => (
+                  <tr>
+                    <td>{project.id}</td>
+                    <td>{project.title}</td>
+                    <td>{project.description}</td>
+                  </tr>
+                ))
+            )}
           </tbody>
         </Table>
       </Container>
