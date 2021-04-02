@@ -1,31 +1,19 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import {
-  Table,
-  Container,
-  // ButtonGroup,
-  // ToggleButton,
-  Button,
-} from "react-bootstrap";
+import { Table, Container, Form, Button } from "react-bootstrap";
 
-function SetRoles() {
+function SetRoles({ projects }) {
   const [users, setUsers] = useState([]);
-  // const [checked, setChecked] = useState(false);
-  // const [radioValue, setRadioValue] = useState("1");
-
-  // const radios = [
-  //   { name: "Client", value: "1" },
-  //   { name: "Moderator", value: "2" },
-  // ];
-
-  // let userObject = {
-  //   isModerator:
-  // }
+  const [permissions, setPermissions] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:4001/users/`).then((response) => {
+    axios.get("http://localhost:4001/users/").then((response) => {
       console.log(response.data);
       setUsers(response.data);
+    });
+    axios.get("http://localhost:4001/permissions/").then((response) => {
+      console.log(response.data);
+      setPermissions(response.data);
     });
   }, []);
 
@@ -42,6 +30,33 @@ function SetRoles() {
       });
   };
 
+  const handleChangePermission = (
+    e,
+    project_id,
+    username,
+    permissionObject
+  ) => {
+    let permissionId = permissionObject && permissionObject.id;
+    e.target.checked
+      ? axios
+          .post("http://localhost:4001/permissions/", {
+            username,
+            project_id,
+          })
+          .then(() => {
+            axios.get("http://localhost:4001/permissions/").then((response) => {
+              setPermissions(response.data);
+            });
+          })
+      : axios
+          .delete(`http://localhost:4001/permissions/${permissionId}`)
+          .then(() => {
+            axios.get("http://localhost:4001/permissions/").then((response) => {
+              setPermissions(response.data);
+            });
+          });
+  };
+
   return (
     <Container>
       <Table striped bordered hover variant="dark">
@@ -49,6 +64,7 @@ function SetRoles() {
           <tr>
             <th>Username</th>
             <th>Role</th>
+            <th>Permissions</th>
           </tr>
         </thead>
         <tbody>
@@ -56,31 +72,46 @@ function SetRoles() {
             <tr>
               <td>{user.username}</td>
               <td>
-                {/* moderator toggle button below */}
-                {/* <ButtonGroup toggle>
-                  {radios.map((radio, idx) => (
-                    <ToggleButton
-                      key={idx}
-                      type="radio"
-                      variant="dark"
-                      name="radio"
-                      value={radio.value}
-                      checked={radioValue === radio.value}
-                      onChange={(e) => setRadioValue(e.currentTarget.value)}
-                    >
-                      {radio.name}
-                    </ToggleButton>
+                <Button
+                  variant={user.isModerator ? "success" : "warning"}
+                  onClick={() => handleClick(user.isModerator, user.username)}
+                >
+                  {user.isModerator ? "Moderator" : "Client"}
+                </Button>
+              </td>
+              <td>
+                <Form>
+                  {["checkbox"].map((type) => (
+                    <div key={`inline-${type}`} className="mb-3">
+                      {projects.map((project, idx) => {
+                        let permissionObject = permissions.find(
+                          (x) =>
+                            x.username === user.username &&
+                            x.project_id === project.id
+                        );
+
+                        return (
+                          <Form.Check
+                            inline
+                            label={project.title}
+                            type={type}
+                            id={`inline-${type}-1`}
+                            checked={permissionObject}
+                            // value={}
+                            onChange={(e) =>
+                              handleChangePermission(
+                                e,
+                                project.id,
+                                user.username,
+                                permissionObject
+                              )
+                            }
+                          />
+                        );
+                      })}
+                    </div>
                   ))}
-                </ButtonGroup> */}
-                {/* toggle button ends above */}
-                {
-                  <Button
-                    variant={user.isModerator ? "success" : "warning"}
-                    onClick={() => handleClick(user.isModerator, user.username)}
-                  >
-                    {user.isModerator ? "Moderator" : "Client"}
-                  </Button>
-                }
+                </Form>
               </td>
             </tr>
           ))}

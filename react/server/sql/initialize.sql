@@ -1,8 +1,7 @@
-DROP TABLE IF EXISTS users, projects, milestones, permissions, devlog;
+DROP TABLE IF EXISTS milestones, permissions, devlog, users, projects;
 
 CREATE TABLE users (
   username VARCHAR(50),
-  password VARCHAR(50),
   isModerator BOOLEAN,
   PRIMARY KEY (username)
 );
@@ -47,9 +46,9 @@ FOREIGN KEY (project_id) REFERENCES projects (id)
 
 
 INSERT INTO users
-	(username, password, isModerator)
+	(username, isModerator)
 VALUES 
-  ("johnnyuserboy", "jamespassword123", true), ("TEST", "testpw123", false);
+  ("johnnyuserboy", true), ("TEST", false), ("clarson08@gmail.com", false);
 
 INSERT INTO projects
 	(title, description)
@@ -74,4 +73,5 @@ VALUES
 INSERT INTO permissions
 	(username, project_id)
 VALUES
-	("johnnyuserboy", 1);
+	("johnnyuserboy", 1),
+    ("clarson08@gmail.com", 1);

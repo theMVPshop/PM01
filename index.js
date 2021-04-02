@@ -4,50 +4,50 @@ window.onload = function() {
    identity[0].classList.add('nav-link');
 };
 
-  function numbaClick(e){
-      
-    let numba = document.getElementsByClassName('numba');
-    let hLines = document.getElementsByClassName('hLines');
-    let bText = document.getElementsByClassName('bText');
-    
-    // remove selected
-    for (let a=0; a<numba.length; a++){
-      numba[a].classList.remove('selected');
-      hLines[a].classList.add('hideit');
-      bText[a].classList.add('hideit');
-    }
-    // add selected to clicked
-    hLines[e.dataset.num].classList.remove('hideit');
-    bText[e.dataset.num].classList.remove('hideit');
-    e.classList.toggle('selected');
-  }
+function numbaClick(e){
+	
+	let numba = document.getElementsByClassName('numba');
+	let hLines = document.getElementsByClassName('hLines');
+	let bText = document.getElementsByClassName('bText');
 
-  //NETLIFY IDENTITY CODE
-  const user = netlifyIdentity.currentUser();
+	// remove selected
+	for (let a=0; a<numba.length; a++){
+		numba[a].classList.remove('selected');
+		hLines[a].classList.add('hideit');
+		bText[a].classList.add('hideit');
+}
+// add selected to clicked
+hLines[e.dataset.num].classList.remove('hideit');
+bText[e.dataset.num].classList.remove('hideit');
+e.classList.toggle('selected');
+}
 
-  // Bind to events
-  netlifyIdentity.on('init', () => console.log('init', user));
-  netlifyIdentity.on('login', () => console.log('login', user));
-  netlifyIdentity.on('logout', () => console.log('Logged out'));
-  netlifyIdentity.on('error', err => console.error('Error', err));
-  netlifyIdentity.on('open', () => console.log('Widget opened'));
-  netlifyIdentity.on('close', () => console.log('Widget closed', user));
+//NETLIFY IDENTITY CODE
+const user = netlifyIdentity.currentUser();
 
-  // Unbind from events
-  netlifyIdentity.off('login'); // to unbind all registered handlers
-  netlifyIdentity.off('login', handler); // to unbind a single handler
+// Bind to events
+netlifyIdentity.on('init', () => console.log('init', user));
+netlifyIdentity.on('login', () => console.log('login', user));
+netlifyIdentity.on('logout', () => console.log('Logged out'));
+netlifyIdentity.on('error', err => console.error('Error', err));
+netlifyIdentity.on('open', () => console.log('Widget opened'));
+netlifyIdentity.on('close', () => console.log('Widget closed', user));
 
-  // Close the modal
-  netlifyIdentity.close();
+// Unbind from events
+netlifyIdentity.off('login'); // to unbind all registered handlers
+netlifyIdentity.off('login', handler); // to unbind a single handler
 
-  // Log out the user
-  netlifyIdentity.logout();
+// Close the modal
+netlifyIdentity.close();
 
-  // Refresh the user's JWT
-  // Call in on('login') handler to ensure token refreshed after it expires (1hr)  
-  // Note: this method returns a promise.
-  netlifyIdentity.refresh().then((jwt)=>console.log(jwt))
+// Log out the user
+netlifyIdentity.logout();
 
-  // Change language
-  netlifyIdentity.setLocale('en');
+// Refresh the user's JWT
+// Call in on('login') handler to ensure token refreshed after it expires (1hr)  
+// Note: this method returns a promise.
+netlifyIdentity.refresh().then((jwt)=>console.log(jwt))
+
+// Change language
+netlifyIdentity.setLocale('en');
 

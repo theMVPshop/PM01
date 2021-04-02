@@ -28,19 +28,46 @@ a {
 	text-decoration: none;
 	font-size: medium;
 	color: white;
+	transition: all 0.5s
 }
 
+span a {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
 
+span a:after {
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
+}
+
+span a:hover {
+	color: white;
+	padding-right: 25px;
+}
+
+span:hover a:after {
+	
+	opacity: 1;
+	right: 0;
+}
 
 button {
-	border: none;
+	border: none; 
 }
+
 
 
 #landing-page-1 {
 	height: 100vh;
 	background: rgb(62 210 255);
-	background-size: 60%;
+	background-size: 55%;
 	background-repeat: no-repeat;
 	background-position-x: right;
     background-position-y: top;
@@ -48,13 +75,11 @@ button {
 	background-image: url('./MVPwebsite/img/illo01.png'), linear-gradient(90deg, rgb(58 210 255) 0%, rgba(50,230,237,1) 75%, rgba(50,237,207,1) 100%);
 }
 
-.get-started-btn {
-	border-radius: 55px;
-	background-color: white;
-	height: 35px;
-	
-	
+.badge {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+
 
 #landing-page-2 {
 	/* height: 100vh; */
@@ -70,12 +95,9 @@ button {
 }
 
 
-#landing-page-3 {
-	/* height: 100vh; */
-}
-
 .portfolio-cards {
 	width: 18rem;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 
@@ -83,16 +105,23 @@ button {
 .float-this {
 	float: right;
 	background-color: transparent;
-	border: none;
+	color: #0dcaf0;
+	transition: all 0.4s;
+	/* border: none; */
+}
+
+.float-this:hover {
+	transition: all 0.4s;
+	transform: scale(1.5);
 }
 
 .portfolio-links {
-	color: black;
+	color: #0dcaf0;
 }
 
 
 #landing-page-4 {
-	height: 80vh;
+	/* height: 80vh; */
 	background-color: #fff;
 }
 
@@ -136,6 +165,7 @@ button {
 #process {
 	background: rgb(67,177,247);
   	background: linear-gradient(153deg, rgba(67,177,247,1) 0%, rgba(53,240,216,1) 100%);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	text-align: center;
 	color: white;
 	margin:auto;
@@ -163,6 +193,7 @@ button {
 	border:2px solid white;
 	border-radius: 50px;
 	padding-top:12px;
+	transition-duration: 0.5s;
   }
   
   .numba:hover {
