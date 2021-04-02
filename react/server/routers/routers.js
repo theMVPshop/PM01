@@ -29,6 +29,7 @@ router.get(
 router.post("/milestones", milestonesControllers.createMilestone);
 router.delete("/milestones/:id", milestonesControllers.deleteMilestoneById);
 router.put("/milestones", milestonesControllers.updateMilestoneById);
+router.put("/milestones/:id", milestonesControllers.updateMilestoneStatusById);
 
 // devlog controllers
 router.get("/devlog/:project_id", devlogControllers.getDevlogByProject);
