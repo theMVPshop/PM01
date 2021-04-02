@@ -39,7 +39,7 @@ function App() {
               username: user.email,
               isModerator: 0,
             });
-          existingUser && setCurrentUser(user.email);
+          setCurrentUser(user.email);
         });
       });
     } else {
@@ -56,7 +56,7 @@ function App() {
   }
 
   const NavWithRouter = withRouter(Navigation);
-  const localStorageCurrentUser =
+  let localStorageCurrentUser =
     currentUser && JSON.parse(localStorage.getItem("gotrue.user")).email;
 
   return (

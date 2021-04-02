@@ -100,12 +100,22 @@ function Milestones() {
   };
 
   const handleClick = (todo) => {
+    const todoId = todo.id;
     if (todo.ms_status === "TODO") {
       todo.ms_status = "IN PROGRESS";
+      axios.put(`http://localhost:4001/milestones/${todoId}`, {
+        ms_status: "IN PROGRESS",
+      });
     } else if (todo.ms_status === "IN PROGRESS") {
       todo.ms_status = "COMPLETED";
+      axios.put(`http://localhost:4001/milestones/${todoId}`, {
+        ms_status: "COMPLETED",
+      });
     } else if (todo.ms_status === "COMPLETED") {
       todo.ms_status = "TODO";
+      axios.put(`http://localhost:4001/milestones/${todoId}`, {
+        ms_status: "TODO",
+      });
     }
 
     setTodos([...todos]);
