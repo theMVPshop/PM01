@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./contact.css">
   </head>
   <body>
+
     <div class="container-fluid">
       <div class="nav justify-content-center">
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -42,35 +43,54 @@
         </nav>
       </div> 
 
-      <div class="container-fluid form-area">
+      <div class="container container-sm container-md container-lg form-area">
         <div class="row d-flex flex-wrap align-items-center justify-content-evenly">
           <div class="col-6"> 
             <img class="contact-image" src="./MVPwebsite/img/Screen Shot 2021-03-29 at 7.30.16 PM.png" alt="contact image">
           </div>
+        </div>
 
-          <div class="col-6 form-style-10">
-            <h1>Have some questions?<span>Send us a quick message and we will get back to you!</span></h1>
-            <form name="contact" method="POST" data-netlify="true">
-              <div class="section"><span>1</span>Name</div>
-              <div class="inner-wrap">
-                <label>Your Full Name <input type="text" name="name" /></label>
+        <div class="row d-flex flex-wrap align-items-center justify-content-evenly">
+          <div class="col-6"> 
+            
+            <div class="about-form">
+              <h4 class="title">Have a Project to Complete?</h4>
+              <div role="form" class="wpcf7" id="wpcf7-f14288-o1" lang="en-US" dir="ltr">
+                <form action="/#wpcf7-f14288-o1" method="post" class="wpcf7-form init" novalidate="novalidate" data-status="init">
+                  <div class="form-text">
+                    <p>Yes, I’m interested in discussing a 
+                      <span class="wpcf7-form-control-wrap your-project">
+                        <input type="text" name="your-project" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required about-input" id="first" aria-required="true" aria-invalid="false" placeholder="web design, dev, etc.">
+                          
+                        </span><br>
+                        project for
+                    </p>
+                    <p>
+                      <span class="wpcf7-form-control-wrap your-business-name">
+                        <input type="text" name="your-business-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required about-input" id="second" aria-required="true" aria-invalid="false" placeholder="business name, etc.">
+                      </span>
+                        . My name is 
+                      <span class="wpcf7-form-control-wrap your-name">              
+                        <input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required about-input" id="third" aria-required="true" aria-invalid="false" placeholder="Brian">
+                      </span><br>
+                      you can call me at 
+                      <span class="wpcf7-form-control-wrap phone-number">
+                        <input type="text" name="phone-number" value="" size="50" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required about-input" id="phone-num" aria-required="true" aria-invalid="false" placeholder="your phone number"> 
+                      </span>,<br> 
+                      and you can email me at
+                      <span class="wpcf7-form-control-wrap email-362">
+                        <input type="email" name="email-362" value="" size="50" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email about-input" id="fourth" aria-required="true" aria-invalid="false" placeholder="example@example.com">
+                        </span>.
+                    </p></br>
+                      <input type="submit" value="Submit" class="submit-btn btn-grad" aria-invalid="false">
+                </form>
               </div>
-              <div class="section"><span>2</span>Email & Phone</div>
-              <div class="inner-wrap">
-                <label>Email Address <input type="email" name="email" /></label>
-                <label>Phone Number <input type="text" name="phone number" /></label>
-              </div>
-              <div class="section"><span>3</span>Message</div>
-                <div class="inner-wrap">
-                <label>Message: <textarea name="message"></textarea></label>
-              </div>
-              <div class="button-section">
-                <button class="btn-grad" type="submit">Send</button>
-              </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
+
+
 
       <div class="container d-none d-lg-block">
         <section class="about-page-footer">
@@ -102,5 +122,6 @@
         </section>
       </div>
     </div>
+
   </body>
 </html>
