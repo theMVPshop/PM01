@@ -21,20 +21,22 @@ function Milestones() {
   // const [milestone, setMilestone] = useState({});
   let projectID = 1;
   let mstone = {};
-
+  
+  const fetchData = async () => {
+    try {
+      const result = await axios.get(
+        `http://localhost:4001/milestones/${projectID}`
+      );
+      setTodos(result.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await axios.get(
-          `http://localhost:4001/milestones/${projectID}`
-        );
-        setTodos(result.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+    
     fetchData().then(() => console.log("todos:", todos));
-  }, [counter]);
+  }, []);
 
   const postMilestone = () => {
     console.log("milestone", mstone);
@@ -53,6 +55,7 @@ function Milestones() {
       .then(function (response) {
         console.log("post milestone response", response);
       })
+      .then(() => fetchData())
       .catch(function (error) {
         console.log("post milestone error", error);
       });
@@ -80,7 +83,7 @@ function Milestones() {
     //   ...todos,
     //   milestone
     // ])
-    setCounter(counter + 1);
+    // setCounter(counter + 1);
     setInput({
       title: "",
       subtitle: "",
@@ -100,12 +103,22 @@ function Milestones() {
   };
 
   const handleClick = (todo) => {
+    const todoId = todo.id;
     if (todo.ms_status === "TODO") {
       todo.ms_status = "IN PROGRESS";
+      axios.put(`http://localhost:4001/milestones/${todoId}`, {
+        ms_status: "IN PROGRESS",
+      });
     } else if (todo.ms_status === "IN PROGRESS") {
       todo.ms_status = "COMPLETED";
+      axios.put(`http://localhost:4001/milestones/${todoId}`, {
+        ms_status: "COMPLETED",
+      });
     } else if (todo.ms_status === "COMPLETED") {
       todo.ms_status = "TODO";
+      axios.put(`http://localhost:4001/milestones/${todoId}`, {
+        ms_status: "TODO",
+      });
     }
 
     setTodos([...todos]);
