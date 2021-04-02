@@ -26,14 +26,14 @@ body {
 
 a {
 	text-decoration: none;
-	font-size: medium;
+	font-size: small;
 	color: white;
 }
 
 
 
 button {
-	border: none;
+	border: none; 
 }
 
 
@@ -46,6 +46,10 @@ button {
     background-position-y: top;
 	background-attachment: fixed;
 	background-image: url('./MVPwebsite/img/illo01.png'), linear-gradient(90deg, rgb(58 210 255) 0%, rgba(50,230,237,1) 75%, rgba(50,237,207,1) 100%);
+}
+
+.badge {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .get-started-btn {
