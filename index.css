@@ -26,7 +26,7 @@ body {
 
 a {
 	text-decoration: none;
-	font-size: small;
+	font-size: medium;
 	color: white;
 	transition: all 0.5s
 }
@@ -48,10 +48,12 @@ span a:after {
 }
 
 span a:hover {
+	color: white;
 	padding-right: 25px;
 }
 
 span:hover a:after {
+	
 	opacity: 1;
 	right: 0;
 }
@@ -65,7 +67,7 @@ button {
 #landing-page-1 {
 	height: 100vh;
 	background: rgb(62 210 255);
-	background-size: 60%;
+	background-size: 55%;
 	background-repeat: no-repeat;
 	background-position-x: right;
     background-position-y: top;
