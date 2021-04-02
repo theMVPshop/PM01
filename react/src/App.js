@@ -6,7 +6,6 @@ import { withRouter } from "react-router";
 
 function App() {
   const netlifyIdentity = require("netlify-identity-widget");
-  const [currentUser, setCurrentUser] = React.useState(null);
 
   netlifyIdentity.init();
 
@@ -39,7 +38,6 @@ function App() {
               username: user.email,
               isModerator: 0,
             });
-          setCurrentUser(user.email);
         });
       });
     } else {
@@ -57,7 +55,8 @@ function App() {
 
   const NavWithRouter = withRouter(Navigation);
   let localStorageCurrentUser =
-    currentUser && JSON.parse(localStorage.getItem("gotrue.user")).email;
+    JSON.parse(localStorage.getItem("gotrue.user")).email &&
+    JSON.parse(localStorage.getItem("gotrue.user")).email;
 
   return (
     <>
@@ -65,11 +64,7 @@ function App() {
         NetlifyIdentity={NetlifyIdentity}
         openNetlifyModal={openNetlifyModal}
       />
-      <ReactRouter
-        currentUser={currentUser}
-        localStorageCurrentUser={localStorageCurrentUser}
-      />
-      <p>currentUser: {currentUser && `welcome ${currentUser}`}</p>
+      <ReactRouter localStorageCurrentUser={localStorageCurrentUser} />
       <p>localStorage currentUser: {`welcome ${localStorageCurrentUser}`}</p>
     </>
   );
