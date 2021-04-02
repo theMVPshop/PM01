@@ -72,14 +72,14 @@ const updateMilestoneById = (req, res) => {
 };
 
 const updateMilestoneStatusById = (req, res) => {
-  let { ms_status, id } = req.body;
+  let { ms_status } = req.body;
   let sql = "UPDATE milestones SET ms_status = ? WHERE id = ?";
-  sql = mysql.format(sql, [ms_status, id]);
+  sql = mysql.format(sql, [ms_status, req.params.id]);
 
   pool.query(sql, (err, rows) => {
     if (err) return handleSQLError(res, err);
     return res.json({
-      message: `Updated Milestone Status of milestone ${id} to ${ms_status}`,
+      message: `Updated Milestone Status of milestone ${req.params.id} to ${ms_status}`,
     });
   });
 };
