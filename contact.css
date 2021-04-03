@@ -11,10 +11,9 @@
   background-size: 200% auto;
   color: white;            
   box-shadow: 0 0 20px #eee;
-  border-radius: 10px;
+  border-radius: 5px;
   display: block;
   margin: auto;
-  width: 200px;
 }
 
 .btn-grad:hover {
@@ -31,29 +30,25 @@ form {
   text-align: center;
 }
 
-.form-contents {
-
-}
-
 .form-input {
   border-radius: 10px;
 }
 
-.form-title {
+.title {
   text-align: center;
-  color:rgb(14, 129, 223);
 }
 
 
 .contact-image {
-  width: 600px;
+  width: 500px;
+  /* border: 1px solid red; */
 }
 
 
 
 /* footer */
 .about-page-footer {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   margin: auto;
 }
 
@@ -85,98 +80,99 @@ form {
 
 /* form stuff */
 .about-form {
-box-sizing: border-box;
-display: block;
-font-family: -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-font-weight: 400;
-height: 564px;
-line-height: 24px;
-padding-bottom: 60px;
-padding-left: 0px;
-padding-right: 0px;
-padding-top: 100px;
-text-align: left;
-text-size-adjust: 100%;
-width: 800px;
--webkit-box-direction: normal;
--webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-border: red 1px solid;
+  text-align: center;
+  margin: auto;
+  box-sizing: border-box;
+  display: block;
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-weight: 400;
+  height: 564px;
+  line-height: 24px;
+  padding-bottom: 60px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 100px;
+  text-align: left;
+  text-size-adjust: 100%;
+  width: 800px;
+  -webkit-box-direction: normal;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .about-form h4 {
-    margin-bottom: 41px;
-    font-size: 40px;
-    text-align: center;
+  margin-bottom: 41px;
+  font-size: 40px;
+  text-align: center;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: Lora,sans-serif;
-    color: #323232;
-    margin-bottom: .5rem;
-    font-weight: 500;
-    line-height: 1.2;
+  font-family: Lora,sans-serif;
+  color: #323232;
+  margin-bottom: .5rem;
+  font-weight: 500;
+  line-height: 1.2;
 }
 
 
 .about-form form {
-    width: 785px;
-    padding: 0 43px;
-    margin: auto;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    font-family: Mulish,sans-serif;
-    font-weight: 500;
+  width: 785px;
+  padding: 0 43px;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-family: Mulish,sans-serif;
+  font-weight: 500;
 }
 
 p {
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
 }
 
 .about-form form .form-text {
-    font-size: 20px;
-    line-height: 50px;
-    text-align: center;
+  font-size: 20px;
+  line-height: 50px;
+  text-align: center;
 }
 
 .about-form form .form-text p {
-    font-size: 20px;
-    line-height: 50px;
-    color: #303030;
+  font-size: 20px;
+  line-height: 50px;
+  color: #303030;
 }
 
 .about-form form p {
-    display: inline;
+  display: inline;
 }
 
 .wpcf7 {
   box-sizing: border-box;
-color: rgb(33, 37, 41);
-direction: ltr;
-display: block;
-font-family: -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-font-size: 16px;
-font-weight: 400;
-height: 275px;
-line-height: 24px;
-text-align: left;
-text-size-adjust: 100%;
-unicode-bidi: isolate;
-width: 771px;
--webkit-box-direction: normal;
--webkit-locale: "en-US";
--webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  color: rgb(33, 37, 41);
+  direction: ltr;
+  display: block;
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  height: 275px;
+  line-height: 24px;
+  text-align: left;
+  text-size-adjust: 100%;
+  unicode-bidi: isolate;
+  width: 771px;
+  -webkit-box-direction: normal;
+  -webkit-locale: "en-US";
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 form {
@@ -309,9 +305,9 @@ width: 190px;
 word-spacing: 0px;
 writing-mode: horizontal-tb;
 -webkit-box-direction: normal;
--webkit-rtl-ordering logical
--webkit-tap-highlight-color rgba(0, 0, 0, 0)
--webkit-border-image none
+-webkit-rtl-ordering logical;
+-webkit-tap-highlight-color rgba(0, 0, 0, 0);
+-webkit-border-image none;
 }
 
 .submit-btn {
