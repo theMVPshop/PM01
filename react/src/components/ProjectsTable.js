@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Container, Table } from "react-bootstrap";
 
-function ProjectsTable({ localStorageCurrentUser }) {
+function ProjectsTable() {
+  const localStorageCurrentUser =
+    JSON.parse(localStorage.getItem("gotrue.user")).email &&
+    JSON.parse(localStorage.getItem("gotrue.user")).email;
   const [projects, setProjects] = useState([]);
   const [permissions, setPermissions] = useState([]);
   const [isMod, setIsMod] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     // if someone is logged in, this will check to see if they are a moderator and store it in a useState hook (line 15) as a boolean
     localStorageCurrentUser &&
       axios.get("http://localhost:4001/users").then((response) => {
@@ -18,10 +21,8 @@ function ProjectsTable({ localStorageCurrentUser }) {
             : true
         );
       });
-    console.log("localStorageCurrentUser", localStorageCurrentUser);
-    console.log("isMod", isMod);
     // fetch permissions table from API and store in hook
-    axios.get("http://localhost:4001/permissions").then((response) => {
+    axios.get("http://localhost:4001/permissions/").then((response) => {
       setPermissions(response.data);
     });
     // fetch projects table from API and store in hook
