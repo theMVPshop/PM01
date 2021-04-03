@@ -12,7 +12,7 @@ function Milestones() {
     JSON.parse(localStorage.getItem("gotrue.user")).email &&
     JSON.parse(localStorage.getItem("gotrue.user")).email;
   const [todos, setTodos] = useState([]);
-  const [counter, setCounter] = useState(1);
+  // const [counter, setCounter] = useState(1);
   const [input, setInput] = useState({
     title: "",
     subtitle: "",
@@ -129,10 +129,12 @@ function Milestones() {
   const removeItem = (idx) => {
     let id = todos[idx].id;
     console.log("delete milestone: ", id);
-    axios.delete(`http://localhost:4001/milestones/${id}`);
-    setCounter(counter - 1);
-    // .then(response => response.json())
-    // .then(data => console.log('deleted milestone: ', data.id));
+    axios.delete(`http://localhost:4001/milestones/${id}`)
+    .then(() => fetchData())
+    .then(data => console.log('deleted milestone: ', data.id))
+    .catch(function (error) {
+      console.log("delete milestone error", error);
+    });
   };
 
   const handleClick = (todo) => {
@@ -291,6 +293,7 @@ function Milestones() {
         <VerticalTimeline>
           {todos.map((todo, idx) => (
             <VerticalTimelineElement
+              key={idx}
               className="vertical-timeline-element--work"
               contentStyle={{
                 background: "#20B2AA",
