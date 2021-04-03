@@ -84,8 +84,7 @@ function Devlog() {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    let date = new Date().getTime();
-    date = Math.floor(date / 1000);
+    let date = new Date().toLocaleString();
     newLog = {
         title: input.title,
         project_id: input.project_id,
@@ -93,7 +92,7 @@ function Devlog() {
         time_stamp: date,
         // subtitle: input.subtitle,
       };
-    setCounter(counter + 1);
+    // setCounter(counter + 1);
     setInput({
       title: "",
       // subtitle: "",
