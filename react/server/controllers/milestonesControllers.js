@@ -40,13 +40,14 @@ const createMilestone = (req, res) => {
 };
 
 const deleteMilestoneById = (req, res) => {
-  let sql = "DELETE FROM milestones WHERE id = ?";
-  sql = mysql.format(sql, [req.params.id]);
+  let { id } = req.body;
+  let sql = "DELETE FROM milestones WHERE id = ? AND project_id = ?";
+  sql = mysql.format(sql, [id, req.params.id]);
 
   pool.query(sql, (err, rows) => {
     if (err) return handleSQLError(res, err);
     return res.json({
-      message: `Deleted milestone: ${rows.affectedRows}`,
+      message: `Deleted milestone: ${id}`,
       id: req.body.id,
     });
   });

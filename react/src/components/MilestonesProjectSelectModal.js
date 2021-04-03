@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Modal, Button, Table } from "react-bootstrap";
 import axios from "axios";
 
-function MilestonesProjectSelectModal() {
+function MilestonesProjectSelectModal({ fromMilestones, handleProjectClick }) {
   const localStorageCurrentUser =
     JSON.parse(localStorage.getItem("gotrue.user")).email &&
     JSON.parse(localStorage.getItem("gotrue.user")).email;
@@ -35,8 +35,6 @@ function MilestonesProjectSelectModal() {
     });
   }, []);
 
-  const handleProjectClick = (projectId) => {};
-
   return (
     <>
       <Button variant="secondary" onClick={handleShow}>
@@ -68,7 +66,8 @@ function MilestonesProjectSelectModal() {
                             <td>{project.description}</td>
                           </tr>
                         ))
-                      : // maps over permissions table to filter projects assigned to current user and render them in the table
+                      : fromMilestones
+                      ? // maps over permissions table to filter projects assigned to current user and render them in the table. if rendered from milestones then it will have a handleclick eventhandler
                         permissions.map((permission, idx) =>
                           projects
                             .filter(
@@ -80,6 +79,22 @@ function MilestonesProjectSelectModal() {
                               <tr
                                 onClick={() => handleProjectClick(project.id)}
                               >
+                                <td>{project.id}</td>
+                                <td>{project.title}</td>
+                                <td>{project.description}</td>
+                              </tr>
+                            ))
+                        )
+                      : // otherwise, it won't have the listener
+                        permissions.map((permission, idx) =>
+                          projects
+                            .filter(
+                              (x) =>
+                                x.id === permission.project_id &&
+                                permission.username === localStorageCurrentUser
+                            )
+                            .map((project, idx) => (
+                              <tr>
                                 <td>{project.id}</td>
                                 <td>{project.title}</td>
                                 <td>{project.description}</td>
