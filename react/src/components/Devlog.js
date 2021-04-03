@@ -13,13 +13,7 @@ import {
 function Devlog() {
   const [logs, setLogs] = useState([]);
   const [counter, setCounter] = useState(1);
-  const [input, setInput] = useState({
-    title: "",
-    subtitle: "",
-    post: "",
-    date: "",
-    // id: counter,
-  });
+  
   let projectID = 1;
   let newLog = {};
 
@@ -56,7 +50,32 @@ function Devlog() {
 
   };
 
-  const onChange = (event) => {
+  const removeItem = (idx) => {
+    let id = logs[idx].id;
+    console.log("delete log: ", id);
+    axios.delete(`http://localhost:4001/devlog/${id}`)
+    .then(() => fetchData())
+    .then(() => console.log("logs:", logs))
+    .catch(function (error) {
+      console.log("delete devlog error", error);
+    });
+  };
+
+  // modal component code begins below
+  function DevlogModal() {
+    const [show, setShow] = useState(false);
+    const [input, setInput] = useState({
+      title: "",
+      // subtitle: "",
+      description: "",
+      time_stamp: "",
+      project_id: projectID,
+    });
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    
+    const onChange = (event) => {
     setInput((prevState) => ({
       ...prevState,
       [event.target.name]: event.target.value,
@@ -65,29 +84,25 @@ function Devlog() {
 
   const onSubmit = (event) => {
     event.preventDefault();
+    let date = new Date().getTime();
+    date = Math.floor(date / 1000);
     newLog = {
         title: input.title,
-        // id: counter,
-        post: input.post,
-        date: input.date,
-        subtitle: input.subtitle,
+        project_id: input.project_id,
+        description: input.description,
+        time_stamp: date,
+        // subtitle: input.subtitle,
       };
     setCounter(counter + 1);
     setInput({
       title: "",
-      subtitle: "",
-      post: "",
-      date: "",
+      // subtitle: "",
+      description: "",
+      time_stamp: "",
+      project_id: projectID,
     });
     postLog();
   };
-
-  // modal component code begins below
-  function DevlogModal() {
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
     return (
       <>
@@ -112,7 +127,7 @@ function Devlog() {
                       name="title"
                     />
                   </Form.Group>
-                  <Col xs="auto">
+                  {/* <Col xs="auto">
                     <Form.Group controlId="subtitle">
                       <Form.Label>Subtitle</Form.Label>
                       <Form.Control
@@ -122,8 +137,8 @@ function Devlog() {
                         name="subtitle"
                       />
                     </Form.Group>
-                  </Col>
-                  <Form.Group controlId="date">
+                  </Col> */}
+                  {/* <Form.Group controlId="date">
                     <Form.Label>Log Date</Form.Label>
                     <Form.Control
                       type="date"
@@ -131,17 +146,17 @@ function Devlog() {
                       onChange={onChange}
                       name="date"
                     />
-                  </Form.Group>
+                  </Form.Group> */}
                 </Form.Row>
                 <Form.Group controlId="post">
-                  <Form.Label>Log Post</Form.Label>
+                  <Form.Label>Description</Form.Label>
                   <Form.Control
                     as="textarea"
                     rows={3}
-                    value={input.post}
+                    value={input.description}
                     onChange={onChange}
-                    name="post"
-                    placeholder="Post..."
+                    name="description"
+                    placeholder="description..."
                   />
                 </Form.Group>
                 <Button variant="primary" type="submit" className="float-right">
@@ -167,14 +182,23 @@ function Devlog() {
           className="p-12"
         >
           {logs.map((log, idx) => (
-            <Card style={{ backgroundColor: "#708090" }}>
+            <Card key={idx} style={{ backgroundColor: "#708090" }}>
               <Card.Header style={{ backgroundColor: "lemonchiffon" }}>
-                <Accordion.Toggle as={Button} variant="info" eventKey="0">
+                <Accordion.Toggle as={Button} variant="info" eventKey={`${idx}`}>
                   {log.title}
                 </Accordion.Toggle>
+                <p style={{ color: "gray" }}>{log.time_stamp}</p>
+                <Button
+                variant="danger"
+                onClick={() => removeItem(idx)}
+                size="sm"
+                className="d-flex ml-auto"
+              >
+                Remove
+              </Button>
               </Card.Header>
-              <Accordion.Collapse eventKey="0">
-                <Card.Body>{log.post}</Card.Body>
+              <Accordion.Collapse eventKey={`${idx}`}>
+                <Card.Body>{log.description}</Card.Body>
               </Accordion.Collapse>
             </Card>
           ))}

@@ -8,10 +8,6 @@ margin: 0;
 padding: 0;
 }
 
-button {
-  /* margin-top: 10px; */
-
-}
 
 
 .btn-grad {background-image: linear-gradient(to right, #24C6DC 0%, #514A9D  51%, #24C6DC  100%)}
@@ -78,7 +74,6 @@ button {
 
 #about-the-mvpshop h2, #meet-the-crew h2  {
   text-align: center;
-  color:rgb(14, 129, 223)
 }
 
 /* section 2 */

@@ -8,7 +8,7 @@ import Milestones from "./components/Milestones";
 import Projects from "./components/Projects";
 import Devlog from "./components/Devlog";
 
-const Router = ({ currentUser, localStorageCurrentUser }) => {
+const Router = ({ localStorageCurrentUser }) => {
   return (
     <Switch>
       <Route exact path="/" component={Home} />
@@ -21,18 +21,12 @@ const Router = ({ currentUser, localStorageCurrentUser }) => {
         render={(props) => (
           <Projects
             {...props}
-            currentUser={currentUser}
             localStorageCurrentUser={localStorageCurrentUser}
           />
         )}
-        // component={Projects}
       />
     </Switch>
   );
 };
 
 export default Router;
-
-// render={(props) => (
-//   <Dashboard {...props} isAuthed={true} />
-// )}
