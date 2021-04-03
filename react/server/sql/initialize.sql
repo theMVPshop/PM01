@@ -68,7 +68,7 @@ VALUES
 INSERT INTO devlog
 	(title, description, project_id, time_stamp)
 VALUES
-	("Start the project", "We will start work now.", 1, 123456789);
+	("Start the project", "We will start work now.", 1, 1617067890);
     
 INSERT INTO permissions
 	(username, project_id)
