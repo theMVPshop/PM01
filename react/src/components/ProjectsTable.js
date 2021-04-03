@@ -4,7 +4,7 @@ import { Container, Table } from "react-bootstrap";
 
 function ProjectsTable() {
   const localStorageCurrentUser =
-    JSON.parse(localStorage.getItem("gotrue.user")).email &&
+    JSON.parse(localStorage.getItem("gotrue.user")) &&
     JSON.parse(localStorage.getItem("gotrue.user")).email;
   const [projects, setProjects] = useState([]);
   const [permissions, setPermissions] = useState([]);
