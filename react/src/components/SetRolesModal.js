@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Container, Modal, Button } from "react-bootstrap";
 import SetRoles from "../components/SetRoles";
 
+// inheriting props from AddProjectForm.js
 function SetRolesModal({ projects }) {
   const [show, setShow] = useState(false);
 
@@ -20,6 +21,7 @@ function SetRolesModal({ projects }) {
           </Modal.Header>
           <Modal.Body style={{ backgroundColor: "#adb5bd" }}>
             <Container className="d-flex p-6 justify-content-center">
+              {/* render SetRoles component */}
               <SetRoles projects={projects} />
             </Container>
           </Modal.Body>

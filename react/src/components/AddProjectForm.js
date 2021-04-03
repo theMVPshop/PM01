@@ -70,7 +70,8 @@ function AddProjectForm({ isMod, projects, setProjects }) {
               Add Project
             </Button>
             <Container className="d-flex p-6 justify-content-center">
-              {isMod && <SetRolesModal projects={projects} />}
+              {/* render SetRolesModal button */}
+              <SetRolesModal projects={projects} />
             </Container>
           </form>
         </Container>
