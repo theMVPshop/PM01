@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Container, Button, Table } from "react-bootstrap";
 import SetRolesModal from "../components/SetRolesModal";
+import ProjectsTable from "./ProjectsTable";
 
-function Projects({ currentUser, localStorageCurrentUser }) {
+function Projects({ localStorageCurrentUser }) {
   const [projects, setProjects] = useState([]);
   const [permissions, setPermissions] = useState([]);
   const [counter, setCounter] = useState(1);
@@ -15,6 +16,7 @@ function Projects({ currentUser, localStorageCurrentUser }) {
   const [isMod, setIsMod] = useState(false);
 
   React.useEffect(() => {
+    // if someone is logged in, this will check to see if they are a moderator and store it in a useState hook (line 15) as a boolean
     localStorageCurrentUser &&
       axios.get("http://localhost:4001/users").then((response) => {
         setIsMod(
@@ -25,14 +27,17 @@ function Projects({ currentUser, localStorageCurrentUser }) {
         );
         console.log("isMod", isMod);
       });
+    // fetch permissions table from API and store in hook
     axios.get("http://localhost:4001/permissions").then((response) => {
       setPermissions(response.data);
     });
+    // fetch projects table from API and store in hook
     axios.get("http://localhost:4001/projects/").then((response) => {
       setProjects(response.data);
     });
   }, []);
 
+  // controls all the input fields in the add project form
   const onChange = (event) => {
     setInput((prevState) => ({
       ...prevState,
@@ -40,6 +45,7 @@ function Projects({ currentUser, localStorageCurrentUser }) {
     }));
   };
 
+  // creates new project and stores it in hook and also the API
   const onSubmit = (event) => {
     event.preventDefault();
     let project = {
@@ -63,6 +69,7 @@ function Projects({ currentUser, localStorageCurrentUser }) {
       });
   };
 
+  // unfinished code to remove project
   const removeProject = (idx) => {
     let id = projects[idx].id;
     console.log("delete project: ", id);
@@ -73,7 +80,7 @@ function Projects({ currentUser, localStorageCurrentUser }) {
 
   return (
     <>
-      {/* form begins below */}
+      {/* add project form begins below */}
       {isMod && (
         <Container className="d-flex p-6 justify-content-center">
           <form onSubmit={onSubmit}>
@@ -108,34 +115,7 @@ function Projects({ currentUser, localStorageCurrentUser }) {
         </Container>
       )}
       {/* form ends above and table begins below */}
-      <Container>
-        <Table striped bordered hover variant="dark">
-          <thead>
-            <tr>
-              <th>ID#</th>
-              <th>Project Title</th>
-              <th>Project Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            {permissions.map((permission, idx) =>
-              projects
-                .filter(
-                  (x) =>
-                    x.id === permission.project_id &&
-                    permission.username === localStorageCurrentUser
-                )
-                .map((project, idx) => (
-                  <tr>
-                    <td>{project.id}</td>
-                    <td>{project.title}</td>
-                    <td>{project.description}</td>
-                  </tr>
-                ))
-            )}
-          </tbody>
-        </Table>
-      </Container>
+      <ProjectsTable localStorageCurrentUser={localStorageCurrentUser} />
     </>
   );
 }
