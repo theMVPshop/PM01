@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Container, Button, Table } from "react-bootstrap";
 import SetRolesModal from "../components/SetRolesModal";
+import ProjectsTable from "./ProjectsTable";
 
-function Projects({ currentUser, localStorageCurrentUser }) {
+function Projects({ localStorageCurrentUser }) {
   const [projects, setProjects] = useState([]);
   const [permissions, setPermissions] = useState([]);
   const [counter, setCounter] = useState(1);
@@ -114,35 +115,7 @@ function Projects({ currentUser, localStorageCurrentUser }) {
         </Container>
       )}
       {/* form ends above and table begins below */}
-      <Container>
-        <Table striped bordered hover variant="dark">
-          <thead>
-            <tr>
-              <th>ID#</th>
-              <th>Project Title</th>
-              <th>Project Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* (below) maps over permissions table to filter projects assigned to current user and render them in the table */}
-            {permissions.map((permission, idx) =>
-              projects
-                .filter(
-                  (x) =>
-                    x.id === permission.project_id &&
-                    permission.username === localStorageCurrentUser
-                )
-                .map((project, idx) => (
-                  <tr>
-                    <td>{project.id}</td>
-                    <td>{project.title}</td>
-                    <td>{project.description}</td>
-                  </tr>
-                ))
-            )}
-          </tbody>
-        </Table>
-      </Container>
+      <ProjectsTable localStorageCurrentUser={localStorageCurrentUser} />
     </>
   );
 }
