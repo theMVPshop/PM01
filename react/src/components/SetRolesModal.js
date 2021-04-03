@@ -16,7 +16,7 @@ function SetRolesModal({ projects }) {
       <>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Developer Log</Modal.Title>
+            <Modal.Title>Assign Roles/Projects</Modal.Title>
           </Modal.Header>
           <Modal.Body style={{ backgroundColor: "#adb5bd" }}>
             <Container className="d-flex p-6 justify-content-center">
