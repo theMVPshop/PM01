@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Container, Table } from "react-bootstrap";
+import AddProjectForm from "../components/AddProjectForm";
 
-function ProjectsTable() {
+function ProjectsTable({ fromMilestones, handleProjectClick }) {
   const localStorageCurrentUser =
     JSON.parse(localStorage.getItem("gotrue.user")) &&
     JSON.parse(localStorage.getItem("gotrue.user")).email;
@@ -33,41 +34,69 @@ function ProjectsTable() {
 
   return (
     <div>
+      {/* form to add a project */}
+      <AddProjectForm
+        isMod={isMod}
+        projects={projects}
+        setProjects={setProjects}
+      />
       <Container>
+        {/* table of projects */}
         <Table striped bordered hover variant="dark">
           <thead>
             <tr>
-              <th>ID#</th>
               <th>Project Title</th>
               <th>Project Description</th>
             </tr>
           </thead>
           <tbody>
-            {/* checks if user is a moderator to either show all projects or filter based on permissions table */}
-            {isMod
-              ? projects.map((project, idx) => (
-                  <tr>
-                    <td>{project.id}</td>
-                    <td>{project.title}</td>
-                    <td>{project.description}</td>
-                  </tr>
-                ))
-              : // maps over permissions table to filter projects assigned to current user and render them in the table
-                permissions.map((permission, idx) =>
-                  projects
-                    .filter(
-                      (x) =>
-                        x.id === permission.project_id &&
-                        permission.username === localStorageCurrentUser
-                    )
-                    .map((project, idx) => (
-                      <tr>
-                        <td>{project.id}</td>
-                        <td>{project.title}</td>
-                        <td>{project.description}</td>
-                      </tr>
-                    ))
-                )}
+            {
+              // checks if user is a moderator to either show all projects or filter based on permissions table
+              isMod
+                ? projects.map((project) => (
+                    <tr
+                      style={{ cursor: "pointer" }}
+                      onClick={() => handleProjectClick(project.id)}
+                    >
+                      <td>{project.title}</td>
+                      <td>{project.description}</td>
+                    </tr>
+                  ))
+                : fromMilestones
+                ? // maps over permissions table to filter projects assigned to current user and render them in the table. if rendered from milestones then it will have a handleclick eventlistener
+                  permissions.map((permission) =>
+                    projects
+                      .filter(
+                        (x) =>
+                          x.id === permission.project_id &&
+                          permission.username === localStorageCurrentUser
+                      )
+                      .map((project) => (
+                        <tr
+                          style={{ cursor: "pointer" }}
+                          onClick={() => handleProjectClick(project.id)}
+                        >
+                          <td>{project.title}"poop"</td>
+                          <td>{project.description}</td>
+                        </tr>
+                      ))
+                  )
+                : // otherwise, it won't have the listener
+                  permissions.map((permission) =>
+                    projects
+                      .filter(
+                        (x) =>
+                          x.id === permission.project_id &&
+                          permission.username === localStorageCurrentUser
+                      )
+                      .map((project) => (
+                        <tr>
+                          <td>{project.title}</td>
+                          <td>{project.description}</td>
+                        </tr>
+                      ))
+                  )
+            }
           </tbody>
         </Table>
       </Container>

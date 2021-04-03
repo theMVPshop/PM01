@@ -2,6 +2,7 @@ import React from "react";
 import { Navbar, Nav, Button } from "react-bootstrap";
 
 function Navigation({ location, NetlifyIdentity, openNetlifyModal }) {
+  let loggedIn = localStorage.getItem("loggedIn");
   return (
     <div style={{ paddingBottom: "6px" }}>
       <Navbar bg="dark" variant="dark" expand="lg">
@@ -22,7 +23,7 @@ function Navigation({ location, NetlifyIdentity, openNetlifyModal }) {
             openNetlifyModal();
           }}
         >
-          Login
+          {loggedIn === "true" ? "Logout" : "Login"}
         </Button>
       </Navbar>
     </div>

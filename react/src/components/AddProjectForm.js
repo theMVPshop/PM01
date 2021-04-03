@@ -1,74 +1,85 @@
-import React from "react";
-import { Button, Container } from "react-bootstrap";
+import React, { useState } from "react";
+import axios from "axios";
+import { Container, Button } from "react-bootstrap";
+import SetRolesModal from "../components/SetRolesModal";
 
-function AddProjectForm({ onSubmit, onChange, input }) {
+// inheriting props/state from ProjectsTable.js
+function AddProjectForm({ isMod, projects, setProjects }) {
+  const [input, setInput] = useState({
+    title: "",
+    description: "",
+  });
+
+  // controls all the input fields in the add project form
+  const onChange = (event) => {
+    setInput((prevState) => ({
+      ...prevState,
+      [event.target.name]: event.target.value,
+    }));
+  };
+
+  // creates new project and stores it in hook and also the API
+  const onSubmit = (event) => {
+    event.preventDefault();
+
+    let project = {
+      title: input.title,
+      description: input.description,
+    };
+
+    axios.post(`http://localhost:4001/projects`, project);
+    setProjects([...projects, project]);
+
+    setInput({
+      title: "",
+      description: "",
+    });
+  };
+
+  // unfinished code to remove project
+  const removeProject = (idx) => {
+    let id = projects[idx].id;
+    console.log("delete project: ", id);
+    axios.delete(`http://localhost:4001/projects/${id}`);
+    // .then(response => response.json())
+    // .then(data => console.log('deleted project: ', data.id));
+  };
+
   return (
     <div>
-      <Container className="d-flex p-6 justify-content-center">
-        <form onSubmit={onSubmit}>
-          <input
-            type="text"
-            name="title"
-            style={{ flex: "10", padding: "5px" }}
-            placeholder="Title ..."
-            value={input.title}
-            onChange={onChange}
-          />
-          <input
-            type="text"
-            name="subtitle"
-            style={{ flex: "10", padding: "5px" }}
-            placeholder="Subtitle ..."
-            value={input.subtitle}
-            onChange={onChange}
-          />
-          <input
-            type="text"
-            name="description"
-            style={{ flex: "10", padding: "5px" }}
-            placeholder="Description ..."
-            value={input.description}
-            onChange={onChange}
-          />
-          <label
-            for="due_date"
-            style={{
-              backgroundColor: "darkorange",
-              color: "black",
-              flex: "2",
-              padding: "5px",
-              marginBottom: "5px",
-              // border: "1px solid black",
-            }}
-          >
-            Due Date:{" "}
-          </label>
-          <input
-            type="date"
-            name="due_date"
-            style={{ flex: "10", padding: "5px" }}
-            placeholder="Due date ..."
-            value={input.due_date}
-            onChange={onChange}
-          />
-          {/* <input
-            type="select"
-            name="status"
-            style={{ flex: "10", padding: "5px" }}
-            placeholder="Status ..."
-            value={input.ms_status}
-            onChange={onChange}
-          /> */}
-          <Button
-            type="submit"
-            value="Submit"
-            className="btn"
-            style={{ flex: "1" }}
-          >
-            Add
-          </Button>
-        </form>
-      </Container>
+      {isMod && (
+        <Container className="d-flex p-6 justify-content-center">
+          <form onSubmit={onSubmit}>
+            <input
+              type="text"
+              name="title"
+              style={{ flex: "10", padding: "5px" }}
+              placeholder="Title ..."
+              value={input.title}
+              onChange={onChange}
+            />
+            <input
+              type="text"
+              name="description"
+              style={{ flex: "10", padding: "5px" }}
+              placeholder="Description ..."
+              value={input.description}
+              onChange={onChange}
+            />
+            <Button
+              type="submit"
+              value="Submit"
+              className="btn"
+              style={{ flex: "1" }}
+            >
+              Add Project
+            </Button>
+            <Container className="d-flex p-6 justify-content-center">
+              {isMod && <SetRolesModal projects={projects} />}
+            </Container>
+          </form>
+        </Container>
+      )}
     </div>
   );
 }

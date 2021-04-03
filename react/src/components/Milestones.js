@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Container } from "react-bootstrap";
 import MilestonesProjectSelectModal from "../components/MilestonesProjectSelectModal";
-import AddProjectForm from "./AddProjectForm";
+import AddMilestoneForm from "./AddMilestoneForm";
 import TimelineElement from "../components/TimelineElement";
 
 function Milestones() {
@@ -98,7 +98,6 @@ function Milestones() {
         ms_status: "TODO",
       });
     }
-
     setTodos([...todos]);
   };
 
@@ -111,7 +110,11 @@ function Milestones() {
         />
       </Container>
       <Container className="d-flex p-6 justify-content-center">
-        <AddProjectForm onChange={onChange} input={input} onSubmit={onSubmit} />
+        <AddMilestoneForm
+          onChange={onChange}
+          input={input}
+          onSubmit={onSubmit}
+        />
       </Container>
       <TimelineElement
         todos={todos}

@@ -39,6 +39,12 @@ function App() {
               isModerator: 0,
             });
         });
+        localStorage.setItem("loggedIn", "true");
+        window.location.reload();
+      });
+      netlifyIdentity.on("logout", () => {
+        localStorage.setItem("loggedIn", "false");
+        window.location.reload();
       });
     } else {
       console.log("netlifyIdentity not defined");

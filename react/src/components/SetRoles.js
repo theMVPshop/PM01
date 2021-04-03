@@ -17,9 +17,9 @@ function SetRoles({ projects }) {
     });
   }, []);
 
-  const handleClick = (isMod, username) => {
+  const handleChangeRole = (isMod, username) => {
     axios
-      .post("http://localhost:4001/users/", {
+      .put("http://localhost:4001/users/", {
         isModerator: !isMod,
         username,
       })
@@ -74,7 +74,9 @@ function SetRoles({ projects }) {
               <td>
                 <Button
                   variant={user.isModerator ? "success" : "warning"}
-                  onClick={() => handleClick(user.isModerator, user.username)}
+                  onClick={() =>
+                    handleChangeRole(user.isModerator, user.username)
+                  }
                 >
                   {user.isModerator ? "Moderator" : "Client"}
                 </Button>
