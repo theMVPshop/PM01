@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Container, Table } from "react-bootstrap";
+import { Container, Table, Button } from "react-bootstrap";
 import AddProjectForm from "../components/AddProjectForm";
 
 function ProjectsTable({ fromMilestones, handleProjectClick }) {
@@ -32,6 +32,15 @@ function ProjectsTable({ fromMilestones, handleProjectClick }) {
     });
   }, []);
 
+  // removes project from api and repopulates component with projects sans deleted one
+  const removeProject = (projectId) => {
+    axios.delete(`http://localhost:4001/projects/${projectId}`).then(() => {
+      axios.get("http://localhost:4001/projects").then((response) => {
+        setProjects([...response.data]);
+      });
+    });
+  };
+
   return (
     <div>
       {/* form to add a project */}
@@ -45,6 +54,7 @@ function ProjectsTable({ fromMilestones, handleProjectClick }) {
         <Table striped bordered hover variant="dark">
           <thead>
             <tr>
+              <th>ID#</th>
               <th>Project Title</th>
               <th>Project Description</th>
             </tr>
@@ -55,11 +65,26 @@ function ProjectsTable({ fromMilestones, handleProjectClick }) {
               isMod
                 ? projects.map((project) => (
                     <tr
-                      style={{ cursor: "pointer" }}
-                      onClick={() => handleProjectClick(project.id)}
+                      // the following attributes are only applicable if rendered by Milestones.js
+                      style={fromMilestones ? { cursor: "pointer" } : null}
+                      onClick={
+                        fromMilestones
+                          ? () => handleProjectClick(project.id)
+                          : null
+                      }
                     >
+                      <td>{project.id}</td>
                       <td>{project.title}</td>
                       <td>{project.description}</td>
+                      <td className="d-flex justify-content-center">
+                        <Button
+                          variant="danger"
+                          size="sm"
+                          onClick={() => removeProject(project.id)}
+                        >
+                          X
+                        </Button>
+                      </td>
                     </tr>
                   ))
                 : fromMilestones
@@ -76,8 +101,18 @@ function ProjectsTable({ fromMilestones, handleProjectClick }) {
                           style={{ cursor: "pointer" }}
                           onClick={() => handleProjectClick(project.id)}
                         >
+                          <td>{project.id}</td>
                           <td>{project.title}"poop"</td>
                           <td>{project.description}</td>
+                          <td className="d-flex justify-content-center">
+                            <Button
+                              variant="danger"
+                              size="sm"
+                              onClick={() => removeProject(project.id)}
+                            >
+                              X
+                            </Button>
+                          </td>
                         </tr>
                       ))
                   )
@@ -91,8 +126,18 @@ function ProjectsTable({ fromMilestones, handleProjectClick }) {
                       )
                       .map((project) => (
                         <tr>
+                          <td>{project.id}</td>
                           <td>{project.title}</td>
                           <td>{project.description}</td>
+                          <td className="d-flex justify-content-center">
+                            <Button
+                              variant="danger"
+                              size="sm"
+                              onClick={() => removeProject(project.id)}
+                            >
+                              X
+                            </Button>
+                          </td>
                         </tr>
                       ))
                   )

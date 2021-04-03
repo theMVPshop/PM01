@@ -20,7 +20,21 @@ const createProject = (req, res) => {
   });
 };
 
+const removeProjectById = (req, res) => {
+  let sql = "DELETE FROM projects WHERE id = ?";
+  sql = mysql.format(sql, [req.params.id]);
+
+  pool.query(sql, (err, rows) => {
+    if (err) return handleSQLError(res, err);
+    return res.json({
+      message: `Deleted permission with an Id of ${req.params.id}`,
+      id: req.body.id,
+    });
+  });
+};
+
 module.exports = {
   getAllProjects,
   createProject,
+  removeProjectById,
 };

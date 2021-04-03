@@ -27,22 +27,17 @@ function AddProjectForm({ isMod, projects, setProjects }) {
       description: input.description,
     };
 
-    axios.post(`http://localhost:4001/projects`, project);
-    setProjects([...projects, project]);
+    axios.post(`http://localhost:4001/projects`, project).then(() => {
+      axios.get("http://localhost:4001/projects").then((response) => {
+        project.id = response.data[response.data.length - 1].id;
+        setProjects([...response.data]);
+      });
+    });
 
     setInput({
       title: "",
       description: "",
     });
-  };
-
-  // unfinished code to remove project
-  const removeProject = (idx) => {
-    let id = projects[idx].id;
-    console.log("delete project: ", id);
-    axios.delete(`http://localhost:4001/projects/${id}`);
-    // .then(response => response.json())
-    // .then(data => console.log('deleted project: ', data.id));
   };
 
   return (
