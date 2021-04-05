@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Modal, Button } from "react-bootstrap";
-import ProjectsTable from "../components/ProjectsTable";
+import ProjectsTable from "./ProjectsTable";
 
 function MilestonesProjectSelectModal({ fromMilestones, handleProjectClick }) {
   const [show, setShow] = useState(false);

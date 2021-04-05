@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Container, Table, Button } from "react-bootstrap";
-import AddProjectForm from "../components/AddProjectForm";
+import AddProjectForm from "./AddProjectForm";
 
 function ProjectsTable({ fromMilestones, handleProjectClick }) {
   const localStorageCurrentUser =
@@ -17,9 +17,9 @@ function ProjectsTable({ fromMilestones, handleProjectClick }) {
       axios.get("http://localhost:4001/users").then((response) => {
         setIsMod(
           response.data.find((x) => x.username === localStorageCurrentUser)
-            .isModerator === 0
-            ? false
-            : true
+            .isModerator === 1
+            ? true
+            : false
         );
       });
     // fetch permissions table from API and store in hook
@@ -102,7 +102,6 @@ function ProjectsTable({ fromMilestones, handleProjectClick }) {
                           onClick={() => handleProjectClick(project.id)}
                         >
                           <td>{project.id}</td>
-                          <td>{project.title}"poop"</td>
                           <td>{project.description}</td>
                           <td className="d-flex justify-content-center">
                             <Button
