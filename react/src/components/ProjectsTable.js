@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Container, Table, Button } from "react-bootstrap";
-import AddProjectForm from "../components/AddProjectForm";
+import AddProjectForm from "./AddProjectForm";
 
 function ProjectsTable({ fromMilestones, handleProjectClick }) {
   const localStorageCurrentUser =

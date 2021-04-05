@@ -35,6 +35,7 @@ function TimelineElement({ todos, handleClick, removeItem }) {
               }`,
               color: "#eee",
             }}
+            // pick the icon to show up in the middle circle for each timeline element
             // icon={<WorkIcon />}
           >
             <h3 className="vertical-timeline-element-title">{todo.title}</h3>

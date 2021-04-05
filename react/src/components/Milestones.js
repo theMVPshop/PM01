@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Container } from "react-bootstrap";
-import MilestonesProjectSelectModal from "../components/MilestonesProjectSelectModal";
+import MilestonesProjectSelectModal from "./MilestonesProjectSelectModal";
 import AddMilestoneForm from "./AddMilestoneForm";
-import TimelineElement from "../components/TimelineElement";
+import TimelineElement from "./TimelineElement";
 
 function Milestones() {
   const [todos, setTodos] = useState([]);

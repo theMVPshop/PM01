@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Container, Button } from "react-bootstrap";
-import SetRolesModal from "../components/SetRolesModal";
+import SetRolesModal from "./SetRolesModal";
 
 // inheriting props/state from ProjectsTable.js
 function AddProjectForm({ isMod, projects, setProjects }) {
@@ -34,6 +34,7 @@ function AddProjectForm({ isMod, projects, setProjects }) {
       });
     });
 
+    // clear input fields
     setInput({
       title: "",
       description: "",
