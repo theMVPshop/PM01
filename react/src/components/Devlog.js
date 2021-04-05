@@ -9,18 +9,19 @@ import {
   Col,
   Modal,
 } from "react-bootstrap";
+import MilestonesProjectSelectModal from "../components/MilestonesProjectSelectModal";
 
 function Devlog() {
   const [logs, setLogs] = useState([]);
-  const [counter, setCounter] = useState(1);
+  const [projectId, setCurrentProjectId] = useState(1);
   
-  let projectID = 1;
+  // let projectID = 1;
   let newLog = {};
 
   const fetchData = async () => {
       try {
         const result = await axios.get(
-          `http://localhost:4001/devlog/${projectID}`
+          `http://localhost:4001/devlog/${projectId}`
         );
         setLogs(result.data);
       } catch (error) {
@@ -69,7 +70,7 @@ function Devlog() {
       // subtitle: "",
       description: "",
       time_stamp: "",
-      project_id: projectID,
+      project_id: projectId,
     });
 
     const handleClose = () => setShow(false);
@@ -98,13 +99,28 @@ function Devlog() {
       // subtitle: "",
       description: "",
       time_stamp: "",
-      project_id: projectID,
+      project_id: projectId,
     });
     postLog();
   };
 
+  const handleProjectClick = (projectId) => {
+    axios
+      .get(`http://localhost:4001/milestones/${projectId}`)
+      .then((response) => {
+        setLogs(response.data);
+        setCurrentProjectId(projectId);
+      });
+  };
+
     return (
       <>
+        <Container className="d-flex p-6 justify-content-center">
+          <MilestonesProjectSelectModal
+            fromMilestones={true}
+            handleProjectClick={handleProjectClick}
+          />
+        </Container>
         <Button variant="primary" onClick={handleShow}>
           Add Log Entry
         </Button>
