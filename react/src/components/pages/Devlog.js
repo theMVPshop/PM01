@@ -9,7 +9,7 @@ import {
   Col,
   Modal,
 } from "react-bootstrap";
-import MilestonesProjectSelectModal from "../components/MilestonesProjectSelectModal";
+import MilestonesProjectSelectModal from "../MilestonesProjectSelectModal";
 
 function Devlog() {
   const [logs, setLogs] = useState([]);
