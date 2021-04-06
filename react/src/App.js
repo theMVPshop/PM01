@@ -9,9 +9,9 @@ function App() {
 
   netlifyIdentity.init();
 
-  const user = netlifyIdentity.currentUser();
+  // const user = netlifyIdentity.currentUser();
 
-  console.log(user);
+  // console.log(user);
 
   function initNetlifyIdentity() {
     const script = document.createElement("script");

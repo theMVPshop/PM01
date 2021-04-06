@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Modal, Button } from "react-bootstrap";
-import SetRoles from "../components/SetRoles";
+import SetRoles from "./SetRoles";
 
 // inheriting props from AddProjectForm.js
 function SetRolesModal({ projects }) {
