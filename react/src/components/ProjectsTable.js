@@ -100,7 +100,7 @@ function ProjectsTable({
                     </tr>
                   ))
                 : fromMilestones
-                ? // maps over permissions table to filter projects assigned to current user and render them in the table. if rendered from milestones then it will have a handleclick eventlistener
+                ? // maps over permissions table to filter projects assigned to current user and render them in the table. if rendered from Milestones.js then it will have a handleclick eventlistener
                   permissions.map((permission) =>
                     projects
                       .filter(
