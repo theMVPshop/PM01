@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { Container, Modal, Button } from "react-bootstrap";
 import ProjectsTable from "./ProjectsTable";
 
-function MilestonesProjectSelectModal({ fromMilestones, handleProjectClick }) {
+function MilestonesProjectSelectModal({
+  fromMilestones,
+  handleProjectClick,
+  activeProject,
+  setActiveProject,
+}) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -23,6 +28,8 @@ function MilestonesProjectSelectModal({ fromMilestones, handleProjectClick }) {
               <ProjectsTable
                 fromMilestones={fromMilestones}
                 handleProjectClick={handleProjectClick}
+                setActiveProject={setActiveProject}
+                activeProject={activeProject}
               />
             </Container>
           </Modal.Body>
