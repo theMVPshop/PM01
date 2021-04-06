@@ -48,44 +48,60 @@
             <img class="contact-image" src="./MVPwebsite/img/contactA.png" alt="contact image">
             <div class="about-form">
               <h4 class="title">Have a Project to Complete?</h4>
-              <form name="contact" method="POST" data-netlify="true" class="wpcf7">
+
+              <form class="wpcf7" name="contact" method="POST" data-netlify="true">
                 <div class="form-text">
                   <p>Yes, I’m interested in discussing a
                     <span>
-                      <input type="text" value="" size="40" aria-required="true" aria-invalid="false" placeholder="web design, dev, etc.">
-                      </span><br>
+                      <input type="text" name="project" value="" size="40" aria-required="true" aria-invalid="false" placeholder="web design, dev, etc.">
+                    </span><br>
                       project for
                   </p>
                   <p>
                     <span>
-                      <input type="text" value="" size="40" aria-required="true" aria-invalid="false" placeholder="business name, etc.">
+                      <input type="text" name="business" value="" size="40" aria-required="true" aria-invalid="false" placeholder="business name, etc.">
                     </span>
                       . My name is
-                    <span>             
-                      <input type="text" value="" size="40" aria-required="true" aria-invalid="false" placeholder="Brian">
+                    <span>         
+                      <input type="text" name="name" value="" size="40" aria-required="true" aria-invalid="false" placeholder="Brian">
                     </span><br>
                     you can call me at
                     <span>
-                      <input type="text" value="" size="50"  aria-required="true" aria-invalid="false" placeholder="your phone number">
+                      <input type="text" name="number" value="" size="50"  aria-required="true" aria-invalid="false" placeholder="your phone number">
                     </span>,<br>
                     and you can email me at
                     <span>
-                      <input type="email" value="" size="50" aria-required="true" aria-invalid="false" placeholder="example@example.com">
-                      </span>.
+                      <input type="email" name="email" value="" size="50" aria-required="true" aria-invalid="false" placeholder="example@example.com">
+                    </span>.
                   </p></br>
-                  <button type="submit" value="Submit" class="submit-btn btn-grad" aria-invalid="false">Send</button>
+                    <button type="submit" class="submit-btn btn-grad" aria-invalid="false">Send</button>
                 </div>
               </form>
+
+              <!-- <form name="contact" method="POST" data-netlify="true">
+                <p>
+                  <label>Your Name: <input type="text" name="name" /></label>   
+                </p>
+                <p>
+                  <label>Your Email: <input type="email" name="email" /></label>
+                </p>
+                <p>
+                  <label>Your Role: <select name="role[]" multiple>
+                    <option value="leader">Leader</option>
+                    <option value="follower">Follower</option>
+                  </select></label>
+                </p>
+                <p>
+                  <label>Message: <textarea name="message"></textarea></label>
+                </p>
+                <p>
+                  <button type="submit">Send</button>
+                </p>
+              </form> -->
+
             </div>
           </div>
         </div>
-
-
-
-
-        </div>
-      </div>
-
 
 
       <div class="container d-none d-lg-block">
