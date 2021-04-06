@@ -305,14 +305,13 @@ width: 190px;
 word-spacing: 0px;
 writing-mode: horizontal-tb;
 -webkit-box-direction: normal;
--webkit-rtl-ordering logical;
--webkit-tap-highlight-color rgba(0, 0, 0, 0);
--webkit-border-image none;
+-webkit-rtl-ordering: logical;
+-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .submit-btn {
-  margin:auto;
-  align-items: center;
+margin:auto;
+align-items: center;
 appearance: none;
 background-attachment: scroll;
 background-clip: border-box;
