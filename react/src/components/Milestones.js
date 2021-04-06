@@ -8,6 +8,7 @@ import TimelineElement from "./TimelineElement";
 function Milestones() {
   const [todos, setTodos] = useState([]);
   const [currentProjectId, setCurrentProjectId] = useState(null);
+  const [activeProject, setActiveProject] = useState(null);
   const [input, setInput] = useState({
     title: "",
     subtitle: "",
@@ -23,6 +24,7 @@ function Milestones() {
       .then((response) => {
         setTodos(response.data);
         setCurrentProjectId(projectId);
+        setActiveProject(projectId);
       });
   };
 
@@ -107,6 +109,8 @@ function Milestones() {
         <MilestonesProjectSelectModal
           fromMilestones={true}
           handleProjectClick={handleProjectClick}
+          setActiveProject={setActiveProject}
+          activeProject={activeProject}
         />
       </Container>
       <Container className="d-flex p-6 justify-content-center">

@@ -3,7 +3,13 @@ import axios from "axios";
 import { Container, Table, Button } from "react-bootstrap";
 import AddProjectForm from "./AddProjectForm";
 
-function ProjectsTable({ fromMilestones, handleProjectClick }) {
+// inheriting props from
+function ProjectsTable({
+  fromMilestones,
+  handleProjectClick,
+  activeProject,
+  setActiveProject,
+}) {
   const localStorageCurrentUser =
     JSON.parse(localStorage.getItem("gotrue.user")) &&
     JSON.parse(localStorage.getItem("gotrue.user")).email;
@@ -66,7 +72,13 @@ function ProjectsTable({ fromMilestones, handleProjectClick }) {
                 ? projects.map((project) => (
                     <tr
                       // the following attributes are only applicable if rendered by Milestones.js
-                      style={fromMilestones ? { cursor: "pointer" } : null}
+                      style={
+                        activeProject === project.id
+                          ? {
+                              backgroundColor: "orange",
+                            }
+                          : fromMilestones && { cursor: "pointer" }
+                      }
                       onClick={
                         fromMilestones
                           ? () => handleProjectClick(project.id)
