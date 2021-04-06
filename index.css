@@ -175,16 +175,17 @@ button {
   }
 
   #bodyText {
-	  height: 90%;
+	  height: 100%;
   }
-  
+
+
   #flexit {
 	display:flex;
 	flex-direction: column;
   }
   
   #fourStep {
-	width:80%;
+	width:90%;
 	margin-top:60px;
 	margin:auto;
 	display: flex;
