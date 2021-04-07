@@ -174,10 +174,13 @@ button {
 	padding:20px;
   }
 
-  #bodyText {
+  /* #bodyText {
 	  height: 100%;
-  }
+  } */
 
+.bText {
+	height: 70%;
+}
 
   #flexit {
 	display:flex;
@@ -267,35 +270,26 @@ button {
 .about-page-footer {
 	margin: auto;
   }
-  
   .footer-container {
-	  padding-top: 25px;
+	padding-top: 25px;
   }
-  
   .footer-container div {
 	align-content: space-between;
   }
-  
   .mvpshoplogo-footer {
 	padding-top: 25px;
 	padding-left: 80px;
 	color: black;
   }
-  
   .footer-titles {
 	font-weight: bold;
 	padding-bottom: 15px;
   }
-  
   .copyright {
 	font-size: small;
 	padding-top: 40px;
 	padding-bottom: 40px;
 	padding-left: 250px;
-  }
-
-  .nav-link {
-	text-transform:uppercase;
   }
 
 @media screen and (max-width: 576px) {
