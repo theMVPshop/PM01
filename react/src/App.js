@@ -3,9 +3,10 @@ import Navigation from "./components/Navigation";
 import ReactRouter from "./ReactRouter";
 import axios from "axios";
 import { withRouter } from "react-router";
+import netlifyIdentity from "netlify-identity-widget";
 
 function App() {
-  const netlifyIdentity = require("netlify-identity-widget");
+  // const netlifyIdentity = require("netlify-identity-widget");
 
   netlifyIdentity.init();
 

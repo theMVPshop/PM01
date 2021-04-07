@@ -13,6 +13,7 @@ import MilestonesProjectSelectModal from "../components/MilestonesProjectSelectM
 
 function Devlog() {
   const [logs, setLogs] = useState([]);
+  const [activeProject, setActiveProject] = useState(null);
   const [projectId, setCurrentProjectId] = useState(1);
   
   // let projectID = 1;
@@ -119,6 +120,8 @@ function Devlog() {
           <MilestonesProjectSelectModal
             fromMilestones={true}
             handleProjectClick={handleProjectClick}
+            setActiveProject={setActiveProject}
+            activeProject={activeProject}
           />
         </Container>
         <Button variant="primary" onClick={handleShow}>
@@ -192,17 +195,17 @@ function Devlog() {
       {/* accordion starts below */}
       <Container className="p-12">
         <Accordion
-          style={{ color: "white" }}
+          // style={{ color: "white" }}
           defaultActiveKey="0"
           className="p-12"
         >
           {logs.map((log, idx) => (
             <Card key={idx} style={{ backgroundColor: "#708090" }}>
               <Card.Header style={{ backgroundColor: "lemonchiffon" }}>
-                <Accordion.Toggle as={Button} variant="info" eventKey={`${idx}`}>
+                <Accordion.Toggle as={Card.Header} variant="info" eventKey={`${idx}`}>
                   {log.title}
                 </Accordion.Toggle>
-                <p style={{ color: "gray" }}>{log.time_stamp}</p>
+                <div style={{ color: "gray" }}>{log.time_stamp}</div>
                 <Button
                 variant="danger"
                 onClick={() => removeItem(idx)}
