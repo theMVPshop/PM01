@@ -126,9 +126,7 @@ function Milestones() {
         />
       </Container>
       <h1 className="d-flex p-6 justify-content-center">
-        {activeProject &&
-          projects &&
-          projects.find((x) => x.id == activeProject).title}
+        {activeProject && projects.find((x) => x.id == activeProject)?.title}
       </h1>
       <TimelineElement
         todos={todos}

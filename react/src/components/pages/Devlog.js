@@ -13,9 +13,8 @@ import MilestonesProjectSelectModal from "../MilestonesProjectSelectModal";
 
 function Devlog() {
   const [logs, setLogs] = useState([]);
-  const [projectId, setCurrentProjectId] = useState(1);
+  const [projectId, setCurrentProjectId] = useState(null);
 
-  // let projectID = 1;
   let newLog = {};
 
   const fetchData = async () => {
