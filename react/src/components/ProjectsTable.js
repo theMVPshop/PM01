@@ -10,9 +10,9 @@ function ProjectsTable({
   activeProject,
   setActiveProject,
 }) {
-  const localStorageCurrentUser =
-    JSON.parse(localStorage.getItem("gotrue.user")) &&
-    JSON.parse(localStorage.getItem("gotrue.user")).email;
+  const localStorageCurrentUser = JSON.parse(
+    localStorage.getItem("gotrue.user")
+  )?.email;
   const [projects, setProjects] = useState([]);
   const [permissions, setPermissions] = useState([]);
   const [isMod, setIsMod] = useState(false);
@@ -116,13 +116,15 @@ function ProjectsTable({
                           <td>{project.id}</td>
                           <td>{project.description}</td>
                           <td className="d-flex justify-content-center">
-                            <Button
-                              variant="danger"
-                              size="sm"
-                              onClick={() => removeProject(project.id)}
-                            >
-                              X
-                            </Button>
+                            {isMod && (
+                              <Button
+                                variant="danger"
+                                size="sm"
+                                onClick={() => removeProject(project.id)}
+                              >
+                                X
+                              </Button>
+                            )}
                           </td>
                         </tr>
                       ))
@@ -141,13 +143,15 @@ function ProjectsTable({
                           <td>{project.title}</td>
                           <td>{project.description}</td>
                           <td className="d-flex justify-content-center">
-                            <Button
-                              variant="danger"
-                              size="sm"
-                              onClick={() => removeProject(project.id)}
-                            >
-                              X
-                            </Button>
+                            {isMod && (
+                              <Button
+                                variant="danger"
+                                size="sm"
+                                onClick={() => removeProject(project.id)}
+                              >
+                                X
+                              </Button>
+                            )}
                           </td>
                         </tr>
                       ))
