@@ -10,9 +10,9 @@ function ProjectsTable({
   activeProject,
   setActiveProject,
 }) {
-  const localStorageCurrentUser =
-    JSON.parse(localStorage.getItem("gotrue.user")) &&
-    JSON.parse(localStorage.getItem("gotrue.user")).email;
+  const localStorageCurrentUser = JSON.parse(
+    localStorage.getItem("gotrue.user")
+  )?.email;
   const [projects, setProjects] = useState([]);
   const [permissions, setPermissions] = useState([]);
   const [isMod, setIsMod] = useState(false);
@@ -100,7 +100,7 @@ function ProjectsTable({
                     </tr>
                   ))
                 : fromMilestones
-                ? // maps over permissions table to filter projects assigned to current user and render them in the table. if rendered from milestones then it will have a handleclick eventlistener
+                ? // maps over permissions table to filter projects assigned to current user and render them in the table. if rendered from Milestones.js then it will have a handleclick eventlistener
                   permissions.map((permission) =>
                     projects
                       .filter(
@@ -110,19 +110,27 @@ function ProjectsTable({
                       )
                       .map((project) => (
                         <tr
-                          style={{ cursor: "pointer" }}
+                          style={
+                            activeProject === project.id
+                              ? {
+                                  backgroundColor: "orange",
+                                }
+                              : fromMilestones && { cursor: "pointer" }
+                          }
                           onClick={() => handleProjectClick(project.id)}
                         >
                           <td>{project.id}</td>
                           <td>{project.description}</td>
                           <td className="d-flex justify-content-center">
-                            <Button
-                              variant="danger"
-                              size="sm"
-                              onClick={() => removeProject(project.id)}
-                            >
-                              X
-                            </Button>
+                            {isMod && (
+                              <Button
+                                variant="danger"
+                                size="sm"
+                                onClick={() => removeProject(project.id)}
+                              >
+                                X
+                              </Button>
+                            )}
                           </td>
                         </tr>
                       ))
@@ -141,13 +149,15 @@ function ProjectsTable({
                           <td>{project.title}</td>
                           <td>{project.description}</td>
                           <td className="d-flex justify-content-center">
-                            <Button
-                              variant="danger"
-                              size="sm"
-                              onClick={() => removeProject(project.id)}
-                            >
-                              X
-                            </Button>
+                            {isMod && (
+                              <Button
+                                variant="danger"
+                                size="sm"
+                                onClick={() => removeProject(project.id)}
+                              >
+                                X
+                              </Button>
+                            )}
                           </td>
                         </tr>
                       ))

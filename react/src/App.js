@@ -61,9 +61,8 @@ function App() {
   }
 
   const NavWithRouter = withRouter(Navigation);
-  let localStorageCurrentUser =
-    JSON.parse(localStorage.getItem("gotrue.user")) &&
-    JSON.parse(localStorage.getItem("gotrue.user")).email;
+  let localStorageCurrentUser = JSON.parse(localStorage.getItem("gotrue.user"))
+    ?.email;
 
   return (
     <>

@@ -9,26 +9,25 @@ import {
   Col,
   Modal,
 } from "react-bootstrap";
-import MilestonesProjectSelectModal from "../components/MilestonesProjectSelectModal";
+import MilestonesProjectSelectModal from "../MilestonesProjectSelectModal";
 
 function Devlog() {
   const [logs, setLogs] = useState([]);
   const [activeProject, setActiveProject] = useState(null);
   const [projectId, setCurrentProjectId] = useState(1);
-  
-  // let projectID = 1;
+
   let newLog = {};
 
   const fetchData = async () => {
-      try {
-        const result = await axios.get(
-          `http://localhost:4001/devlog/${projectId}`
-        );
-        setLogs(result.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+    try {
+      const result = await axios.get(
+        `http://localhost:4001/devlog/${projectId}`
+      );
+      setLogs(result.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     fetchData().then(() => console.log("logs:", logs));
@@ -49,18 +48,18 @@ function Devlog() {
       .catch(function (error) {
         console.log("post devlog error", error);
       });
-
   };
 
   const removeItem = (idx) => {
     let id = logs[idx].id;
     console.log("delete log: ", id);
-    axios.delete(`http://localhost:4001/devlog/${id}`)
-    .then(() => fetchData())
-    .then(() => console.log("logs:", logs))
-    .catch(function (error) {
-      console.log("delete devlog error", error);
-    });
+    axios
+      .delete(`http://localhost:4001/devlog/${id}`)
+      .then(() => fetchData())
+      .then(() => console.log("logs:", logs))
+      .catch(function (error) {
+        console.log("delete devlog error", error);
+      });
   };
 
   // modal component code begins below
@@ -76,43 +75,43 @@ function Devlog() {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    
-    const onChange = (event) => {
-    setInput((prevState) => ({
-      ...prevState,
-      [event.target.name]: event.target.value,
-    }));
-  };
 
-  const onSubmit = (event) => {
-    event.preventDefault();
-    let date = new Date().toLocaleString();
-    newLog = {
+    const onChange = (event) => {
+      setInput((prevState) => ({
+        ...prevState,
+        [event.target.name]: event.target.value,
+      }));
+    };
+
+    const onSubmit = (event) => {
+      event.preventDefault();
+      let date = new Date().toLocaleString();
+      newLog = {
         title: input.title,
         project_id: input.project_id,
         description: input.description,
         time_stamp: date,
         // subtitle: input.subtitle,
       };
-    // setCounter(counter + 1);
-    setInput({
-      title: "",
-      // subtitle: "",
-      description: "",
-      time_stamp: "",
-      project_id: projectId,
-    });
-    postLog();
-  };
-
-  const handleProjectClick = (projectId) => {
-    axios
-      .get(`http://localhost:4001/milestones/${projectId}`)
-      .then((response) => {
-        setLogs(response.data);
-        setCurrentProjectId(projectId);
+      // setCounter(counter + 1);
+      setInput({
+        title: "",
+        // subtitle: "",
+        description: "",
+        time_stamp: "",
+        project_id: projectId,
       });
-  };
+      postLog();
+    };
+
+    const handleProjectClick = (projectId) => {
+      axios
+        .get(`http://localhost:4001/milestones/${projectId}`)
+        .then((response) => {
+          setLogs(response.data);
+          setCurrentProjectId(projectId);
+        });
+    };
 
     return (
       <>
@@ -202,18 +201,22 @@ function Devlog() {
           {logs.map((log, idx) => (
             <Card key={idx} style={{ backgroundColor: "#708090" }}>
               <Card.Header style={{ backgroundColor: "lemonchiffon" }}>
-                <Accordion.Toggle as={Card.Header} variant="info" eventKey={`${idx}`}>
+                <Accordion.Toggle
+                  as={Button}
+                  variant="info"
+                  eventKey={`${idx}`}
+                >
                   {log.title}
                 </Accordion.Toggle>
                 <div style={{ color: "gray" }}>{log.time_stamp}</div>
                 <Button
-                variant="danger"
-                onClick={() => removeItem(idx)}
-                size="sm"
-                className="d-flex ml-auto"
-              >
-                Remove
-              </Button>
+                  variant="danger"
+                  onClick={() => removeItem(idx)}
+                  size="sm"
+                  className="d-flex ml-auto"
+                >
+                  Remove
+                </Button>
               </Card.Header>
               <Accordion.Collapse eventKey={`${idx}`}>
                 <Card.Body>{log.description}</Card.Body>
