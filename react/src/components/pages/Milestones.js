@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Container } from "react-bootstrap";
-import MilestonesProjectSelectModal from "./MilestonesProjectSelectModal";
-import AddMilestoneForm from "./AddMilestoneForm";
-import TimelineElement from "./TimelineElement";
+import MilestonesProjectSelectModal from "../MilestonesProjectSelectModal";
+import AddMilestoneForm from "../AddMilestoneForm";
+import TimelineElement from "../TimelineElement";
 
 function Milestones() {
   const [todos, setTodos] = useState([]);
   const [currentProjectId, setCurrentProjectId] = useState(null);
   const [activeProject, setActiveProject] = useState(null);
+  const [activeProjectTitle, setActiveProjectTitle] = useState(null);
+  const [projects, setProjects] = useState(null);
   const [input, setInput] = useState({
     title: "",
     subtitle: "",
@@ -26,6 +28,9 @@ function Milestones() {
         setCurrentProjectId(projectId);
         setActiveProject(projectId);
       });
+    axios.get("http://localhost:4001/projects").then((response) => {
+      setProjects(response.data);
+    });
   };
 
   // populates the add milestone form with input data in realtime
@@ -120,6 +125,11 @@ function Milestones() {
           onSubmit={onSubmit}
         />
       </Container>
+      <h1 className="d-flex p-6 justify-content-center">
+        {activeProject &&
+          projects &&
+          projects.find((x) => x.id == activeProject).title}
+      </h1>
       <TimelineElement
         todos={todos}
         handleClick={handleClick}
