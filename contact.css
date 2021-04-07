@@ -38,14 +38,12 @@ form {
 
 .contact-image {
   width: 500px;
-  border: 1px solid red;
 }
 
 
 
 /* footer */
 .about-page-footer {
-  border: 1px solid red;
   margin: auto;
 }
 
@@ -84,7 +82,6 @@ form {
   padding-bottom: 60px;
   padding-top: 100px;
   width: 800px;
-  border: 1px solid red;
 }
 
 .about-form h4 {
@@ -93,12 +90,10 @@ form {
   text-align: center;
 }
 
-
 .about-form form {
-  width: 780px;
   padding: 0 43px;
   margin: auto;
-  height: 275px;
+  height: auto;
 }
 
 form p {
