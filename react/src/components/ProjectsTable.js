@@ -110,7 +110,13 @@ function ProjectsTable({
                       )
                       .map((project) => (
                         <tr
-                          style={{ cursor: "pointer" }}
+                          style={
+                            activeProject === project.id
+                              ? {
+                                  backgroundColor: "orange",
+                                }
+                              : fromMilestones && { cursor: "pointer" }
+                          }
                           onClick={() => handleProjectClick(project.id)}
                         >
                           <td>{project.id}</td>
