@@ -12,6 +12,10 @@ import {
 import MilestonesProjectSelectModal from "../MilestonesProjectSelectModal";
 
 function Devlog() {
+  const localStorageCurrentUser = JSON.parse(
+    localStorage.getItem("gotrue.user")
+  )?.email;
+  const [isMod, setIsMod] = useState(false);
   const [logs, setLogs] = useState([]);
   const [activeProject, setActiveProject] = useState(null);
   const [projectId, setCurrentProjectId] = useState(null);
@@ -30,7 +34,15 @@ function Devlog() {
   };
 
   useEffect(() => {
-    fetchData().then(() => console.log("logs:", logs));
+    localStorageCurrentUser &&
+      axios.get("http://localhost:4001/users").then((response) => {
+        setIsMod(
+          response.data.find((x) => x.username === localStorageCurrentUser)
+            .isModerator === 1
+            ? true
+            : false
+        );
+      });
   }, []);
 
   const postLog = () => {
@@ -62,7 +74,7 @@ function Devlog() {
       });
   };
 
-  // modal component code begins below
+  // modal component code begins below and ends after first return statement
   function DevlogModal() {
     const [show, setShow] = useState(false);
     const [input, setInput] = useState({
@@ -123,9 +135,10 @@ function Devlog() {
             activeProject={activeProject}
           />
         </Container>
-        <Button variant="primary" onClick={handleShow}>
+        {/* Only show the entry creation button if user is a moderator */}
+        { isMod && <Button variant="primary" onClick={handleShow}>
           Add Log Entry
-        </Button>
+        </Button>}
 
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
@@ -209,14 +222,14 @@ function Devlog() {
                   {log.title}
                 </Accordion.Toggle>
                 <div style={{ color: "gray" }}>{log.time_stamp}</div>
-                <Button
+                { isMod && <Button
                   variant="danger"
                   onClick={() => removeItem(idx)}
                   size="sm"
                   className="d-flex ml-auto"
                 >
                   Remove
-                </Button>
+                </Button>}
               </Card.Header>
               <Accordion.Collapse eventKey={`${idx}`}>
                 <Card.Body>{log.description}</Card.Body>

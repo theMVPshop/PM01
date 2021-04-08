@@ -163,7 +163,7 @@ button {
 
 /* Responsive Box */
 #process {
-	height: 95%;
+	/* height: 50vh; */
 	background: rgb(67,177,247);
   	background: linear-gradient(153deg, rgba(67,177,247,1) 0%, rgba(53,240,216,1) 100%);
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -174,13 +174,6 @@ button {
 	padding:20px;
   }
 
-  /* #bodyText {
-	  height: 100%;
-  } */
-
-.bText {
-	height: 100%;
-}
 
   #flexit {
 	display:flex;
