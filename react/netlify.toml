@@ -1,6 +1,6 @@
 [build]
   command   = "npm build"
-  publish = "out"
+  publish = "public"
 [[redirects]]
   from = "/*"
   to = "/index.html"
