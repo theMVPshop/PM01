@@ -89,13 +89,13 @@ function ProjectsTable({
                       <td>{project.title}</td>
                       <td>{project.description}</td>
                       <td className="d-flex justify-content-center">
-                        <Button
+                        { !fromMilestones && <Button
                           variant="danger"
                           size="sm"
                           onClick={() => removeProject(project.id)}
                         >
                           X
-                        </Button>
+                        </Button>}
                       </td>
                     </tr>
                   ))
@@ -121,7 +121,7 @@ function ProjectsTable({
                         >
                           <td>{project.id}</td>
                           <td>{project.description}</td>
-                          <td className="d-flex justify-content-center">
+                          {/* <td className="d-flex justify-content-center">
                             {isMod && (
                               <Button
                                 variant="danger"
@@ -131,7 +131,7 @@ function ProjectsTable({
                                 X
                               </Button>
                             )}
-                          </td>
+                          </td> */}
                         </tr>
                       ))
                   )
@@ -148,7 +148,7 @@ function ProjectsTable({
                           <td>{project.id}</td>
                           <td>{project.title}</td>
                           <td>{project.description}</td>
-                          <td className="d-flex justify-content-center">
+                          {/* <td className="d-flex justify-content-center">
                             {isMod && (
                               <Button
                                 variant="danger"
@@ -158,7 +158,7 @@ function ProjectsTable({
                                 X
                               </Button>
                             )}
-                          </td>
+                          </td> */}
                         </tr>
                       ))
                   )

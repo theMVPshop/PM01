@@ -125,9 +125,9 @@ function Milestones() {
           onSubmit={onSubmit}
         />
       </Container>
-      <h1 className="d-flex p-6 justify-content-center">
+      { projects && <h1 className="d-flex p-6 justify-content-center">
         {activeProject && projects.find((x) => x.id == activeProject)?.title}
-      </h1>
+      </h1> }
       <TimelineElement
         todos={todos}
         handleClick={handleClick}
