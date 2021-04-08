@@ -1,0 +1,66 @@
+body {
+  background-color: rgb(88, 220, 238);
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  padding: 24px;
+  background: white;
+  border-radius: 8px;
+}
+
+button {
+color: white;
+height: 40px;
+border-bottom-style: none;
+border-left-style: none;
+border-right-style: none;
+border-top-style: none;
+}
+
+.btn-grad {background-image: linear-gradient(to right, #24C6DC 0%, #514A9D  51%, #24C6DC  100%)}
+.btn-grad {
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 0 0 20px #eee;
+  border-radius: 5px;
+  display: block;
+  margin: auto;
+}
+
+.btn-grad:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+#back-link {
+  height: 80px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  line-height: 24px;
+}
+
+A:hover {
+  color: white;
+}
