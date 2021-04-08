@@ -40,8 +40,10 @@ id INT NOT NULL AUTO_INCREMENT,
 username VARCHAR(50),
 project_id INT NOT NULL,
 PRIMARY KEY (id),
-FOREIGN KEY (username) REFERENCES users (username),
-FOREIGN KEY (project_id) REFERENCES projects (id)
+FOREIGN KEY (username) REFERENCES users (username) 
+        ON DELETE CASCADE,
+FOREIGN KEY (project_id) REFERENCES projects (id) 
+        ON DELETE CASCADE
 );
 
 

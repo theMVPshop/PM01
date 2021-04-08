@@ -13,9 +13,9 @@ import MilestonesProjectSelectModal from "../MilestonesProjectSelectModal";
 
 function Devlog() {
   const [logs, setLogs] = useState([]);
-  const [projectId, setCurrentProjectId] = useState(1);
+  const [activeProject, setActiveProject] = useState(null);
+  const [projectId, setCurrentProjectId] = useState(null);
 
-  // let projectID = 1;
   let newLog = {};
 
   const fetchData = async () => {
@@ -119,6 +119,8 @@ function Devlog() {
           <MilestonesProjectSelectModal
             fromMilestones={true}
             handleProjectClick={handleProjectClick}
+            setActiveProject={setActiveProject}
+            activeProject={activeProject}
           />
         </Container>
         <Button variant="primary" onClick={handleShow}>
@@ -192,7 +194,7 @@ function Devlog() {
       {/* accordion starts below */}
       <Container className="p-12">
         <Accordion
-          style={{ color: "white" }}
+          // style={{ color: "white" }}
           defaultActiveKey="0"
           className="p-12"
         >
@@ -206,7 +208,7 @@ function Devlog() {
                 >
                   {log.title}
                 </Accordion.Toggle>
-                <p style={{ color: "gray" }}>{log.time_stamp}</p>
+                <div style={{ color: "gray" }}>{log.time_stamp}</div>
                 <Button
                   variant="danger"
                   onClick={() => removeItem(idx)}
