@@ -10,6 +10,7 @@ function ProjectsTable({
   activeProject,
   setActiveProject,
 }) {
+  // checks if "gotrue.user" exists before reading the email property
   const localStorageCurrentUser = JSON.parse(
     localStorage.getItem("gotrue.user")
   )?.email;
@@ -23,7 +24,7 @@ function ProjectsTable({
       axios.get("http://localhost:4001/users").then((response) => {
         setIsMod(
           response.data.find((x) => x.username === localStorageCurrentUser)
-            .isModerator === 1
+            ?.isModerator === 1
             ? true
             : false
         );
