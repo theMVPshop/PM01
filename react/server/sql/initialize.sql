@@ -22,7 +22,8 @@ due_date VARCHAR(12),
 ms_status VARCHAR(16),
 description VARCHAR(50),
 PRIMARY KEY (id),
-FOREIGN KEY (project_id) REFERENCES projects (id)
+FOREIGN KEY (project_id) REFERENCES projects (id) 
+        ON DELETE CASCADE
 );
 
 CREATE TABLE devlog (
@@ -32,7 +33,8 @@ description VARCHAR(50),
 project_id INT NOT NULL,
 time_stamp INT NOT NULL,
 PRIMARY KEY (id),
-FOREIGN KEY (project_id) REFERENCES projects (id)
+FOREIGN KEY (project_id) REFERENCES projects (id) 
+        ON DELETE CASCADE
 );
 
 CREATE TABLE permissions (
