@@ -3,8 +3,8 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const session = require("express-session");
-const bodyParser = require("body-parser");
-const cookieParser = require("cookie-parser");
+// const bodyParser = require("body-parser");
+// const cookieParser = require("cookie-parser");
 
 //routers
 const routers = require("./routers/routers");
@@ -25,9 +25,9 @@ app.use(
     saveUninitialized: true,
   })
 );
-app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+// app.use(cookieParser());
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
 app.use("/", express.static("../build"), cors(corsOptions), routers);
 // app.use('/auth', cors(corsOptions), authRouter)
 app.get("/", (req, res) => {
