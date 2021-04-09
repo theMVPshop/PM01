@@ -163,9 +163,10 @@ button {
 
 /* Responsive Box */
 #process {
-	/* height: 50vh; */
 	background: rgb(67,177,247);
   	background: linear-gradient(153deg, rgba(67,177,247,1) 0%, rgba(53,240,216,1) 100%);
+	width: 635px;
+	height: 450px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	text-align: center;
 	color: white;
@@ -174,8 +175,18 @@ button {
 	padding:20px;
   }
 
+  #bodyText {
+	  width: 350px;
+  }
+
+  #stepText {
+	 height: 180px;
+  }
+
 
   #flexit {
+	width: 385px;
+	margin: auto;
 	display:flex;
 	flex-direction: column;
   }
@@ -285,6 +296,12 @@ button {
 	padding-left: 250px;
   }
 
+@media screen and (max-width: 768px) {
+	#flexit {
+		width: 480px;
+	}
+}
+
 @media screen and (max-width: 576px) {
 	#landing-page-1 {
 		background: rgb(67,177,247);
@@ -302,3 +319,4 @@ button {
 	}
 	
 }
+
