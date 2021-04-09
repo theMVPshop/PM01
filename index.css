@@ -192,7 +192,7 @@ button {
   }
   
   #fourStep {
-	width:90%;
+	/* width:90%; */
 	margin-top:60px;
 	margin:auto;
 	display: flex;
@@ -297,6 +297,9 @@ button {
   }
 
 @media screen and (max-width: 768px) {
+	#fourStep {
+		 
+	}
 	#flexit {
 		width: 480px;
 	}
