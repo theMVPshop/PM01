@@ -15,7 +15,6 @@ router.put("/users", usersControllers.updateRoleByUsername);
 router.get("/projects", projectsControllers.getAllProjects);
 router.post("/projects", projectsControllers.createProject);
 router.delete("/projects/:id", projectsControllers.removeProjectById);
-// router.get('/projects', controllers.getProjectByUser)
 
 // permissions controllers
 router.get("/permissions", permissionsControllers.getAllPermissions);

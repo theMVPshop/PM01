@@ -6,13 +6,8 @@ import { withRouter } from "react-router";
 import netlifyIdentity from "netlify-identity-widget";
 
 function App() {
-  // const netlifyIdentity = require("netlify-identity-widget");
 
   netlifyIdentity.init();
-
-  // const user = netlifyIdentity.currentUser();
-
-  // console.log(user);
 
   function initNetlifyIdentity() {
     const script = document.createElement("script");
@@ -71,7 +66,7 @@ function App() {
         openNetlifyModal={openNetlifyModal}
       />
       <ReactRouter localStorageCurrentUser={localStorageCurrentUser} />
-      <p>localStorage currentUser: {`welcome ${localStorageCurrentUser}`}</p>
+      {/* <p>localStorage currentUser: {`welcome ${localStorageCurrentUser}`}</p> */}
     </>
   );
 }
