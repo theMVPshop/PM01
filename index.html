@@ -13,7 +13,7 @@
 	<title>theMVPshop</title>
 </head>
 <body>
-	<div class="container-fluid ">
+	<div class="container">
 
 		<!-- Section 1 -->
 		<section class="row gy-3 align-items-start justify-content-start" id="landing-page-1">
@@ -33,12 +33,6 @@
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="./aboutpage.html">ABOUT</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">PORTFOLIO</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">PROCESS</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="./contact.html">CONTACT</a>
@@ -89,7 +83,7 @@
 						<ul>
 							<li class="mb-3"><u>Progressive Web Apps</u>: Progressive web apps combine the engagement and features of an app and a modern internet browser. Users can choose to access them with a website URL, so they also help broaden reach.</li>
 							<li class="mb-3"><u>Hybrid Apps</u>: Your users may have a variety of devices. In the past, app developers had to code distinct versions of apps for iOS, Android, Windows and other operating systems. Hybrid application development helps us deliver more value by only developing one basic set of coding instructions for multiple platforms.</li>
-							<li><u>JavaScript Apps</u>: Our experienced JavaScript application developers will create responsive web applications or enhance the features of current ones with JavaScript applications developed with Angular. These robust web applications can perform as well or better than desktop apps.</li>
+							<li class="mb-3"><u>JavaScript Apps</u>: Our experienced JavaScript application developers will create responsive web applications or enhance the features of current ones with JavaScript applications developed with Angular. These robust web applications can perform as well or better than desktop apps.</li>
 						</ul>
 					</ul>
 					<p class="m-3">We typically begin our development process with discovery and design. That way, we can learn more about future users, and create mockups to provide a visual representation for our clients. We employ the Agile development process to deliver better applications at a faster pace than our competitors.
@@ -130,10 +124,12 @@
 			
 			<!-- Portfolio Cards -->
 			<div class="card my-4 col-xs-4 p-3 m-3 portfolio-cards">
-				<img class="img-fluid card-img-top" src="./MVPwebsite/img/test_image.jpg">
+				<div class="card-img-holder" style="background-image: url('./MVPwebsite/img/draftrr.png');background-size: cover;">
+					<img class="img-fluid card-img-top" src="./MVPwebsite/img/draftrr.png">	
+				</div>
 				<div class="card-body">
-					<h5 class="card-title">User Experience Design</h5>
-					<p class="card-text">Application Design<button class="float-this"><i class="fa fa-plus-circle"></i></button></p>			
+					<h5 class="card-title">Draftrr.com</h5>
+					<p class="card-text">Application Design<a href="http://www.draftrr.com" target="_new"><button class="float-this"><i class="fa fa-plus-circle"></i></button></a></p>			
 				</div>
 			</div>
 			<div class="card my-4 col-xs-4 p-3 m-3 portfolio-cards">
@@ -150,15 +146,8 @@
 					<p class="card-text">Webdesign<button class="float-this"><i class="fa fa-plus-circle"></i></button></p>
 				</div>
 			</div>
-			<div class="card my-4 col-xs-4 p-3 m-3 portfolio-cards">
-				<img class="img-fluid card-img-top" src="./MVPwebsite/img/test_image.jpg">
-				<div class="card-body">
-					<h5 class="card-title">Website Presentation</h5>
-					<p class="card-text">Webdesign<button class="float-this"><i class="fa fa-plus-circle"></i></button></p>
-				</div>
-			</div>
 			<div>
-				<span class="badge rounded-pill bg-info m-2"><a href="#">Load More</a></span>
+				<!-- <span class="badge rounded-pill bg-info m-2"><a href="#">Load More</a></span> -->
 			</div>
 			
 		</section>
