@@ -3,5 +3,5 @@
   publish = "public"
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/index2.html"
   status = 200
