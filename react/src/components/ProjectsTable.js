@@ -3,7 +3,6 @@ import axios from "axios";
 import { Container, Table, Button } from "react-bootstrap";
 import AddProjectForm from "./AddProjectForm";
 
-// inheriting props from
 function ProjectsTable({
   fromMilestones,
   handleProjectClick,
@@ -89,15 +88,17 @@ function ProjectsTable({
                       <td>{project.id}</td>
                       <td>{project.title}</td>
                       <td>{project.description}</td>
-                      <td className="d-flex justify-content-center">
-                        { !fromMilestones && <Button
-                          variant="danger"
-                          size="sm"
-                          onClick={() => removeProject(project.id)}
-                        >
-                          X
-                        </Button>}
-                      </td>
+                      {!fromMilestones && (
+                        <td className="d-flex justify-content-center">
+                          <Button
+                            variant="danger"
+                            size="sm"
+                            onClick={() => removeProject(project.id)}
+                          >
+                            X
+                          </Button>
+                        </td>
+                      )}
                     </tr>
                   ))
                 : fromMilestones
@@ -122,17 +123,6 @@ function ProjectsTable({
                         >
                           <td>{project.id}</td>
                           <td>{project.description}</td>
-                          {/* <td className="d-flex justify-content-center">
-                            {isMod && (
-                              <Button
-                                variant="danger"
-                                size="sm"
-                                onClick={() => removeProject(project.id)}
-                              >
-                                X
-                              </Button>
-                            )}
-                          </td> */}
                         </tr>
                       ))
                   )
@@ -149,17 +139,6 @@ function ProjectsTable({
                           <td>{project.id}</td>
                           <td>{project.title}</td>
                           <td>{project.description}</td>
-                          {/* <td className="d-flex justify-content-center">
-                            {isMod && (
-                              <Button
-                                variant="danger"
-                                size="sm"
-                                onClick={() => removeProject(project.id)}
-                              >
-                                X
-                              </Button>
-                            )}
-                          </td> */}
                         </tr>
                       ))
                   )

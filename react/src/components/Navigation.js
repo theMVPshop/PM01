@@ -5,9 +5,9 @@ function Navigation({ location, NetlifyIdentity, openNetlifyModal }) {
   let loggedIn = localStorage.getItem("loggedIn");
   return (
     <div style={{ paddingBottom: "6px" }}>
-      <Navbar bg="light" variant="light" expand="lg">
-        <Navbar.Brand href="/" style={{ color: "black" }}>
-          the<span style={{ fontWeight: "800", color: "black" }}>MVP</span>shop
+      <Navbar bg="dark" variant="dark" expand="lg">
+        <Navbar.Brand href="/" style={{ color: "white" }}>
+          the<span style={{ fontWeight: "800", color: "orange" }}>MVP</span>shop
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
