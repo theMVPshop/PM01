@@ -66,7 +66,6 @@ function App() {
         openNetlifyModal={openNetlifyModal}
       />
       <ReactRouter localStorageCurrentUser={localStorageCurrentUser} />
-      {/* <p>localStorage currentUser: {`welcome ${localStorageCurrentUser}`}</p> */}
     </>
   );
 }
