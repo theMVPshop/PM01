@@ -24,9 +24,7 @@ function Devlog() {
 
   const fetchData = async () => {
     try {
-      const result = await axios.get(
-        `http://localhost:4001/devlog/${projectId}`
-      );
+      const result = await axios.get(`/devlog/${projectId}`);
       setLogs(result.data);
     } catch (error) {
       console.log(error);
@@ -35,7 +33,7 @@ function Devlog() {
 
   useEffect(() => {
     localStorageCurrentUser &&
-      axios.get("http://localhost:4001/users").then((response) => {
+      axios.get("/users").then((response) => {
         setIsMod(
           response.data.find((x) => x.username === localStorageCurrentUser)
             .isModerator === 1
@@ -49,7 +47,7 @@ function Devlog() {
     console.log("log", newLog);
     axios
       .post(
-        `http://localhost:4001/devlog`,
+        `/devlog`,
         // newMilestoneRequest,
         newLog
       )
@@ -66,7 +64,7 @@ function Devlog() {
     let id = logs[idx].id;
     console.log("delete log: ", id);
     axios
-      .delete(`http://localhost:4001/devlog/${id}`)
+      .delete(`/devlog/${id}`)
       .then(() => fetchData())
       .then(() => console.log("logs:", logs))
       .catch(function (error) {
@@ -117,12 +115,10 @@ function Devlog() {
     };
 
     const handleProjectClick = (projectId) => {
-      axios
-        .get(`http://localhost:4001/milestones/${projectId}`)
-        .then((response) => {
-          setLogs(response.data);
-          setCurrentProjectId(projectId);
-        });
+      axios.get(`/milestones/${projectId}`).then((response) => {
+        setLogs(response.data);
+        setCurrentProjectId(projectId);
+      });
     };
 
     return (
@@ -136,9 +132,11 @@ function Devlog() {
           />
         </Container>
         {/* Only show the entry creation button if user is a moderator */}
-        { isMod && <Button variant="primary" onClick={handleShow}>
-          Add Log Entry
-        </Button>}
+        {isMod && (
+          <Button variant="primary" onClick={handleShow}>
+            Add Log Entry
+          </Button>
+        )}
 
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
@@ -222,14 +220,16 @@ function Devlog() {
                   {log.title}
                 </Accordion.Toggle>
                 <div style={{ color: "gray" }}>{log.time_stamp}</div>
-                { isMod && <Button
-                  variant="danger"
-                  onClick={() => removeItem(idx)}
-                  size="sm"
-                  className="d-flex ml-auto"
-                >
-                  Remove
-                </Button>}
+                {isMod && (
+                  <Button
+                    variant="danger"
+                    onClick={() => removeItem(idx)}
+                    size="sm"
+                    className="d-flex ml-auto"
+                  >
+                    Remove
+                  </Button>
+                )}
               </Card.Header>
               <Accordion.Collapse eventKey={`${idx}`}>
                 <Card.Body>{log.description}</Card.Body>

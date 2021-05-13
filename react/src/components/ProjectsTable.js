@@ -20,7 +20,7 @@ function ProjectsTable({
   useEffect(() => {
     // if someone is logged in, this will check to see if they are a moderator and store it in a useState hook (line 15) as a boolean
     localStorageCurrentUser &&
-      axios.get("http://localhost:4001/users").then((response) => {
+      axios.get("/users").then((response) => {
         setIsMod(
           response.data.find((x) => x.username === localStorageCurrentUser)
             ?.isModerator === 1
@@ -29,19 +29,19 @@ function ProjectsTable({
         );
       });
     // fetch permissions table from API and store in hook
-    axios.get("http://localhost:4001/permissions/").then((response) => {
+    axios.get("/permissions/").then((response) => {
       setPermissions(response.data);
     });
     // fetch projects table from API and store in hook
-    axios.get("http://localhost:4001/projects/").then((response) => {
+    axios.get("/projects/").then((response) => {
       setProjects(response.data);
     });
   }, []);
 
   // removes project from api and repopulates component with projects sans deleted one
   const removeProject = (projectId) => {
-    axios.delete(`http://localhost:4001/projects/${projectId}`).then(() => {
-      axios.get("http://localhost:4001/projects").then((response) => {
+    axios.delete(`/projects/${projectId}`).then(() => {
+      axios.get("/projects").then((response) => {
         setProjects([...response.data]);
       });
     });

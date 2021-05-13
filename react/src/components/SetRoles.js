@@ -7,11 +7,11 @@ function SetRoles({ projects }) {
   const [permissions, setPermissions] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:4001/users/").then((response) => {
+    axios.get("/users/").then((response) => {
       console.log(response.data);
       setUsers(response.data);
     });
-    axios.get("http://localhost:4001/permissions/").then((response) => {
+    axios.get("/permissions/").then((response) => {
       console.log(response.data);
       setPermissions(response.data);
     });
@@ -19,12 +19,12 @@ function SetRoles({ projects }) {
 
   const handleChangeRole = (isMod, username) => {
     axios
-      .put("http://localhost:4001/users/", {
+      .put("/users/", {
         isModerator: !isMod,
         username,
       })
       .then(() => {
-        axios.get("http://localhost:4001/users/").then((response) => {
+        axios.get("/users/").then((response) => {
           setUsers(response.data);
         });
       });
@@ -39,22 +39,20 @@ function SetRoles({ projects }) {
     let permissionId = permissionObject && permissionObject.id;
     e.target.checked
       ? axios
-          .post("http://localhost:4001/permissions/", {
+          .post("/permissions/", {
             username,
             project_id,
           })
           .then(() => {
-            axios.get("http://localhost:4001/permissions/").then((response) => {
+            axios.get("/permissions/").then((response) => {
               setPermissions(response.data);
             });
           })
-      : axios
-          .delete(`http://localhost:4001/permissions/${permissionId}`)
-          .then(() => {
-            axios.get("http://localhost:4001/permissions/").then((response) => {
-              setPermissions(response.data);
-            });
+      : axios.delete(`/permissions/${permissionId}`).then(() => {
+          axios.get("/permissions/").then((response) => {
+            setPermissions(response.data);
           });
+        });
   };
 
   return (

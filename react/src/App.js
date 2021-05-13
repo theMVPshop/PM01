@@ -6,7 +6,6 @@ import { withRouter } from "react-router";
 import netlifyIdentity from "netlify-identity-widget";
 
 function App() {
-
   netlifyIdentity.init();
 
   function initNetlifyIdentity() {
@@ -25,12 +24,12 @@ function App() {
       netlifyIdentity.open();
       netlifyIdentity.on("login", (user) => {
         console.log("login", user);
-        axios.get("http://localhost:4001/users").then((response) => {
+        axios.get("/users").then((response) => {
           let existingUser = response.data.find(
             (x) => x.username === user.email
           );
           !existingUser &&
-            axios.post("http://localhost:4001/users/", {
+            axios.post("/users/", {
               username: user.email,
               isModerator: 0,
             });
@@ -56,8 +55,9 @@ function App() {
   }
 
   const NavWithRouter = withRouter(Navigation);
-  let localStorageCurrentUser = JSON.parse(localStorage.getItem("gotrue.user"))
-    ?.email;
+  let localStorageCurrentUser = JSON.parse(
+    localStorage.getItem("gotrue.user")
+  )?.email;
 
   return (
     <>

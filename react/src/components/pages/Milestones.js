@@ -21,14 +21,12 @@ function Milestones() {
 
   // populates milestones for the selected project
   const handleProjectClick = (projectId) => {
-    axios
-      .get(`http://localhost:4001/milestones/${projectId}`)
-      .then((response) => {
-        setTodos(response.data);
-        setCurrentProjectId(projectId);
-        setActiveProject(projectId);
-      });
-    axios.get("http://localhost:4001/projects").then((response) => {
+    axios.get(`/milestones/${projectId}`).then((response) => {
+      setTodos(response.data);
+      setCurrentProjectId(projectId);
+      setActiveProject(projectId);
+    });
+    axios.get("/projects").then((response) => {
       setProjects(response.data);
     });
   };
@@ -45,7 +43,7 @@ function Milestones() {
   const onSubmit = (event) => {
     event.preventDefault();
     axios
-      .post(`http://localhost:4001/milestones`, {
+      .post(`/milestones`, {
         title: input.title,
         subtitle: input.subtitle,
         project_id: currentProjectId,
@@ -54,17 +52,15 @@ function Milestones() {
         description: input.description,
       })
       .then(() => {
-        axios
-          .get(`http://localhost:4001/milestones/${currentProjectId}`)
-          .then((response) => {
-            setTodos(response.data);
-            setInput({
-              title: "",
-              subtitle: "",
-              description: "",
-              due_date: "",
-            });
+        axios.get(`/milestones/${currentProjectId}`).then((response) => {
+          setTodos(response.data);
+          setInput({
+            title: "",
+            subtitle: "",
+            description: "",
+            due_date: "",
           });
+        });
       });
   };
 
@@ -72,17 +68,15 @@ function Milestones() {
   const removeItem = (Id) => {
     console.log("Id", Id, "currentProjectId", currentProjectId);
     axios
-      .delete(`http://localhost:4001/milestones/${currentProjectId}`, {
+      .delete(`/milestones/${currentProjectId}`, {
         data: {
           id: Id,
         },
       })
       .then(() => {
-        axios
-          .get(`http://localhost:4001/milestones/${currentProjectId}`)
-          .then((response) => {
-            setTodos([...response.data.filter((x, i) => i !== Id)]);
-          });
+        axios.get(`/milestones/${currentProjectId}`).then((response) => {
+          setTodos([...response.data.filter((x, i) => i !== Id)]);
+        });
       });
   };
 
@@ -91,17 +85,17 @@ function Milestones() {
     const todoId = todo.id;
     if (todo.ms_status === "TODO") {
       todo.ms_status = "IN PROGRESS";
-      axios.put(`http://localhost:4001/milestones/${todoId}`, {
+      axios.put(`/milestones/${todoId}`, {
         ms_status: "IN PROGRESS",
       });
     } else if (todo.ms_status === "IN PROGRESS") {
       todo.ms_status = "COMPLETED";
-      axios.put(`http://localhost:4001/milestones/${todoId}`, {
+      axios.put(`/milestones/${todoId}`, {
         ms_status: "COMPLETED",
       });
     } else if (todo.ms_status === "COMPLETED") {
       todo.ms_status = "TODO";
-      axios.put(`http://localhost:4001/milestones/${todoId}`, {
+      axios.put(`/milestones/${todoId}`, {
         ms_status: "TODO",
       });
     }
@@ -125,9 +119,11 @@ function Milestones() {
           onSubmit={onSubmit}
         />
       </Container>
-      { projects && <h1 className="d-flex p-6 justify-content-center">
-        {activeProject && projects.find((x) => x.id == activeProject)?.title}
-      </h1> }
+      {projects && (
+        <h1 className="d-flex p-6 justify-content-center">
+          {activeProject && projects.find((x) => x.id == activeProject)?.title}
+        </h1>
+      )}
       <TimelineElement
         todos={todos}
         handleClick={handleClick}

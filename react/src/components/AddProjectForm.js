@@ -27,8 +27,8 @@ function AddProjectForm({ isMod, projects, setProjects }) {
       description: input.description,
     };
 
-    axios.post(`http://localhost:4001/projects`, project).then(() => {
-      axios.get("http://localhost:4001/projects").then((response) => {
+    axios.post(`/projects`, project).then(() => {
+      axios.get("/projects").then((response) => {
         project.id = response.data[response.data.length - 1].id;
         setProjects([...response.data]);
       });
