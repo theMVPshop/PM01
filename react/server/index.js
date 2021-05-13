@@ -13,6 +13,7 @@ const routers = require("./routers/routers");
 //more initializing
 const app = express();
 const port = process.env.PORT || 4001;
+app.use(express.static("../build"));
 // const corsOptions = {
 //   origin: "http://localhost:3000",
 //   optionsSuccessStatus: 200,
@@ -31,7 +32,6 @@ app.use(
 app.use(express.urlencoded({ extended: true }));
 // app.use("/", express.static("../build"), cors(), routers);
 app.use(cors(), routers);
-app.use(express.static("../build"));
 // app.use('/auth', cors(corsOptions), authRouter)
 app.get("/", (req, res) => {
   res.send("theMVPshop");
