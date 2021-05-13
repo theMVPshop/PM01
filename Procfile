@@ -1,0 +1,1 @@
+web: node .\react\server\index.js
