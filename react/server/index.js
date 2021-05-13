@@ -29,7 +29,9 @@ app.use(
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
-app.use("/", express.static("../build"), cors(), routers);
+// app.use("/", express.static("../build"), cors(), routers);
+app.use(cors(), routers);
+app.use(express.static("../build"));
 // app.use('/auth', cors(corsOptions), authRouter)
 app.get("/", (req, res) => {
   res.send("theMVPshop");
