@@ -13,10 +13,10 @@ const routers = require("./routers/routers");
 //more initializing
 const app = express();
 const port = process.env.PORT || 4001;
-const corsOptions = {
-  origin: "http://localhost:3000",
-  optionsSuccessStatus: 200,
-};
+// const corsOptions = {
+//   origin: "http://localhost:3000",
+//   optionsSuccessStatus: 200,
+// };
 
 app.use(
   session({
@@ -28,7 +28,8 @@ app.use(
 // app.use(cookieParser());
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(bodyParser.json());
-app.use("/", express.static("../build"), cors(corsOptions), routers);
+app.use(express.urlencoded({ extended: true }));
+app.use("/", express.static("../build"), cors(), routers);
 // app.use('/auth', cors(corsOptions), authRouter)
 app.get("/", (req, res) => {
   res.send("theMVPshop");
