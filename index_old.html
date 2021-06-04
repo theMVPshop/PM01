@@ -13,48 +13,47 @@
 	<title>theMVPshop</title>
 </head>
 <body>
-    <div class="container-fluid" id="landing-page-1">
-        <!-- NAV -->
-        <div class="nav justify-content-center align-items-start">
-            <nav class="navbar navbar-expand-lg navbar-dark">
-                <!-- LOGO -->
-                <a class="navbar-brand" href="./index.html">theMVPshop</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+	<div class="container">
 
-                <!-- NAVBAR -->
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item nav-link active">
-                            <a aria-current="page" href="./index.html">HOME</a>
-                        </li>
-                        <li class="nav-item nav-link">
-                            <a href="./aboutpage.html">ABOUT</a>
-                        </li>
-                        <li class="nav-item nav-link">
-                            <a href="./contact.html">CONTACT</a>
-                        </li>
-                        <li class="nav-item nav-link">
-                            <a href="https://themvpshop.herokuapp.com">LOGIN</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-        <div class="row">
-            <div class="col-lg-5 offset-lg-2 col-md-6 offset-md-1 col-sm-8 align-this mt-4">
-                <h1 class="display-2 text-white">Start up your business now!</h1>
-                <p class="h4 navbar-dark">We are staffed by the next generation of web application developers trained on the latest technologies.</p>
-                <p class="h5 navbar-dark">We specialize in taking ideas and turning them into testable minimum viable products.  They only way to validate your idea is to get it in front of users, and we can help with that.</p>
+		<!-- Section 1 -->
+		<section class="row gy-3 align-items-start justify-content-start" id="landing-page-1">
+			<div class="nav justify-content-center align-items-start">
+				<nav class="navbar navbar-expand-lg navbar-dark">
+					<a class="navbar-brand" href="./index.html">theMVPshop</a>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
 
-                <span class="badge badge-pill badge-primary mt-3"><a href="./contact.html">Get Started Today</a></span>
-            </div>
-        </div>
-    </div>
+					<!-- Navbar -->
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+							<li class="nav-item">
+								<a class="nav-link active" aria-current="page" href="./index.html">HOME</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="./aboutpage.html">ABOUT</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="./contact.html">CONTACT</a>
+							</li>
+							<li id="login-text" sclass="nav-item nav-link">
+								<a class="" href="https://themvpshop.herokuapp.com"></a>LOGIN</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
 
-      <!-- Section 2 -->
-    <div class="container">
+				<div class="col-lg-6 col-md-6 col-sm-12 align-this">
+					<h1 class="display-2 text-white">Startup your business now!</h1>
+					<h4 class="h4 navbar-dark">We are staffed by the next generation of web application developers trained on the latest technologies.</h4>
+
+					<span class="badge badge-pill badge-primary"><a href="./contact.html">Get Started</a></span>
+				</div>
+
+		</section>
+
+		<!-- Section 2 -->
 		<section class="row d-flex align-items-center justify-content-evenly d-grid gap-5 gy-5 section-container-align-text" id="landing-page-2">
 			<!-- Design to Deliver | Latest Technologies | Fast Turnaround -->
 				<div class="col-lg-3 col-md-8 col-sm-12 mt-5">
@@ -96,7 +95,8 @@
 				</div>
 			</div>
 		</section>
-        		<!-- Section 3 -->
+
+		<!-- Section 3 -->
 		<section class="row gy-5 d-flex align-items-start justify-content-evenly  section-container-align-text m-3"id="landing-page-3">
 			<!-- It is our Passion | Logo image -->
 			<div class="col-md-4 col-lg-4">
@@ -145,10 +145,14 @@
 					<p class="card-text">Webdesign<button class="float-this"><i class="fa fa-plus-circle"></i></button></p>
 				</div>
 			</div>
+			<div>
+				<!-- <span class="badge rounded-pill bg-info m-2"><a href="#">Load More</a></span> -->
+			</div>
 			
 		</section>
-        <!-- Section 4 -->
-		<!-- <section class="row d-inline-flex justify-content-center align-items-center m-5" id="landing-page-4">
+
+		<!-- Section 4 -->
+		<section class="row d-inline-flex justify-content-center align-items-center m-5" id="landing-page-4">
 			<div class="col-lg-4 col-md-6 col-sm-10">
 				<p><small class="text-muted">CLIENT TESTIMONIALS</small></p>
 				<h1 class="display-6">What our clients say about us</h1>
@@ -164,8 +168,11 @@
 			<div class="col-md-4 col-lg-4">
 				<img class="img-fluid d-none d-xl-block d-none d-lg-block"  src="./MVPwebsite/img/illo05.png">
 			</div>
-		</section> -->
-        <!-- Section 5 -->
+		</section>
+
+		
+
+		<!-- Section 5 -->
 		<section id="process" class="d-grid mb-5 gap-3 col-xs-11 col-sm-10 col-lg-6 col-md-7 ">
 			<p><small>HOW IT WORKS</small></p>
 			<p class="h1">Check the Process</p>
@@ -196,34 +203,59 @@
 			  </div>
 			</div>
 		</section>
-        <section class="about-page-footer ">
-            <div class="row justify-content-center">
-              <div class="col-lg-3">
-                <h2 class="mvpshoplogo-footer">theMVPshop</h2>
-              </div>
-              <div class="footer-container d-flex justify-content-around col-6 align-content-center">
-                <div class="col-lg-3">
-                  <div class="footer-titles">COMPANY</div>
-                  <div>About Us</div>
-                  <div>Our Team</div>
-                  <div>Contact</div>
-                </div>
-                <div class="col-lg-3">
-                  <div class="footer-titles">RESOURCES</div>
-                  <div>Support</div>
-                  <div>Blog</div>
-                </div>
-                <div class="col-lg-3">
-                  <div class="footer-titles">ABOUT</div>
-                  <div>Features</div>
-                  <div>How It Works</div>
-                  <div>Plans & Pricing</div>
-                </div>
-              </div>
-              <div class="copyright">Copyright 2021 - Zollege LLC - All Rights Reserved</div>
-            </div>
-          </section>
-    </div>
+
+		<!-- Section 6 -->
+		<div class="container d-none d-lg-block">
+			<section class="about-page-footer ">
+			  <div class="row justify-content-center">
+				<div class="col-lg-3">
+				  <h2 class="mvpshoplogo-footer">theMVPshop</h2>
+				</div>
+				<div class="footer-container d-flex justify-content-around col-6 align-content-center">
+				  <div class="col-lg-3">
+					<div class="footer-titles">COMPANY</div>
+					<div>About Us</div>
+					<div>Our Team</div>
+					<div>Contact</div>
+				  </div>
+				  <div class="col-lg-3">
+					<div class="footer-titles">RESOURCES</div>
+					<div>Support</div>
+					<div>Blog</div>
+				  </div>
+				  <div class="col-lg-3">
+					<div class="footer-titles">ABOUT</div>
+					<div>Features</div>
+					<div>How It Works</div>
+					<div>Plans & Pricing</div>
+				  </div>
+				</div>
+				<div class="copyright">Copyright 2021 @ The Zollege Foundation All Rights Reserved</div>
+			  </div>
+			</section>
+		  </div>
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-body">
+						<form class="g-3" action="https://themvpshop.herokuapp.com/login" method="POST">
+							<div>
+								<label for="staticEmail2" >Email</label>
+								<input type="text" class="form-control" id="username" name="username" placeholder="email@example.com">
+							</div><br>
+							<div>
+								<label for="inputPassword2" >Password</label>
+								<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+							</div><br>
+							<div class="modal-footer">
+								<input type="submit" value="Login">
+							</div>
+						</form>
+					</div>
+			  	</div>
+			</div>
+		</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-    <script src="index.js" async defer></script>    
+    <script src="./index.js" async defer></script>
 </body>
+</html>
